@@ -2,6 +2,8 @@
 
 **Live demo:** [resumeforge-jeevan.vercel.app](https://resumeforge-jeevan.vercel.app)
 
+![ResumeForge editor beside a live A4 preview of the Modern template](docs/screenshot.jpg)
+
 Build a clean, recruiter-ready resume with a live A4 preview, switch between three templates, check your resume strength and export a real text-based PDF (not an image) that applicant-tracking systems can parse.
 
 **Tech:** React 19 · TypeScript · Vite · Tailwind CSS v4 · Zustand (persisted) · Lucide icons
