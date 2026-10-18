@@ -4,6 +4,8 @@
 
 ![ResumeForge editor beside a live A4 preview of the Modern template](docs/screenshot.jpg)
 
+![Animated demo: switching templates and accent colours and editing the name in the live preview](docs/demo.gif)
+
 Build a clean, recruiter-ready resume with a live A4 preview, switch between three templates, check your resume strength and export a real text-based PDF (not an image) that applicant-tracking systems can parse.
 
 **Tech:** React 19 · TypeScript · Vite · Tailwind CSS v4 · Zustand (persisted) · Lucide icons
