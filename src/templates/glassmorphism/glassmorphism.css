@@ -54,13 +54,28 @@
   backdrop-filter: blur(6px);
 }
 
-/* ---------- header ---------- */
+/* ---------- split header ---------- */
 
 .rf-t-glassmorphism .gl-header {
+  position: relative;
+  display: flex;
+  gap: 4mm;
+}
+.rf-t-glassmorphism .gl-pane--id {
+  flex: 1 1 0;
+  min-width: 0;
   display: flex;
   align-items: center;
   gap: 5mm;
-  padding: 5.5mm 6mm;
+  padding: 6mm;
+}
+.rf-t-glassmorphism .gl-pane--contact {
+  flex: 0 0 34%;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  padding: 4.5mm 5mm;
+  font-size: 0.86em;
 }
 .rf-t-glassmorphism .gl-header__text {
   min-width: 0;
@@ -86,27 +101,37 @@
     0 1mm 4mm rgb(15 31 51 / 0.15);
 }
 
-/* ---------- columns ---------- */
+/* ---------- section cards ---------- */
 
-.rf-t-glassmorphism .gl-cols {
+.rf-t-glassmorphism .gl-body {
   position: relative;
-  display: flex;
-  flex: 1;
-  min-height: 0;
-  gap: 4mm;
 }
-.rf-t-glassmorphism .gl-main {
-  flex: 1 1 0;
-  min-width: 0;
-  padding: 5.5mm 6mm 0;
+.rf-t-glassmorphism .gl-card {
+  padding: 1.4mm 6mm;
+  background: rgb(255 255 255 / 0.8);
+  border-left: 1px solid rgb(255 255 255 / 0.95);
+  border-right: 1px solid rgb(255 255 255 / 0.95);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
 }
-.rf-t-glassmorphism .gl-side {
-  flex: 0 0 31%;
-  min-width: 0;
-  padding: 5.5mm 5mm 0;
-  font-size: 0.92em;
-  --rf-level-on: var(--rf-accent);
-  --rf-level-off: rgb(var(--rf-accent-rgb) / 0.16);
+.rf-t-glassmorphism .gl-card--first,
+.rf-t-glassmorphism .rf-block:first-child > .gl-card {
+  padding-top: 5mm;
+  border-top: 1px solid rgb(255 255 255 / 1);
+  border-top-left-radius: 5mm;
+  border-top-right-radius: 5mm;
+  box-shadow: inset 0 1px 0 #fff;
+}
+.rf-t-glassmorphism .gl-card--last,
+.rf-t-glassmorphism .rf-block:last-child > .gl-card {
+  padding-bottom: 5mm;
+  border-bottom: 1px solid rgb(255 255 255 / 0.95);
+  border-bottom-left-radius: 5mm;
+  border-bottom-right-radius: 5mm;
+  box-shadow: 0 2mm 5mm rgb(15 31 51 / 0.07);
+}
+.rf-t-glassmorphism .gl-compact {
+  color: #24364b;
 }
 
 .rf-t-glassmorphism .gl-h {
@@ -127,15 +152,6 @@
   height: 1px;
   background: linear-gradient(90deg, rgb(var(--rf-accent-rgb) / 0.35), rgb(var(--rf-accent-rgb) / 0));
 }
-.rf-t-glassmorphism .gl-sh {
-  margin-bottom: 0.6em;
-  font-family: var(--rf-font-heading);
-  font-size: 0.82em;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--rf-accent-ink);
-}
 .rf-t-glassmorphism .gl-contact {
   row-gap: 0.45em;
 }
@@ -144,11 +160,12 @@
 }
 .rf-t-glassmorphism .gl-summary,
 .rf-t-glassmorphism .rf-entry__desc,
-.rf-t-glassmorphism .rf-bullets > li,
-.rf-t-glassmorphism .gl-inline {
+.rf-t-glassmorphism .rf-bullets > li {
   color: #24364b;
 }
-.rf-t-glassmorphism .rf-entry__title {
+.rf-t-glassmorphism .rf-entry__title,
+.rf-t-glassmorphism .rf-cline__title,
+.rf-t-glassmorphism .rf-srow__name {
   font-weight: 650;
   color: var(--gl-ink);
 }
@@ -161,19 +178,8 @@
   color: var(--rf-accent-ink);
   font-weight: 600;
 }
-.rf-t-glassmorphism .gl-side .rf-entry__date {
-  padding: 0;
-  background: none;
-  border: 0;
-}
-.rf-t-glassmorphism .gl-side .rf-skill__name,
-.rf-t-glassmorphism .gl-side .rf-lang__name {
-  font-weight: 600;
-}
 .rf-t-glassmorphism .rf-chip {
   background: rgb(255 255 255 / 0.7);
   border: 1px solid rgb(var(--rf-accent-rgb) / 0.2);
 }
-.rf-t-glassmorphism .gl-inline {
-  font-size: 1em;
-}
+

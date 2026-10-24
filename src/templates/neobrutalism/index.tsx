@@ -1,21 +1,22 @@
 /**
- * Neo-Brutalism — raw and loud, never fragile. Every structure is a flat box with a thick black
- * border and a hard black offset shadow: a yellow header card, label-tag headings in the accent,
- * date stamps, and a side column card for contact and skills. Monospace details, heavy grotesk
- * headings, primary colours on off-white. Main column first in the DOM.
+ * Neo-Brutalism — a raw table. Page 1 opens on a black slab with the name in huge yellow capitals and
+ * a row of contact "stickers" (each in its own bordered box). Every section below is one full-width
+ * table row with a thick black border and a hard offset shadow: a solid colour cell on the left holds
+ * the heading (orange, yellow, blue in turn) and the right cell holds the entries. Rows continue
+ * across pages. Single column, monospace details.
  */
 import type { CSSProperties, ReactNode } from 'react'
 import {
   ContactList,
   DefaultEntry,
-  LevelSegments,
   PageLayout,
   Photo,
   RichParagraphs,
+  compactEntry,
+  compactWhole,
   contactEntries,
   displayName,
   hasPhoto,
-  inlineWhole,
   sectionsToBlocks,
   type Block,
   type EntryView,
@@ -28,78 +29,64 @@ import './neobrutalism.css'
 export const meta: TemplateMeta = {
   id: 'neobrutalism',
   name: 'Neo-Brutalism',
-  description: 'Thick black borders, harsh offset shadows and high-contrast primary colours on raw, unpolished boxes.',
-  tags: ['Creative', 'Two-column', 'Photo'],
+  description: 'A raw table: a black name slab, contact stickers and every section as a thick-bordered row with a colour heading cell and a hard shadow.',
+  tags: ['Creative', 'Photo'],
   order: 300,
   supportsPhoto: true,
-  columns: 2,
+  columns: 1,
   defaultFont: 'plex',
   defaultAccent: '#ff5a36',
-  sideKinds: ['skills', 'languages', 'certifications', 'awards', 'interests', 'references'],
   headingCase: 'upper',
-  gaps: { entry: 11, section: 17 },
+  gaps: { entry: 11, section: 14 },
 }
 
-function SideSkill({ e }: { e: EntryView }) {
-  return (
-    <div className="rf-entry rf-entry--skills rf-entry--side rf-skill nb-skill">
-      {e.title && <div className="rf-skill__name">{e.title}</div>}
-      {e.level > 0 && <LevelSegments level={e.level} label={e.levelLabel} className="nb-skill__bar" height="0.55em" gap="0.15em" />}
-      {e.keywords.length > 0 && <div className="rf-skill__keywords">{e.keywords.join(', ')}</div>}
-    </div>
-  )
-}
+const TONES = ['accent', 'yellow', 'blue'] as const
 
-const mainHeading = (s: SectionView) => (
-  <h2 className="nb-h">
-    <span>{s.title}</span>
-  </h2>
-)
-const sideHeading = (s: SectionView | string) => <h3 className="nb-sh">{typeof s === 'string' ? s : s.title}</h3>
+const entry = (e: EntryView): ReactNode => compactEntry(e) ?? <DefaultEntry entry={e} variant="main" marker="square" />
 
-function sideEntry(e: EntryView): ReactNode {
-  if (e.kind === 'skills') return <SideSkill e={e} />
-  return <DefaultEntry entry={e} variant="side" />
-}
-
-export default function NeoBrutalism({ data, design, main, side }: TemplateProps) {
+export default function NeoBrutalism({ data, design, main }: TemplateProps) {
   const b = data.basics
   const vars = { '--nb-yellow': '#ffd93d', '--nb-blue': '#4d7cfe', '--nb-ink': '#0a0a0a', '--nb-paper': '#fbf7ee' } as CSSProperties
+  const tone = new Map(main.map((s, i) => [s.id, TONES[i % 3]]))
 
   const header = (
     <header className="nb-header">
-      {hasPhoto(b, design) && <Photo basics={b} size="27mm" shape="square" className="nb-photo" />}
-      <div className="nb-header__text">
-        <h1 className="nb-name">{displayName(b)}</h1>
-        {b.title.trim() && <div className="nb-title">{b.title}</div>}
+      <div className="nb-slab">
+        <div className="nb-slab__text">
+          <h1 className="nb-name">{displayName(b)}</h1>
+          {b.title.trim() && <div className="nb-title">{b.title}</div>}
+        </div>
+        {hasPhoto(b, design) && <Photo basics={b} size="27mm" shape="square" className="nb-photo" />}
       </div>
+      {contactEntries(b).length > 0 && <ContactList basics={b} layout="inline" separator="" className="nb-stickers" itemClassName="nb-sticker" />}
     </header>
   )
 
-  const mainBlocks = sectionsToBlocks(main, {
-    heading: mainHeading,
-    summary: (s) => <RichParagraphs className="nb-summary" text={s.content} />,
-    entry: (e) => <DefaultEntry entry={e} variant="main" marker="square" />,
-  })
+  /** One table row per section: the blocks of a section touch and the CSS closes the row's borders. */
+  const row = (node: ReactNode, info: { section: SectionView; first: boolean; last: boolean }) => (
+    <div className={`nb-row nb-row--${tone.get(info.section.id) ?? 'accent'}${info.first ? ' nb-row--first' : ''}${info.last ? ' nb-row--last' : ''}`}>
+      <div className="nb-row__cell">{info.first && <h2 className="nb-h">{info.section.title}</h2>}</div>
+      <div className="nb-row__body">{node}</div>
+    </div>
+  )
 
-  const sideBlocks: Block[] = []
-  if (contactEntries(b).length) {
-    sideBlocks.push({ key: 'contact', gap: 'section', letter: true, node: <>{sideHeading('Contact')}<ContactList basics={b} layout="stack" className="nb-contact" /></> })
-  }
-  sideBlocks.push(...sectionsToBlocks(side, { heading: sideHeading, entry: sideEntry, whole: (s) => (s.kind === 'interests' ? inlineWhole(s, 'nb-inline') : undefined) }))
+  const blocks: Block[] = sectionsToBlocks(main, {
+    heading: () => null,
+    summary: (s) => <RichParagraphs className="nb-summary" text={s.content} />,
+    entry,
+    whole: (s) => compactWhole(s, 'nb-compact'),
+    wrap: row,
+  }).map((bl) => (bl.gap === 'entry' ? { ...bl, gap: 'none' } : bl))
 
   return (
     <PageLayout
       header={header}
-      main={mainBlocks}
-      side={sideBlocks}
-      page={({ header, main, side }) => (
+      main={blocks}
+      page={({ index, header, main }) => (
         <div className="nb-page" style={vars}>
           {header}
-          <div className="nb-cols">
-            <div className="nb-main">{main}</div>
-            <aside className="nb-side">{side}</aside>
-          </div>
+          {index > 0 && <div className="nb-cap" aria-hidden="true" />}
+          {main}
         </div>
       )}
     />

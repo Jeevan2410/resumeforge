@@ -1,0 +1,214 @@
+/* Risograph template — every selector is scoped to .rf-t-risograph. */
+
+.rf-t-risograph .rg-page {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+  background: var(--rg-paper);
+  color: var(--rg-ink);
+}
+.rf-t-risograph .rg-grain {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  mix-blend-mode: multiply;
+  opacity: 0.55;
+}
+
+/* ---------- cover ---------- */
+
+.rf-t-risograph .rg-cover {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  min-height: 78mm;
+  border-bottom: 2.4mm solid var(--rg-pink);
+}
+.rf-t-risograph .rg-cover__left {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: var(--rf-margin) 6mm 7mm var(--rf-margin);
+  overflow: hidden;
+}
+.rf-t-risograph .rg-shape {
+  position: absolute;
+  mix-blend-mode: multiply;
+}
+.rf-t-risograph .rg-shape--circle {
+  top: -14mm;
+  left: -10mm;
+  width: 62mm;
+  height: 62mm;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--rg-pink) 38%, transparent 42%) 0 0 / 2.2mm 2.2mm;
+  opacity: 0.9;
+}
+.rf-t-risograph .rg-shape--block {
+  top: 8mm;
+  left: 34mm;
+  width: 44mm;
+  height: 30mm;
+  background: var(--rf-accent);
+  opacity: 0.85;
+  transform: rotate(-8deg);
+}
+.rf-t-risograph .rg-photo {
+  position: relative;
+  margin-bottom: 4mm;
+  mix-blend-mode: multiply;
+  filter: grayscale(1) contrast(1.15);
+  box-shadow: 1.2mm 1.2mm 0 var(--rg-pink);
+}
+.rf-t-risograph .rg-name {
+  position: relative;
+  font-family: var(--rf-font-heading);
+  font-size: 3em;
+  font-weight: 800;
+  line-height: 0.92;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  color: var(--rf-accent);
+  mix-blend-mode: multiply;
+  overflow-wrap: anywhere;
+}
+/* the second plate: the same word in pink, printed slightly off register */
+.rf-t-risograph .rg-name::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 0.6mm;
+  top: 0.5mm;
+  width: 100%;
+  color: var(--rg-pink);
+  mix-blend-mode: multiply;
+  pointer-events: none;
+}
+.rf-t-risograph .rg-title {
+  position: relative;
+  align-self: flex-start;
+  margin-top: 3mm;
+  padding: 0.2em 0.6em;
+  font-size: 0.92em;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  background: var(--rg-ink);
+  color: var(--rg-paper);
+}
+.rf-t-risograph .rg-cover__right {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 5mm;
+  padding: var(--rf-margin) var(--rf-margin) 7mm 4mm;
+}
+.rf-t-risograph .rg-quote {
+  position: relative;
+  margin: 0;
+  padding-left: 6mm;
+  font-family: var(--rf-font-heading);
+  font-size: 1.12em;
+  font-weight: 600;
+  line-height: 1.42;
+  color: var(--rf-accent);
+}
+.rf-t-risograph .rg-quote::before {
+  content: '“';
+  position: absolute;
+  left: -1mm;
+  top: -5mm;
+  font-size: 3.2em;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--rg-pink);
+  mix-blend-mode: multiply;
+}
+.rf-t-risograph .rg-contact {
+  row-gap: 0.3em;
+  font-size: 0.86em;
+  font-weight: 500;
+}
+.rf-t-risograph .rg-contact .rf-contact__icon {
+  color: var(--rg-pink);
+}
+.rf-t-risograph .rg-cap {
+  height: 5mm;
+  background:
+    radial-gradient(circle, var(--rg-pink) 38%, transparent 42%) 0 0 / 2mm 2mm,
+    rgb(var(--rf-accent-rgb) / 0.2);
+}
+
+/* ---------- body ---------- */
+
+.rf-t-risograph .rg-cols {
+  position: relative;
+  display: flex;
+  gap: 8mm;
+  flex: 1;
+  min-height: 0;
+  padding: calc(var(--rf-margin) * 0.6) var(--rf-margin) 0;
+}
+.rf-t-risograph .rg-main {
+  flex: 1 1 0;
+  min-width: 0;
+}
+.rf-t-risograph .rg-side {
+  flex: 0 0 38%;
+  min-width: 0;
+  font-size: 0.94em;
+}
+.rf-t-risograph .rg-h {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 0.55em;
+  font-family: var(--rf-font-heading);
+  font-size: 1.05em;
+  font-weight: 800;
+  letter-spacing: calc(var(--rf-heading-tracking) + 0.04em);
+  text-transform: var(--rf-heading-transform);
+  color: var(--rf-accent);
+  mix-blend-mode: multiply;
+}
+.rf-t-risograph .rg-h::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 0.45mm;
+  top: 0.35mm;
+  color: var(--rg-pink);
+  mix-blend-mode: multiply;
+  white-space: nowrap;
+}
+.rf-t-risograph .rg-summary,
+.rf-t-risograph .rf-entry__desc,
+.rf-t-risograph .rf-bullets > li,
+.rf-t-risograph .rg-inline {
+  color: #2a2c45;
+}
+.rf-t-risograph .rf-entry__title,
+.rf-t-risograph .rf-cline__title {
+  font-family: var(--rf-font-heading);
+  font-weight: 700;
+  color: var(--rg-ink);
+}
+.rf-t-risograph .rf-entry__sub {
+  color: var(--rf-accent-ink);
+  font-weight: 600;
+}
+.rf-t-risograph .rf-entry__date {
+  font-weight: 700;
+  color: #c2207f;
+}
+.rf-t-risograph .rf-bullets > li::before {
+  background: var(--rg-pink);
+}
+.rf-t-risograph .rf-skill__name {
+  font-weight: 700;
+}
+.rf-t-risograph .rg-inline {
+  font-size: 1em;
+}

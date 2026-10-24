@@ -1,10 +1,11 @@
 /**
- * Corporate Memphis — the friendly flat-illustration look. A header with a flat geometric character
- * (tiny head, long bendy limbs, oversized body) waving beside a laptop, surrounded by blobs and
- * confetti squiggles in bright, cheerful colours; rounded type, soft blob markers on the headings,
- * pill-shaped date tags and a single readable column below.
+ * Corporate Memphis — the friendly flat-illustration look, laid out like a product landing page. A
+ * hero card puts the flat geometric character (tiny head, long bendy limbs, oversized body, waving
+ * beside a laptop) on the left and the name, title and contact on the right. Below, every section hangs
+ * its heading in a wide left gutter as a big coloured blob (sun, mint, coral, lilac in turn) with the
+ * entries in the right track; pill-shaped date tags and confetti squiggles keep it cheerful.
  */
-import type { CSSProperties } from 'react'
+import type { CSSProperties, ReactNode } from 'react'
 import {
   ContactList,
   DefaultEntry,
@@ -25,7 +26,7 @@ import './memphis.css'
 export const meta: TemplateMeta = {
   id: 'memphis',
   name: 'Corporate Memphis',
-  description: 'A flat geometric character with exaggerated proportions, friendly blobs and confetti in bright, approachable colours.',
+  description: 'A landing-page hero with a flat geometric character, and section headings hung in a left gutter as big friendly colour blobs.',
   tags: ['Creative', 'Modern', 'Photo'],
   order: 340,
   supportsPhoto: true,
@@ -70,12 +71,7 @@ function Character() {
   )
 }
 
-const heading = (s: SectionView) => (
-  <h2 className="me-h">
-    <span className="me-h__blob" aria-hidden="true" />
-    <span className="me-h__text">{s.title}</span>
-  </h2>
-)
+const BLOBS = ['sun', 'mint', 'coral', 'lilac'] as const
 
 export default function Memphis({ data, design, main }: TemplateProps) {
   const b = data.basics
@@ -83,18 +79,34 @@ export default function Memphis({ data, design, main }: TemplateProps) {
 
   const header = (
     <header className="me-header">
+      <Character />
       <div className="me-header__text">
         {hasPhoto(b, design) && <Photo basics={b} size="22mm" className="me-photo" />}
         <h1 className="me-name">{displayName(b)}</h1>
         {b.title.trim() && <div className="me-title">{b.title}</div>}
         <ContactList basics={b} layout="inline" className="me-contact" iconSize="0.92em" />
       </div>
-      <Character />
     </header>
   )
 
+  const tone = new Map(main.map((s, i) => [s.id, BLOBS[i % BLOBS.length]]))
+  /** Two-track row: the heading blob hangs in the gutter of a section's first block. */
+  const row = (node: ReactNode, info: { section: SectionView; first: boolean }) => (
+    <div className="me-row">
+      <div className="me-row__gutter">
+        {info.first && (
+          <h2 className={`me-h me-h--${tone.get(info.section.id) ?? 'sun'}`}>
+            <span className="me-h__text">{info.section.title}</span>
+          </h2>
+        )}
+      </div>
+      <div className="me-row__body">{node}</div>
+    </div>
+  )
+
   const blocks = sectionsToBlocks(main, {
-    heading,
+    heading: () => null,
+    wrap: row,
     summary: (s) => <RichParagraphs className="me-summary" text={s.content} />,
     entry: (e) => compactEntry(e) ?? <DefaultEntry entry={e} variant="main" />,
     whole: (s) => compactWhole(s, 'me-compact'),

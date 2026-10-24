@@ -1,8 +1,10 @@
 /* Pop Art template — every selector is scoped to .rf-t-popart. */
 
 .rf-t-popart .pa-page {
+  display: flex;
+  flex-direction: column;
   height: 100%;
-  padding: calc(var(--rf-margin) * 0.8) var(--rf-margin) var(--rf-margin);
+  padding: calc(var(--rf-margin) * 0.8) var(--rf-margin) 0;
   color: var(--pa-ink);
 }
 
@@ -19,6 +21,7 @@
   background-image: radial-gradient(circle, rgb(var(--rf-accent-rgb) / 0.55) 22%, transparent 24%);
   background-size: 3.2mm 3.2mm;
   box-shadow: 2mm 2mm 0 var(--pa-ink);
+  margin-bottom: 5mm;
 }
 .rf-t-popart .pa-header__text {
   min-width: 0;
@@ -87,27 +90,72 @@
   box-shadow: 1.6mm 1.6mm 0 var(--pa-ink);
 }
 
-.rf-t-popart .pa-contact {
-  margin: 4mm 0 calc(var(--rf-section-gap) * 0.9);
-  font-size: 0.9em;
-  font-weight: 600;
-}
-.rf-t-popart .pa-contact .rf-contact__icon {
-  color: var(--rf-accent-ink);
-}
 .rf-t-popart .pa-strip {
+  flex: none;
   height: 3mm;
-  margin-bottom: 5mm;
+  margin-bottom: 6mm;
   border: 2px solid var(--pa-ink);
   background-color: var(--pa-yellow);
   background-image: radial-gradient(circle, rgb(var(--rf-accent-rgb) / 0.55) 22%, transparent 24%);
   background-size: 2mm 2mm;
 }
 
+/* ---------- panel grid ---------- */
+
+.rf-t-popart .pa-cols {
+  display: flex;
+  gap: 3.5mm;
+  flex: 1;
+  min-height: 0;
+}
+.rf-t-popart .pa-main {
+  flex: 1 1 0;
+  min-width: 0;
+}
+.rf-t-popart .pa-side {
+  flex: 0 0 30%;
+  min-width: 0;
+  font-size: 0.9em;
+  --rf-level-on: var(--pa-ink);
+  --rf-level-off: rgb(17 17 17 / 0.15);
+}
+.rf-t-popart .pa-panel {
+  padding: 0 3.5mm 2mm;
+  border-left: 2.5px solid var(--pa-ink);
+  border-right: 2.5px solid var(--pa-ink);
+  background: #fff;
+}
+.rf-t-popart .pa-panel--first,
+.rf-t-popart .rf-block:first-child > .pa-panel {
+  padding-top: 0;
+  border-top: 2.5px solid var(--pa-ink);
+}
+.rf-t-popart .pa-panel--last,
+.rf-t-popart .rf-block:last-child > .pa-panel {
+  padding-bottom: 3.5mm;
+  border-bottom: 2.5px solid var(--pa-ink);
+  box-shadow: 1.6mm 1.6mm 0 var(--pa-ink);
+}
+.rf-t-popart .rf-block:first-child > .pa-panel:not(.pa-panel--first) {
+  padding-top: 3.5mm;
+}
+.rf-t-popart .pa-side .pa-panel {
+  background-color: #eaf7fd;
+  background-image: radial-gradient(circle, rgb(0 160 227 / 0.22) 20%, transparent 22%);
+  background-size: 2.4mm 2.4mm;
+}
+.rf-t-popart .pa-contact {
+  row-gap: 0.4em;
+  font-weight: 600;
+}
+.rf-t-popart .pa-contact .rf-contact__icon {
+  color: var(--rf-accent-ink);
+}
+
 /* ---------- sections ---------- */
 
 .rf-t-popart .pa-h {
-  margin-bottom: 0.55em;
+  margin: -0.85em 0 0.5em -1.5mm;
   font-family: var(--rf-font-heading);
   font-size: 0.95em;
   font-weight: 800;

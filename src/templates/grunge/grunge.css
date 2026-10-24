@@ -40,8 +40,9 @@
   display: flex;
   align-items: flex-start;
   gap: 6mm;
-  margin-bottom: var(--rf-section-gap);
+  margin: 2mm 4mm calc(var(--rf-section-gap) + 2mm);
   padding: 5mm 6mm 4.5mm;
+  transform: rotate(-0.8deg);
   background: rgb(250 247 240 / 0.7);
   border: 1px solid rgb(36 33 29 / 0.18);
   transform: rotate(-0.4deg);
@@ -113,6 +114,64 @@
 }
 .rf-t-grunge .gr-contact .rf-contact__icon {
   color: var(--rf-accent-ink);
+}
+
+/* ---------- paper scraps ---------- */
+
+.rf-t-grunge .gr-scrap {
+  position: relative;
+  margin: 0 12mm 0 0;
+  padding: 1.2mm 6mm;
+  background: var(--gr-scrap, #f8f4ea);
+  box-shadow:
+    1px 0 0 rgb(36 33 29 / 0.12),
+    -1px 0 0 rgb(36 33 29 / 0.12);
+}
+.rf-t-grunge .gr-scrap--1 {
+  --gr-scrap: #dcc8a3;
+  margin: 0 0 0 12mm;
+}
+.rf-t-grunge .gr-scrap--2 {
+  --gr-scrap: #eeede8;
+  margin: 0 5mm 0 6mm;
+  background:
+    repeating-linear-gradient(180deg, transparent 0 5.2mm, rgb(70 100 140 / 0.08) 5.2mm calc(5.2mm + 1px)),
+    var(--gr-scrap);
+}
+.rf-t-grunge .gr-scrap--first,
+.rf-t-grunge .rf-block:first-child > .gr-scrap {
+  padding-top: 5mm;
+}
+.rf-t-grunge .gr-scrap--last,
+.rf-t-grunge .rf-block:last-child > .gr-scrap {
+  padding-bottom: 4mm;
+}
+/* ripped bottom edge */
+.rf-t-grunge .gr-scrap--last::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 100%;
+  height: 2mm;
+  background:
+    linear-gradient(135deg, var(--gr-scrap, #f8f4ea) 50%, transparent 50%) 0 0 / 2.6mm 2mm repeat-x,
+    linear-gradient(-135deg, var(--gr-scrap, #f8f4ea) 50%, transparent 50%) 0 0 / 2.6mm 2mm repeat-x;
+}
+.rf-t-grunge .gr-scrap__tape {
+  position: absolute;
+  top: -2.6mm;
+  left: 46%;
+  width: 22mm;
+  height: 6mm;
+  background: var(--gr-tape);
+  border-left: 1px dashed rgb(36 33 29 / 0.12);
+  border-right: 1px dashed rgb(36 33 29 / 0.12);
+  transform: rotate(-4deg);
+}
+.rf-t-grunge .gr-scrap--1 .gr-scrap__tape {
+  left: 12%;
+  transform: rotate(5deg);
 }
 
 /* ---------- sections ---------- */

@@ -1,12 +1,13 @@
 /**
- * Art Nouveau — single column on warm paper inside an asymmetric frame: a whiplash vine with leaves
- * and a bloom climbs the left edge of every page, a curling flourish hangs from the top-right corner,
- * and section headings end in a small leaf sprig on a hairline. Serif type, italic titles and a sage
- * accent keep it soft; the ornaments are decorative SVG (aria-hidden) so the text stays plain for ATS.
+ * Art Nouveau — a full-height left panel shaped like an arched window: the name, photo and contact sit
+ * under the arch, the skills and languages below it, and a whiplash vine with leaves and a bloom climbs
+ * the panel's right edge as the column divider. The main column on the right carries sprig headings on
+ * hairlines. Serif type, italic titles and a sage accent; ornaments are aria-hidden SVG.
  */
 import type { ReactNode } from 'react'
 import {
   ContactList,
+  contactEntries,
   DefaultEntry,
   PageLayout,
   Photo,
@@ -16,6 +17,7 @@ import {
   hasPhoto,
   compactWhole,
   sectionsToBlocks,
+  type Block,
   type EntryView,
   type SectionView,
   type TemplateMeta,
@@ -26,13 +28,14 @@ import './artnouveau.css'
 export const meta: TemplateMeta = {
   id: 'artnouveau',
   name: 'Art Nouveau',
-  description: 'Fluid vine and floral ornaments in an elegant asymmetrical frame, with soft serif type on warm paper.',
-  tags: ['Creative', 'Classic', 'Photo'],
+  description: 'An arched-window sidebar holding your name and skills, a climbing vine as the column divider and soft serif type on warm paper.',
+  tags: ['Creative', 'Two-column', 'Photo'],
   order: 200,
   supportsPhoto: true,
-  columns: 1,
+  columns: 2,
   defaultFont: 'garamond',
   defaultAccent: '#55704f',
+  sideKinds: ['skills', 'languages', 'interests', 'references'],
   headingCase: 'normal',
   gaps: { entry: 9, section: 14 },
 }
@@ -58,18 +61,6 @@ function Vine() {
   )
 }
 
-/** Curling flourish hanging from the top-right corner (page 1 only, behind the header). */
-function Flourish() {
-  return (
-    <svg className="an-flourish" viewBox="0 0 220 120" aria-hidden="true">
-      <path d="M220 4C176 4 162 30 128 34S70 18 52 40c-14 17-2 40 16 36s16-24 4-28-14 8-8 12" />
-      <path d="M220 24c-30 6-40 32-66 42s-48 2-60 18c-8 12 2 26 14 22" />
-      {leaf(150, 36, 160, 0.8)}
-      {leaf(104, 68, 200, 0.7)}
-    </svg>
-  )
-}
-
 const Sprig = () => (
   <svg className="an-sprig" viewBox="0 0 40 16" aria-hidden="true">
     <path d="M2 8C12 8 22 8 38 8" />
@@ -85,43 +76,55 @@ const heading = (s: SectionView) => (
   </h2>
 )
 
-const entry = (e: EntryView): ReactNode => compactEntry(e) ?? <DefaultEntry entry={e} variant="main" />
+const sideHeading = (s: SectionView | string) => <h3 className="an-sh">{typeof s === 'string' ? s : s.title}</h3>
 
-export default function ArtNouveau({ data, design, main }: TemplateProps) {
+const entry = (e: EntryView): ReactNode => compactEntry(e) ?? <DefaultEntry entry={e} variant="main" />
+const sideEntry = (e: EntryView): ReactNode => <DefaultEntry entry={e} variant="side" level={e.kind === 'skills' || e.kind === 'languages' ? 'dots' : undefined} />
+
+export default function ArtNouveau({ data, design, main, side }: TemplateProps) {
   const b = data.basics
   const photo = hasPhoto(b, design)
 
   const header = (
     <header className="an-header">
-      <Flourish />
-      {photo && <Photo basics={b} size="27mm" className="an-photo" />}
-      <div className="an-header__text">
-        <h1 className="an-name">{displayName(b)}</h1>
-        {b.title.trim() && <div className="an-title">{b.title}</div>}
-        <ContactList basics={b} layout="inline" className="an-contact" iconSize="0.9em" />
-      </div>
+      {photo && <Photo basics={b} size="30mm" shape="circle" className="an-photo" />}
+      <h1 className="an-name">{displayName(b)}</h1>
+      {b.title.trim() && <div className="an-title">{b.title}</div>}
+      <svg className="an-knot" viewBox="0 0 80 14" aria-hidden="true">
+        <path d="M2 7H30M50 7H78M30 7c4-8 16-8 20 0-4 8-16 8-20 0Z" />
+      </svg>
     </header>
   )
 
-  const blocks = sectionsToBlocks(main, {
+  const mainBlocks = sectionsToBlocks(main, {
     heading,
     summary: (s) => <RichParagraphs className="an-summary" text={s.content} />,
     entry,
     whole: (s) => compactWhole(s, 'an-compact'),
   })
 
+  const sideBlocks: Block[] = []
+  if (contactEntries(b).length) {
+    sideBlocks.push({ key: 'contact', gap: 'section', letter: true, node: <>{sideHeading('Contact')}<ContactList basics={b} layout="stack" className="an-contact" iconSize="0.9em" /></> })
+  }
+  sideBlocks.push(...sectionsToBlocks(side, { heading: sideHeading, entry: sideEntry }))
+
   return (
     <PageLayout
       header={header}
-      main={blocks}
-      page={({ header, main }) => (
+      main={mainBlocks}
+      side={sideBlocks}
+      page={({ header, main, side }) => (
         <div className="an-page">
-          <span className="an-frame" aria-hidden="true" />
-          <Vine />
-          <div className="an-body">
-            {header}
-            {main}
-          </div>
+          <aside className="an-side">
+            <span className="an-arch" aria-hidden="true" />
+            <Vine />
+            <div className="an-side__in">
+              {header}
+              {side}
+            </div>
+          </aside>
+          <div className="an-main">{main}</div>
         </div>
       )}
     />

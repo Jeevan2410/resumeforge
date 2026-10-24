@@ -1,0 +1,283 @@
+/* Pixel art template — every selector is scoped to .rf-t-pixel. */
+
+.rf-t-pixel .pk-page {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background-color: var(--pk-paper);
+  background-image:
+    linear-gradient(rgb(27 28 51 / 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(27 28 51 / 0.04) 1px, transparent 1px);
+  background-size: 2mm 2mm;
+  color: var(--pk-ink);
+}
+
+/* ---------- HUD ---------- */
+
+.rf-t-pixel .pk-hud {
+  display: flex;
+  align-items: center;
+  gap: 5mm;
+  padding: calc(var(--rf-margin) * 0.6) var(--rf-margin);
+  background: var(--pk-ink);
+  color: #fff;
+  border-bottom: 1.5mm solid var(--rf-accent);
+  box-shadow: 0 1.5mm 0 var(--pk-gold);
+  margin-bottom: 1.5mm;
+}
+.rf-t-pixel .pk-avatar {
+  flex: none;
+  padding: 1mm;
+  background: #fff;
+  box-shadow:
+    0 -1mm 0 0 var(--pk-gold),
+    0 1mm 0 0 var(--pk-gold),
+    -1mm 0 0 0 var(--pk-gold),
+    1mm 0 0 0 var(--pk-gold);
+}
+.rf-t-pixel .pk-sprite {
+  display: block;
+  width: 22mm;
+  height: 22mm;
+}
+.rf-t-pixel .pk-sp--bg {
+  fill: #fff;
+}
+.rf-t-pixel .pk-sp--a {
+  fill: var(--rf-accent);
+}
+.rf-t-pixel .pk-sp--b {
+  fill: var(--pk-ink);
+}
+.rf-t-pixel .pk-photo {
+  display: block;
+  image-rendering: pixelated;
+}
+.rf-t-pixel .pk-hud__id {
+  flex: 1;
+  min-width: 0;
+}
+.rf-t-pixel .pk-hud__tag {
+  font-family: var(--rf-font-mono);
+  font-size: 0.72em;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--pk-gold);
+}
+.rf-t-pixel .pk-name {
+  margin: 0.15em 0;
+  font-family: var(--rf-font-mono);
+  font-size: 2.2em;
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  text-shadow: 0.7mm 0.7mm 0 var(--rf-accent);
+}
+.rf-t-pixel .pk-class {
+  font-family: var(--rf-font-mono);
+  font-size: 0.92em;
+  color: #c9cbf0;
+}
+.rf-t-pixel .pk-hud__stats {
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1.6mm;
+  width: 52mm;
+}
+.rf-t-pixel .pk-meter {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6mm;
+}
+.rf-t-pixel .pk-meter__label {
+  font-family: var(--rf-font-mono);
+  font-size: 0.7em;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #c9cbf0;
+}
+.rf-t-pixel .pk-meter__bar {
+  display: flex;
+  gap: 0.5mm;
+  padding: 0.6mm;
+  background: #000;
+}
+.rf-t-pixel .pk-meter__bar i {
+  flex: 1;
+  height: 2.2mm;
+  background: #3a3c66;
+}
+.rf-t-pixel .pk-meter__bar i.on {
+  background: var(--pk-green);
+}
+
+/* ---------- columns ---------- */
+
+.rf-t-pixel .pk-cols {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+}
+.rf-t-pixel .pk-main {
+  flex: 1 1 0;
+  min-width: 0;
+  padding: 6mm var(--rf-margin) 0 6mm;
+}
+/* inventory panel on the left (second in the DOM) */
+.rf-t-pixel .pk-side {
+  order: -1;
+  flex: 0 0 31%;
+  min-width: 0;
+  padding: 6mm 5mm 0 calc(var(--rf-margin) * 0.8);
+  background: var(--pk-panel);
+  color: #e8e9ff;
+  font-size: 0.88em;
+}
+
+.rf-t-pixel .pk-h {
+  margin-bottom: 0.6em;
+  font-family: var(--rf-font-mono);
+  font-size: 0.95em;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: var(--rf-heading-transform);
+}
+.rf-t-pixel .pk-h::before {
+  content: '▶ ';
+  color: var(--rf-accent);
+}
+.rf-t-pixel .pk-side .pk-h {
+  color: var(--pk-gold);
+}
+.rf-t-pixel .pk-side .pk-h::before {
+  color: var(--pk-gold);
+}
+
+/* ---------- dialogue boxes (notched pixel corners via stepped shadows) ---------- */
+
+.rf-t-pixel .pk-box {
+  margin: 0 1mm;
+  padding: 1.2mm 5mm;
+  background: #fff;
+  box-shadow:
+    -1mm 0 0 0 var(--pk-ink),
+    1mm 0 0 0 var(--pk-ink);
+}
+.rf-t-pixel .pk-box--first,
+.rf-t-pixel .rf-block:first-child > .pk-box {
+  padding-top: 4.5mm;
+  box-shadow:
+    -1mm 0 0 0 var(--pk-ink),
+    1mm 0 0 0 var(--pk-ink),
+    0 -1mm 0 0 var(--pk-ink);
+}
+.rf-t-pixel .pk-box--last,
+.rf-t-pixel .rf-block:last-child > .pk-box {
+  padding-bottom: 4.5mm;
+  box-shadow:
+    -1mm 0 0 0 var(--pk-ink),
+    1mm 0 0 0 var(--pk-ink),
+    0 1mm 0 0 var(--pk-ink),
+    1.5mm 2mm 0 0 rgb(27 28 51 / 0.25);
+}
+.rf-t-pixel .pk-box--first.pk-box--last,
+.rf-t-pixel .rf-block:first-child > .pk-box--last,
+.rf-t-pixel .rf-block:last-child > .pk-box--first {
+  box-shadow:
+    -1mm 0 0 0 var(--pk-ink),
+    1mm 0 0 0 var(--pk-ink),
+    0 -1mm 0 0 var(--pk-ink),
+    0 1mm 0 0 var(--pk-ink),
+    1.5mm 2mm 0 0 rgb(27 28 51 / 0.25);
+}
+
+/* ---------- inventory ---------- */
+
+.rf-t-pixel .pk-contact {
+  row-gap: 0.45em;
+  font-family: var(--rf-font-mono);
+  font-size: 0.92em;
+  overflow-wrap: anywhere;
+}
+.rf-t-pixel .pk-contact .rf-contact__icon {
+  color: var(--pk-gold);
+}
+.rf-t-pixel .pk-contact .rf-link {
+  color: inherit;
+}
+.rf-t-pixel .pk-slotgroup__name {
+  margin-bottom: 0.4em;
+  font-family: var(--rf-font-mono);
+  font-weight: 700;
+  color: #fff;
+}
+.rf-t-pixel .pk-slots {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.6mm;
+}
+.rf-t-pixel .pk-slot {
+  padding: 0.25em 0.55em;
+  font-family: var(--rf-font-mono);
+  font-size: 0.88em;
+  background: #34376a;
+  color: #fff;
+  box-shadow:
+    0 -0.6mm 0 0 #4b4f8f,
+    0 0.6mm 0 0 #15162b,
+    -0.6mm 0 0 0 #4b4f8f,
+    0.6mm 0 0 0 #15162b;
+}
+.rf-t-pixel .pk-side .rf-entry__title,
+.rf-t-pixel .pk-side .rf-cline__title,
+.rf-t-pixel .pk-side .rf-lang__name {
+  color: #fff;
+  font-weight: 700;
+}
+.rf-t-pixel .pk-side .rf-entry__sub,
+.rf-t-pixel .pk-side .rf-cline__by,
+.rf-t-pixel .pk-side .rf-cline__date,
+.rf-t-pixel .pk-side .rf-entry__date,
+.rf-t-pixel .pk-side .rf-lang__level {
+  color: #b6b8e6;
+}
+.rf-t-pixel .pk-side {
+  --rf-level-on: var(--pk-green);
+  --rf-level-off: #3a3c66;
+}
+
+/* ---------- main text ---------- */
+
+.rf-t-pixel .pk-summary,
+.rf-t-pixel .pk-main .rf-entry__desc,
+.rf-t-pixel .pk-main .rf-bullets > li {
+  color: #26284a;
+}
+.rf-t-pixel .pk-main .rf-entry__title,
+.rf-t-pixel .pk-main .rf-cline__title {
+  font-family: var(--rf-font-mono);
+  font-weight: 700;
+  color: var(--pk-ink);
+}
+.rf-t-pixel .pk-main .rf-entry__sub {
+  color: var(--rf-accent-ink);
+  font-weight: 600;
+}
+.rf-t-pixel .pk-main .rf-entry__date {
+  display: inline-block;
+  padding: 0 0.45em;
+  font-family: var(--rf-font-mono);
+  font-size: 0.86em;
+  background: var(--pk-gold);
+  color: var(--pk-ink);
+}
+.rf-t-pixel .rf-bullets > li::before {
+  border-radius: 0;
+  background: var(--rf-accent);
+}
+.rf-t-pixel .rf-entry__keywords {
+  font-family: var(--rf-font-mono);
+  font-size: 0.86em;
+}

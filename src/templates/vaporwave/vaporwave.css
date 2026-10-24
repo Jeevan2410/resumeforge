@@ -1,16 +1,80 @@
 /* Vaporwave template — every selector is scoped to .rf-t-vaporwave. */
 
 .rf-t-vaporwave .vw-page {
+  position: relative;
   height: 100%;
   color: var(--vw-ink);
 }
 
-/* ---------- header ---------- */
+/* ---------- left neon strip ---------- */
+
+.rf-t-vaporwave .vw-strip {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 30mm;
+  overflow: hidden;
+  background: linear-gradient(180deg, var(--vw-night) 0%, var(--vw-violet) 40%, var(--rf-accent) 72%, #ff9a8b 82%, var(--vw-night) 82.2%);
+}
+.rf-t-vaporwave .vw-strip__sun {
+  position: absolute;
+  left: 50%;
+  top: calc(82% - 24mm);
+  width: 26mm;
+  height: 26mm;
+  border-radius: 50%;
+  transform: translateX(-50%);
+  background:
+    repeating-linear-gradient(180deg, transparent 0 3mm, var(--rf-accent) 3mm 4mm) 0 60% / 100% 50% no-repeat,
+    linear-gradient(180deg, #ffe66d 0%, #ff8fab 100%);
+  -webkit-mask: linear-gradient(#000 0 0);
+  clip-path: inset(0 0 15% 0);
+}
+.rf-t-vaporwave .vw-strip__grid {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 82%;
+  bottom: 0;
+  background:
+    repeating-linear-gradient(90deg, rgb(37 216 240 / 0.8) 0 1px, transparent 1px 5mm),
+    repeating-linear-gradient(180deg, rgb(37 216 240 / 0.8) 0 1px, transparent 1px 4mm);
+}
+.rf-t-vaporwave .vw-name {
+  position: absolute;
+  left: 0;
+  top: var(--rf-margin);
+  width: 30mm;
+  height: calc(82% - var(--rf-margin) - 28mm);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font-family: var(--rf-font-heading);
+  font-size: 3.4em;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: #fff;
+  text-shadow:
+    -2px 0 0 var(--vw-cyan),
+    2px 0 0 #ff3d9a;
+}
+
+/* ---------- postcard ---------- */
 
 .rf-t-vaporwave .vw-header {
+  margin-bottom: var(--rf-section-gap);
+}
+.rf-t-vaporwave .vw-card {
   position: relative;
-  min-height: 46mm;
+  min-height: 40mm;
   overflow: hidden;
+  border-radius: 3mm;
   background: linear-gradient(180deg, var(--vw-night) 0%, var(--vw-violet) 45%, var(--rf-accent) 78%, #ff9a8b 100%);
 }
 .rf-t-vaporwave .vw-scene {
@@ -37,32 +101,16 @@
 .rf-t-vaporwave .vw-bust .vw-bust__hair {
   fill: #c9bce6;
 }
-.rf-t-vaporwave .vw-header__inner {
+.rf-t-vaporwave .vw-card__inner {
   position: relative;
   display: flex;
-  align-items: center;
-  gap: 5mm;
-  padding: calc(var(--rf-margin) * 0.85) var(--rf-margin) 18mm;
-}
-.rf-t-vaporwave .vw-header__text {
-  min-width: 0;
-  max-width: 50%;
-}
-.rf-t-vaporwave .vw-name {
-  font-family: var(--rf-font-heading);
-  font-size: 2.5em;
-  font-weight: 800;
-  line-height: 1.02;
-  letter-spacing: 0.03em;
-  text-transform: uppercase;
-  color: #fff;
-  text-shadow:
-    -2px 0 0 var(--vw-cyan),
-    2px 0 0 #ff3d9a;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 3mm;
+  padding: 5mm 6mm 16mm;
 }
 .rf-t-vaporwave .vw-title {
   display: inline-block;
-  margin-top: 0.55em;
   padding: 0.15em 0.6em;
   font-size: 0.95em;
   font-weight: 600;
@@ -77,21 +125,15 @@
     0 0 0 1mm var(--vw-cyan),
     0 0 0 2mm #ff3d9a;
 }
-.rf-t-vaporwave .vw-cap {
-  height: 5mm;
-  background:
-    repeating-linear-gradient(90deg, rgb(37 216 240 / 0.8) 0 1px, transparent 1px 6mm),
-    linear-gradient(90deg, var(--vw-violet), var(--rf-accent));
-}
-
 /* ---------- body ---------- */
 
 .rf-t-vaporwave .vw-body {
-  padding: calc(var(--rf-margin) * 0.55) var(--rf-margin) 0;
+  position: relative;
+  padding: var(--rf-margin) var(--rf-margin) 0 calc(30mm + var(--rf-margin) * 0.75);
 }
 .rf-t-vaporwave .vw-contact {
-  margin-bottom: var(--rf-section-gap);
-  font-size: 0.9em;
+  margin-top: 3mm;
+  font-size: 0.88em;
   color: #3a2f55;
 }
 .rf-t-vaporwave .vw-contact .rf-contact__icon {

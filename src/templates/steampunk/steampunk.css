@@ -77,6 +77,10 @@
 
 .rf-t-steampunk .sp-body {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  box-sizing: border-box;
   padding: calc(var(--rf-margin) * 0.85) var(--rf-margin) var(--rf-margin);
 }
 
@@ -159,6 +163,77 @@
   color: var(--rf-accent-ink);
 }
 
+/* ---------- pipe timeline ---------- */
+
+.rf-t-steampunk .sp-rail {
+  position: relative;
+  flex: 1;
+}
+/* the pipe: a brass tube with highlight, running the full rail height on every page */
+.rf-t-steampunk .sp-rail::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: calc(var(--rf-margin) * -0.4);
+  left: calc(25mm + 3.6mm);
+  width: 2.6mm;
+  border-radius: 1.3mm;
+  background: linear-gradient(90deg, #6b4518 0%, var(--sp-brass) 35%, #e7c27a 50%, var(--sp-brass) 65%, #6b4518 100%);
+  box-shadow: 0 0 0 0.4px rgb(47 32 18 / 0.4);
+}
+.rf-t-steampunk .sp-tl {
+  position: relative;
+  display: grid;
+  grid-template-columns: 25mm 10mm minmax(0, 1fr);
+  column-gap: 0;
+}
+.rf-t-steampunk .sp-tl--head {
+  align-items: center;
+  margin-bottom: 0.35em;
+}
+.rf-t-steampunk .sp-tl__when {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding: 0.1em 2.4mm 0 0;
+  font-family: var(--rf-font-heading);
+  font-size: 0.86em;
+  font-style: italic;
+  font-weight: 600;
+  line-height: 1.25;
+  color: #5e4527;
+  text-align: right;
+}
+.rf-t-steampunk .sp-tl__from {
+  font-weight: 400;
+  color: #7a6040;
+}
+.rf-t-steampunk .sp-tl__node {
+  display: flex;
+  justify-content: center;
+}
+.rf-t-steampunk .sp-node {
+  width: 6.5mm;
+  height: 6.5mm;
+  margin-top: -0.4mm;
+}
+.rf-t-steampunk .sp-node--big {
+  width: 9.5mm;
+  height: 9.5mm;
+  margin: 0;
+}
+.rf-t-steampunk .sp-tl__body {
+  min-width: 0;
+  padding-left: 2mm;
+}
+.rf-t-steampunk .sp-tl--dated .rf-entry__aside .rf-entry__date {
+  display: none;
+}
+.rf-t-steampunk .sp-tl > .sp-h {
+  padding-left: 2mm;
+  margin-bottom: 0;
+}
+
 /* ---------- sections ---------- */
 
 .rf-t-steampunk .sp-h {
@@ -172,14 +247,6 @@
   letter-spacing: var(--rf-heading-tracking);
   text-transform: var(--rf-heading-transform);
   color: var(--sp-ink);
-}
-.rf-t-steampunk .sp-cog {
-  width: 0.95em;
-  height: 0.95em;
-  fill: var(--sp-brass);
-}
-.rf-t-steampunk .sp-cog__hole {
-  fill: var(--sp-paper);
 }
 .rf-t-steampunk .sp-h__rule {
   flex: 1;

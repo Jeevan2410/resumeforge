@@ -1,7 +1,7 @@
 /**
  * Flat Design — solid colour and nothing else: no gradients, no shadows. A full-width accent header
  * with a small two-dimensional desk illustration (monitor, plant, mug) built from flat shapes, solid
- * label-style headings, a pale side column of contact and skills with flat segment bars, and
+ * label-style headings, a pale left column of contact and skills with flat segment bars, and
  * square bullets. Main column first in the DOM.
  */
 import type { CSSProperties, ReactNode } from 'react'

@@ -1,0 +1,190 @@
+/* Skills-first template — every selector is scoped to .rf-t-skillsfirst. */
+
+.rf-t-skillsfirst .sf-page {
+  height: 100%;
+  color: var(--sf-ink);
+}
+
+/* ---------- header ---------- */
+
+.rf-t-skillsfirst .sf-header {
+  display: flex;
+  align-items: center;
+  gap: 6mm;
+  padding: calc(var(--rf-margin) * 0.75) var(--rf-margin) 6mm;
+  background: var(--sf-ink);
+  color: #fff;
+  border-bottom: 2.4mm solid var(--rf-accent);
+}
+.rf-t-skillsfirst .sf-header__text {
+  min-width: 0;
+}
+.rf-t-skillsfirst .sf-photo {
+  flex: none;
+  box-shadow: 0 0 0 1mm var(--rf-accent);
+}
+.rf-t-skillsfirst .sf-name {
+  font-family: var(--rf-font-heading);
+  font-size: 2.5em;
+  font-weight: 800;
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+}
+.rf-t-skillsfirst .sf-title {
+  margin-top: 0.35em;
+  font-size: 1.05em;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--rf-accent) 55%, #fff);
+}
+.rf-t-skillsfirst .sf-contact {
+  margin-top: 0.8em;
+  font-size: 0.86em;
+  color: #d5dde3;
+}
+.rf-t-skillsfirst .sf-contact a {
+  color: inherit;
+}
+.rf-t-skillsfirst .sf-contact .rf-contact__icon {
+  color: color-mix(in srgb, var(--rf-accent) 55%, #fff);
+}
+
+/* ---------- body ---------- */
+
+.rf-t-skillsfirst .sf-body {
+  padding: 6mm var(--rf-margin) 0;
+}
+.rf-t-skillsfirst .sf-h {
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+  margin-bottom: 0.6em;
+  font-family: var(--rf-font-heading);
+  font-size: 1.02em;
+  font-weight: 800;
+  letter-spacing: var(--rf-heading-tracking);
+  text-transform: var(--rf-heading-transform);
+  color: var(--sf-ink);
+}
+.rf-t-skillsfirst .sf-h__text {
+  padding: 0.2em 0.6em;
+  border-left: 1.2mm solid var(--rf-accent);
+  background: var(--sf-soft);
+}
+.rf-t-skillsfirst .sf-h__rule {
+  flex: 1;
+  height: 1px;
+  background: #d6dedc;
+}
+
+.rf-t-skillsfirst .sf-profile {
+  padding: 3.2mm 4mm;
+  border: 1px solid #d6dedc;
+  border-left: 1.2mm solid var(--rf-accent);
+  border-radius: 0 2mm 2mm 0;
+  font-size: 1.04em;
+  color: #2a3640;
+}
+
+/* core competencies grid */
+.rf-t-skillsfirst .sf-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 3.5mm;
+}
+.rf-t-skillsfirst .sf-grid--4 {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 3mm;
+}
+.rf-t-skillsfirst .sf-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45em;
+  min-width: 0;
+  padding: 3mm 3.5mm 3.4mm;
+  border: 1px solid #d6dedc;
+  border-top: 1mm solid var(--rf-accent);
+  border-radius: 1.5mm;
+  background: #fff;
+}
+.rf-t-skillsfirst .sf-card__title {
+  font-family: var(--rf-font-heading);
+  font-size: 1.02em;
+  font-weight: 700;
+  line-height: 1.2;
+}
+.rf-t-skillsfirst .sf-card__level {
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+}
+.rf-t-skillsfirst .sf-card__meter {
+  flex: 1;
+}
+.rf-t-skillsfirst .sf-card__label {
+  flex: none;
+  font-size: 0.78em;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--rf-accent-ink);
+}
+.rf-t-skillsfirst .sf-card__list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15em;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 0.92em;
+  color: #2a3640;
+}
+.rf-t-skillsfirst .sf-card__list > li {
+  position: relative;
+  padding-left: 1.2em;
+}
+.rf-t-skillsfirst .sf-card__list > li::before {
+  content: '';
+  position: absolute;
+  left: 0.1em;
+  top: 0.32em;
+  width: 0.38em;
+  height: 0.65em;
+  border: solid var(--rf-accent);
+  border-width: 0 0.14em 0.14em 0;
+  transform: rotate(40deg);
+}
+.rf-t-skillsfirst .sf-card__desc {
+  font-size: 0.9em;
+  color: #47545e;
+}
+
+/* career history */
+.rf-t-skillsfirst .rf-entry__title,
+.rf-t-skillsfirst .rf-srow__name,
+.rf-t-skillsfirst .rf-cline__title {
+  font-family: var(--rf-font-heading);
+  font-weight: 700;
+  color: var(--sf-ink);
+}
+.rf-t-skillsfirst .rf-entry__sub {
+  font-weight: 600;
+  color: var(--rf-accent-ink);
+}
+.rf-t-skillsfirst .rf-entry--main .rf-entry__date {
+  font-weight: 600;
+  color: #47545e;
+}
+.rf-t-skillsfirst .rf-entry__desc,
+.rf-t-skillsfirst .rf-bullets > li,
+.rf-t-skillsfirst .sf-compact {
+  color: #2a3640;
+}
+.rf-t-skillsfirst .rf-bullets > li::before {
+  background: var(--rf-accent);
+  border-radius: 0;
+}
+.rf-t-skillsfirst .sf-compact {
+  font-size: 1em;
+}

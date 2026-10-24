@@ -1,0 +1,176 @@
+/* Type-collage template — every selector is scoped to .rf-t-typecollage. */
+
+.rf-t-typecollage .tc-page {
+  height: 100%;
+  overflow: hidden;
+  background: var(--tc-paper);
+  color: var(--tc-ink);
+}
+
+/* ---------- collage header ---------- */
+
+.rf-t-typecollage .tc-header {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: calc(var(--rf-margin) * 0.7) var(--rf-margin) 5mm;
+  border-bottom: 2.4mm solid var(--tc-ink);
+  overflow: hidden;
+}
+.rf-t-typecollage .tc-ghost {
+  position: absolute;
+  right: 14mm;
+  top: -24mm;
+  font-family: var(--tc-serif);
+  font-size: 21em;
+  font-style: italic;
+  font-weight: 700;
+  line-height: 1;
+  color: transparent;
+  -webkit-text-stroke: 1px rgb(var(--rf-accent-rgb) / 0.4);
+  pointer-events: none;
+}
+.rf-t-typecollage .tc-photo {
+  position: absolute;
+  right: calc(var(--rf-margin) + 6mm);
+  top: calc(var(--rf-margin) * 0.9);
+  filter: grayscale(1) contrast(1.2);
+  transform: rotate(3deg);
+  box-shadow: 1.8mm 1.8mm 0 var(--rf-accent);
+}
+.rf-t-typecollage .tc-name {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  max-width: 72%;
+  line-height: 0.86;
+}
+.rf-t-typecollage .tc-name__a {
+  font-family: var(--rf-font-heading);
+  font-size: 5em;
+  font-weight: 900;
+  letter-spacing: -0.05em;
+  text-transform: uppercase;
+  color: var(--tc-ink);
+  overflow-wrap: anywhere;
+}
+.rf-t-typecollage .tc-name__b {
+  position: relative;
+  margin: -0.18em 0 0 0.9em;
+  font-family: var(--tc-serif);
+  font-size: 3.9em;
+  font-style: italic;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  color: var(--rf-accent);
+  mix-blend-mode: multiply;
+  overflow-wrap: anywhere;
+}
+.rf-t-typecollage .tc-label {
+  position: relative;
+  margin: 4mm 0 0 2mm;
+  padding: 0.3em 0.8em;
+  font-family: var(--rf-font-mono);
+  font-size: 0.9em;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: var(--tc-ink);
+  color: var(--tc-paper);
+  transform: rotate(-2.5deg);
+}
+.rf-t-typecollage .tc-contact {
+  position: relative;
+  margin-top: 5mm;
+  font-family: var(--rf-font-mono);
+  font-size: 0.8em;
+  column-gap: 0.5em;
+  color: #333;
+}
+.rf-t-typecollage .tc-contact .rf-link {
+  color: inherit;
+}
+.rf-t-typecollage .tc-contact .rf-contact__sep {
+  color: var(--rf-accent);
+}
+.rf-t-typecollage .tc-cap {
+  padding: 3mm var(--rf-margin);
+  border-bottom: 1.2mm solid var(--tc-ink);
+  font-family: var(--tc-serif);
+  font-size: 1.3em;
+  font-style: italic;
+  color: var(--rf-accent);
+}
+
+/* ---------- body ---------- */
+
+.rf-t-typecollage .tc-body {
+  padding: calc(var(--rf-margin) * 0.6) var(--rf-margin) 0;
+}
+.rf-t-typecollage .tc-h {
+  display: flex;
+  align-items: baseline;
+  gap: 2.5mm;
+  margin-bottom: 0.55em;
+  padding-bottom: 1mm;
+  border-bottom: 1.4px solid var(--tc-ink);
+}
+.rf-t-typecollage .tc-h__num {
+  font-family: var(--tc-serif);
+  font-size: 2em;
+  font-style: italic;
+  font-weight: 600;
+  line-height: 0.8;
+  color: var(--rf-accent);
+}
+.rf-t-typecollage .tc-h__title {
+  font-family: var(--rf-font-heading);
+  font-size: 1.15em;
+  font-weight: 900;
+  letter-spacing: calc(var(--rf-heading-tracking) - 0.02em);
+  text-transform: var(--rf-heading-transform);
+}
+.rf-t-typecollage .tc-h__tag {
+  margin-left: auto;
+  font-family: var(--rf-font-mono);
+  font-size: 0.66em;
+  letter-spacing: 0.1em;
+  color: #777;
+}
+.rf-t-typecollage .tc-summary {
+  font-family: var(--tc-serif);
+  font-size: 1.12em;
+  line-height: 1.5;
+  color: #222;
+}
+.rf-t-typecollage .rf-entry__desc,
+.rf-t-typecollage .rf-bullets > li,
+.rf-t-typecollage .tc-compact {
+  color: #2a2a2a;
+}
+.rf-t-typecollage .rf-entry__title,
+.rf-t-typecollage .rf-cline__title,
+.rf-t-typecollage .rf-srow__name {
+  font-family: var(--rf-font-heading);
+  font-weight: 800;
+  color: var(--tc-ink);
+}
+.rf-t-typecollage .rf-entry__sub {
+  font-family: var(--tc-serif);
+  font-style: italic;
+  color: var(--rf-accent-ink);
+}
+.rf-t-typecollage .rf-entry__date,
+.rf-t-typecollage .rf-cline__date {
+  font-family: var(--rf-font-mono);
+  font-size: 0.84em;
+  color: #444;
+}
+.rf-t-typecollage .rf-bullets > li::before {
+  color: var(--rf-accent);
+  font-weight: 700;
+}
+.rf-t-typecollage .tc-compact {
+  font-size: 1em;
+}

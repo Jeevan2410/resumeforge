@@ -1,9 +1,9 @@
 /**
- * Maximalism — more is more, with the reading parts kept calm. The header is a dense collage on deep
- * plum: clashing stripes, polka dots, a zigzag band and saturated discs, with the name on a tilted
- * yellow label and the title on a pink one. The side column is a patterned strip with a solid cream
- * card on top for the text; main headings get a zigzag underline that changes colour each section.
- * Main column first in the DOM.
+ * Maximalism — more is more, with the reading parts kept calm. A full-height patterned strip runs
+ * down the right of every page (clashing stripes and dots); on page 1 it is crowned by a dense plum
+ * collage holding the name on a tilted yellow label and the title on a pink one, and below it a solid
+ * cream card carries contact and skills. The main column starts at the very top of the page on the
+ * left; its headings get a zigzag underline that changes colour each section. Main first in the DOM.
  */
 import type { CSSProperties, ReactNode } from 'react'
 import {
@@ -28,7 +28,7 @@ import './maximalism.css'
 export const meta: TemplateMeta = {
   id: 'maximalism',
   name: 'Maximalism',
-  description: 'Dense layered patterns, clashing stripes and dots and saturated colour in the frame, with calm cards for the text.',
+  description: 'A full-height patterned right strip crowned by a collage name card, clashing stripes and dots, with calm cream cards for the text.',
   tags: ['Creative', 'Two-column', 'Photo'],
   order: 280,
   supportsPhoto: true,
@@ -117,16 +117,13 @@ export default function Maximalism({ data, design, main, side }: TemplateProps) 
       header={header}
       main={mainBlocks}
       side={sideBlocks}
-      page={({ index, header, main, side }) => (
+      page={({ header, main, side }) => (
         <div className="mx-page" style={vars}>
-          {header}
-          {index > 0 && <div className="mx-cap" aria-hidden="true" />}
-          <div className="mx-cols">
-            <div className="mx-main">{main}</div>
-            <aside className="mx-side">
-              <div className="mx-card">{side}</div>
-            </aside>
-          </div>
+          <div className="mx-main">{main}</div>
+          <aside className="mx-side">
+            {header}
+            <div className="mx-card">{side}</div>
+          </aside>
         </div>
       )}
     />
