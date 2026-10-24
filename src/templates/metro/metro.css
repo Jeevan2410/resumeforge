@@ -1,0 +1,376 @@
+/* Metro template — every selector is scoped to .rf-t-metro. */
+
+.rf-t-metro .mt-page {
+  height: 100%;
+  box-sizing: border-box;
+  padding: calc(var(--rf-margin) * 0.75) var(--rf-margin) 0;
+  background: #fff;
+  color: var(--mt-ink);
+}
+
+/* ---------- station sign ---------- */
+
+.rf-t-metro .mt-head {
+  margin-bottom: calc(var(--rf-section-gap) * 1.1);
+}
+.rf-t-metro .mt-sign {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 5mm;
+  padding: 5mm 6mm 6.5mm;
+  border-radius: 2.5mm;
+  background: var(--mt-ink);
+  color: #fff;
+  overflow: hidden;
+}
+.rf-t-metro .mt-sign::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2.2mm;
+  background: linear-gradient(90deg, var(--rf-accent) 0 25%, #0098d4 25% 45%, #00843d 45% 62%, #9b0056 62% 78%, #f5a300 78%);
+}
+.rf-t-metro .mt-photo {
+  border: 0.8mm solid #fff;
+}
+.rf-t-metro .mt-sign__text {
+  flex: 1;
+  min-width: 0;
+}
+.rf-t-metro .mt-name {
+  margin: 0;
+  font-family: var(--rf-font-heading);
+  font-size: 2.35em;
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: 0.01em;
+}
+.rf-t-metro .mt-title {
+  margin-top: 1mm;
+  font-size: 1.05em;
+  font-weight: 600;
+  opacity: 0.85;
+}
+.rf-t-metro .mt-sign__m {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 13mm;
+  height: 13mm;
+  border-radius: 50%;
+  background: var(--rf-accent);
+  color: #fff;
+  font-family: var(--rf-font-heading);
+  font-size: 1.7em;
+  font-weight: 800;
+  box-shadow: 0 0 0 1mm #fff;
+}
+.rf-t-metro .mt-contact {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1mm 4.5mm;
+  margin-top: 3mm;
+  font-size: 0.88em;
+  font-weight: 500;
+}
+.rf-t-metro .mt-contact svg {
+  color: var(--rf-accent);
+}
+
+/* strip map */
+.rf-t-metro .mt-strip {
+  position: relative;
+  margin-top: 5mm;
+  padding: 2mm 0 0;
+}
+.rf-t-metro .mt-strip__here {
+  position: absolute;
+  left: 0;
+  top: -2.6mm;
+  padding: 0.2mm 1.8mm;
+  border-radius: 1mm;
+  background: #ffd800;
+  color: var(--mt-ink);
+  font-size: 0.66em;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.rf-t-metro .mt-strip__map {
+  display: flex;
+}
+.rf-t-metro .mt-stop {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+  padding-top: 6mm;
+}
+.rf-t-metro .mt-stop::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 3mm;
+  height: 2.2mm;
+  background: var(--mt-line);
+}
+.rf-t-metro .mt-stop:first-child::before {
+  left: 2mm;
+}
+.rf-t-metro .mt-stop__dot {
+  position: absolute;
+  left: 0;
+  top: 1.5mm;
+  width: 5.2mm;
+  height: 5.2mm;
+  box-sizing: border-box;
+  border: 0.9mm solid var(--mt-ink);
+  border-radius: 50%;
+  background: #fff;
+  z-index: 1;
+}
+.rf-t-metro .mt-stop__name {
+  display: block;
+  padding: 0.8mm 1.5mm 0 0;
+  font-size: 0.72em;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+/* ---------- line status (summary) ---------- */
+
+.rf-t-metro .mt-status {
+  padding: 3mm 4mm;
+  border-left: 1.6mm solid #00843d;
+  border-radius: 0 2mm 2mm 0;
+  background: #f1f4f8;
+}
+.rf-t-metro .mt-status__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.2mm;
+}
+.rf-t-metro .mt-status__h {
+  margin: 0;
+  font-family: var(--rf-font-heading);
+  font-size: 1.08em;
+  font-weight: 800;
+  text-transform: var(--rf-heading-transform);
+  letter-spacing: var(--rf-heading-tracking);
+}
+.rf-t-metro .mt-status__good {
+  padding: 0.4mm 2.2mm;
+  border-radius: 999px;
+  background: #00843d;
+  color: #fff;
+  font-size: 0.72em;
+  font-weight: 700;
+}
+.rf-t-metro .mt-status__text p {
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* ---------- lines and stations ---------- */
+
+.rf-t-metro .mt-badge {
+  display: flex;
+  align-items: center;
+  gap: 2.2mm;
+  margin-bottom: 2.5mm;
+}
+.rf-t-metro .mt-badge__no {
+  display: grid;
+  place-items: center;
+  width: 10.6mm;
+  height: 10.6mm;
+  border-radius: 50%;
+  background: var(--mt-line);
+  color: var(--mt-badge-ink);
+  font-family: var(--rf-font-heading);
+  font-size: 1.15em;
+  font-weight: 800;
+}
+.rf-t-metro .mt-h {
+  margin: 0;
+  padding: 1mm 3.5mm;
+  border-radius: 1.4mm;
+  background: var(--mt-line);
+  color: var(--mt-badge-ink);
+  font-family: var(--rf-font-heading);
+  font-size: 1.15em;
+  font-weight: 800;
+  text-transform: var(--rf-heading-transform);
+  letter-spacing: var(--rf-heading-tracking);
+}
+.rf-t-metro .mt-badge__line {
+  font-size: 0.8em;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #6a7278;
+}
+
+.rf-t-metro .mt-station {
+  position: relative;
+  padding-left: 13.5mm;
+}
+.rf-t-metro .mt-track {
+  position: absolute;
+  left: 4mm;
+  top: 0;
+  bottom: calc(-1 * var(--rf-entry-gap));
+  width: 2.8mm;
+  background: var(--mt-line);
+}
+.rf-t-metro .mt-row--first .mt-track {
+  top: 2.9mm;
+}
+/* terminus: the line stops at the last station */
+.rf-t-metro .mt-row--last .mt-track {
+  bottom: auto;
+  height: 2.9mm;
+}
+.rf-t-metro .mt-row--first.mt-row--last .mt-track {
+  display: none;
+}
+.rf-t-metro .mt-tick {
+  position: absolute;
+  left: 3.1mm;
+  top: 0.6mm;
+  width: 4.6mm;
+  height: 4.6mm;
+  box-sizing: border-box;
+  border: 1.1mm solid var(--mt-line);
+  border-radius: 50%;
+  background: #fff;
+}
+.rf-t-metro .mt-row--last .mt-tick {
+  left: 2.6mm;
+  top: 0.1mm;
+  width: 5.6mm;
+  height: 5.6mm;
+  border-width: 1.5mm;
+}
+/* interchange ring for a current role */
+.rf-t-metro .mt-row--now .mt-tick {
+  left: 2.3mm;
+  top: -0.2mm;
+  width: 6.2mm;
+  height: 6.2mm;
+  border: 1.1mm solid var(--mt-ink);
+  box-shadow: 0 0 0 0.6mm #fff;
+}
+.rf-t-metro .mt-station__top {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 4mm;
+}
+.rf-t-metro .mt-station__name {
+  margin: 0;
+  font-family: var(--rf-font-heading);
+  font-size: 1.08em;
+  font-weight: 800;
+  line-height: 1.25;
+}
+.rf-t-metro .mt-zone {
+  flex: none;
+  padding: 0.2mm 2mm;
+  border: 0.35mm solid var(--mt-ink);
+  border-radius: 1mm;
+  font-size: 0.76em;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.rf-t-metro .mt-station__where {
+  margin-top: 0.3mm;
+  font-size: 0.9em;
+  font-weight: 600;
+  color: #4b5a70;
+}
+.rf-t-metro .mt-station__link {
+  display: inline-block;
+  font-size: 0.84em;
+  color: #4b5a70;
+}
+.rf-t-metro .mt-station__desc {
+  margin: 1mm 0 0;
+  line-height: 1.45;
+}
+.rf-t-metro .mt-station__list {
+  margin: 1mm 0 0;
+  padding: 0;
+  list-style: none;
+}
+.rf-t-metro .mt-station__list li {
+  position: relative;
+  padding-left: 4mm;
+  line-height: 1.45;
+}
+.rf-t-metro .mt-station__list li::before {
+  content: '';
+  position: absolute;
+  left: 0.4mm;
+  top: 0.5em;
+  width: 1.6mm;
+  height: 1.6mm;
+  box-sizing: border-box;
+  border: 0.45mm solid var(--mt-line);
+  border-radius: 50%;
+}
+.rf-t-metro .mt-changes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.2mm;
+  margin-top: 1.2mm;
+}
+.rf-t-metro .mt-change {
+  padding: 0.2mm 2mm;
+  border-radius: 999px;
+  background: #eef1f5;
+  border-left: 1.2mm solid var(--mt-line);
+  font-size: 0.8em;
+  font-weight: 600;
+}
+.rf-t-metro .mt-transfer {
+  display: flex;
+  align-items: center;
+  gap: 1.8mm;
+  margin: 2.6mm 0 0 13.5mm;
+  font-size: 0.8em;
+  font-weight: 600;
+  color: #6a7278;
+}
+.rf-t-metro .mt-transfer__icon {
+  width: 5mm;
+  height: 2.6mm;
+  background:
+    radial-gradient(circle at 1.3mm 50%, #fff 0.5mm, var(--mt-ink) 0.55mm 1.3mm, transparent 1.35mm),
+    radial-gradient(circle at 3.7mm 50%, #fff 0.5mm, var(--mt-ink) 0.55mm 1.3mm, transparent 1.35mm),
+    linear-gradient(var(--mt-ink), var(--mt-ink)) center / 2.4mm 0.6mm no-repeat;
+}
+
+.rf-t-metro .mt-run {
+  display: flex;
+  align-items: center;
+  gap: 3mm;
+  margin-bottom: 5mm;
+  padding-bottom: 2mm;
+  border-bottom: 0.5mm solid var(--mt-ink);
+}
+.rf-t-metro .mt-run .mt-sign__m {
+  width: 7mm;
+  height: 7mm;
+  font-size: 1em;
+  box-shadow: none;
+}
+.rf-t-metro .mt-run span:last-child {
+  margin-left: auto;
+  font-size: 0.8em;
+  color: #6a7278;
+}

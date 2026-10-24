@@ -4,7 +4,7 @@
 
 **Live demo:** [resumeforge-jeevan.vercel.app](https://resumeforge-jeevan.vercel.app)
 
-Write one resume, then tailor a copy for every application. ResumeForge has 51 templates, real page-by-page pagination, an ATS checker, a job-description matcher and cover letters, and it exports text-based PDF and Word files. You don't need an account and nothing is uploaded: your data stays in your browser.
+Write one resume, then tailor a copy for every application. ResumeForge has 55 templates, real page-by-page pagination, an ATS checker, a job-description matcher and cover letters, and it exports text-based PDF and Word files. You don't need an account and nothing is uploaded: your data stays in your browser.
 
 ![Editor with live preview](docs/editor.png)
 
@@ -69,11 +69,13 @@ New types of resume, not just new colours: each one tells your story as a differ
 | | | |
 |:-:|:-:|:-:|
 | <img src="docs/templates/newspaper.png" width="200" alt="Newspaper template"><br>**Newspaper**<br>A front page: your name as the masthead, the summary as the lead story and your roles as news articles | <img src="docs/templates/boardingpass.png" width="200" alt="Boarding Pass template"><br>**Boarding Pass**<br>A boarding pass header, every role a ticket with FROM → TO dates, skills as luggage tags | <img src="docs/templates/chat.png" width="200" alt="Chat template"><br>**Chat**<br>A messaging app: a recruiter asks one question per section and you answer in bubbles |
+| <img src="docs/templates/codeeditor.png" width="200" alt="Code Editor template"><br>**Code Editor**<br>A source file in an IDE: roles as object literals, skills as string arrays, real line numbers | <img src="docs/templates/receipt.png" width="200" alt="Receipt template"><br>**Receipt**<br>A till receipt: roles as line items with dotted leaders, skill quantities, totals and a barcode | <img src="docs/templates/magazine.png" width="200" alt="Magazine template"><br>**Magazine**<br>A cover with a giant masthead and cover lines, then the feature story inside |
+| <img src="docs/templates/metro.png" width="200" alt="Metro Map template"><br>**Metro Map**<br>A transit map: a strip map up top, each section its own coloured line, roles as stations | | |
 
 ## Features
 
 ### Templates & design
-- **51 templates** covering one- and two-column layouts, photo layouts, ATS-safe single-column layouts, an academic CV, 26 design-style templates (Art Nouveau to Type Collage), three resume formats (Infographic, Portfolio and Skills-first) and three graphic UI templates (Dashboard, Studio and Showcase) three colourful art styles (Cut-out, Warhol and Groovy) and three concept resumes (Newspaper, Boarding Pass and Chat). The gallery can be filtered by *ATS-friendly*, *Two-column*, *Photo*, *Creative* and *One-page*.
+- **55 templates** covering one- and two-column layouts, photo layouts, ATS-safe single-column layouts, an academic CV, 26 design-style templates (Art Nouveau to Type Collage), three resume formats (Infographic, Portfolio and Skills-first) and three graphic UI templates (Dashboard, Studio and Showcase) three colourful art styles (Cut-out, Warhol and Groovy) and seven concept resumes (Newspaper, Boarding Pass, Chat, Code Editor, Receipt, Magazine and Metro Map). The gallery can be filtered by *ATS-friendly*, *Two-column*, *Photo*, *Creative* and *One-page*.
 - **Real pagination.** Entries are never split across pages, headings stay with their first entry, and side columns continue onto the next page. Running headers and page numbers appear where the template uses them. Both A4 and US Letter are supported.
 - **Fit to pages.** If the last page is nearly empty, one click tightens spacing, then line height, font size and margins, changing as little as possible. You can undo it.
 - **Design controls.** Choose an accent preset or a custom colour, one of 10 font pairings (Google Fonts loaded on demand), font size, line height, spacing, margins, heading case, date format, photo shape and contact icons.
@@ -134,7 +136,7 @@ flowchart LR
     P[paginate · fit · design]
   end
   subgraph Templates["templates/"]
-    REG[registry<br/>auto-discovers 51 templates]
+    REG[registry<br/>auto-discovers 55 templates]
     PD[PagedDocument<br/>measure → paginate → pages]
   end
   subgraph Features["features/ + app/"]
@@ -161,7 +163,7 @@ flowchart LR
 
 ## Testing
 
-- **321 tests in 23 test files** (`node --test` with native TypeScript stripping, no test framework). They cover normalisation and migration of old or corrupt data, undo history, the store and throttled storage, ATS scoring, keyword extraction and job matching, rewrites, pagination and fit-to-pages, DOCX / Markdown / text / JSON Resume export and import round-trips, share links, and template helpers. They include regression tests for ReDoS-style slow inputs.
+- **325 tests in 23 test files** (`node --test` with native TypeScript stripping, no test framework). They cover normalisation and migration of old or corrupt data, undo history, the store and throttled storage, ATS scoring, keyword extraction and job matching, rewrites, pagination and fit-to-pages, DOCX / Markdown / text / JSON Resume export and import round-trips, share links, and template helpers. They include regression tests for ReDoS-style slow inputs.
 - **Strict TypeScript** (`tsc -b`) and **oxlint** run on every build.
 - **CI** (GitHub Actions on Node 22) runs `npm ci`, lint, tests and build.
 - Each template was also checked by hand in Chromium (through Playwright) at A4 and US Letter, in light and dark mode, and at 390 px phone width.

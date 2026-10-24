@@ -127,6 +127,10 @@ export type TemplateId =
   | 'newspaper'
   | 'boardingpass'
   | 'chat'
+  | 'codeeditor'
+  | 'receipt'
+  | 'magazine'
+  | 'metro'
 
 export type FontId = 'inter' | 'merriweather' | 'playfair' | 'garamond' | 'poppins' | 'plex' | 'montserrat' | 'raleway' | 'system' | 'georgia'
 

@@ -1,0 +1,254 @@
+/* Receipt template — every selector is scoped to .rf-t-receipt. */
+
+.rf-t-receipt .rc-page {
+  height: 100%;
+  box-sizing: border-box;
+  padding: calc(var(--rf-margin) * 0.5) 0;
+  background-color: var(--rc-counter);
+  background-image: repeating-linear-gradient(115deg, rgb(255 255 255 / 0.07) 0 1.2mm, transparent 1.2mm 3.4mm), radial-gradient(circle at 20% 10%, rgb(255 255 255 / 0.35), transparent 60%);
+  font-family: var(--rf-font-mono);
+  color: var(--rc-ink);
+}
+.rf-t-receipt .rc-shadow {
+  height: 100%;
+  filter: drop-shadow(0 1.2mm 1.6mm rgb(0 0 0 / 0.22));
+}
+.rf-t-receipt .rc-paper {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  width: 148mm;
+  height: 100%;
+  margin: 0 auto;
+  padding: 9mm 10mm 8mm;
+  background: var(--rc-paper);
+  /* torn zig-zag edges top and bottom */
+  -webkit-mask:
+    conic-gradient(from 135deg at top, #0000, #000 1deg 89deg, #0000 90deg) top / 4mm 51% repeat-x,
+    conic-gradient(from -45deg at bottom, #0000, #000 1deg 89deg, #0000 90deg) bottom / 4mm 51% repeat-x;
+  mask:
+    conic-gradient(from 135deg at top, #0000, #000 1deg 89deg, #0000 90deg) top / 4mm 51% repeat-x,
+    conic-gradient(from -45deg at bottom, #0000, #000 1deg 89deg, #0000 90deg) bottom / 4mm 51% repeat-x;
+  font-size: 0.92em;
+  line-height: 1.45;
+}
+
+/* ---------- shop header ---------- */
+
+.rf-t-receipt .rc-head {
+  margin-bottom: calc(var(--rf-section-gap) * 0.8);
+  text-align: center;
+}
+.rf-t-receipt .rc-photo {
+  margin: 0 auto 2mm;
+  filter: grayscale(1) contrast(1.35) brightness(1.05);
+}
+.rf-t-receipt .rc-logo {
+  display: grid;
+  place-items: center;
+  width: 17mm;
+  height: 17mm;
+  margin: 0 auto 2.5mm;
+  border: 0.7mm solid var(--rc-ink);
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 0.9mm var(--rc-paper), inset 0 0 0 1.3mm var(--rc-ink);
+  font-weight: 700;
+  font-size: 1.3em;
+}
+.rf-t-receipt .rc-name {
+  margin: 0;
+  font-family: var(--rf-font-mono);
+  font-size: 1.9em;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.rf-t-receipt .rc-slogan {
+  margin-top: 1mm;
+  font-size: 0.95em;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--rf-accent);
+  font-weight: 600;
+}
+.rf-t-receipt .rc-contact {
+  justify-content: center;
+  margin-top: 2mm;
+  font-size: 0.86em;
+  line-height: 1.35;
+}
+.rf-t-receipt .rc-contact a {
+  color: inherit;
+}
+.rf-t-receipt .rc-rule {
+  height: 0;
+  margin: 2.2mm 0;
+  border-top: 0.35mm dashed var(--rc-ink);
+}
+.rf-t-receipt .rc-rule--double {
+  height: 0.9mm;
+  border-bottom: 0.35mm dashed var(--rc-ink);
+}
+.rf-t-receipt .rc-txn {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8em;
+}
+.rf-t-receipt .rc-cont,
+.rf-t-receipt .rc-more {
+  margin-bottom: 4mm;
+  text-align: center;
+  font-size: 0.8em;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #6c6a64;
+}
+.rf-t-receipt .rc-more {
+  margin: auto 0 0;
+}
+
+/* ---------- sections ---------- */
+
+.rf-t-receipt .rc-h {
+  margin: 0 0 2.2mm;
+  padding: 0.6mm 0;
+  border-top: 0.35mm dashed var(--rc-ink);
+  border-bottom: 0.35mm dashed var(--rc-ink);
+  font-family: var(--rf-font-mono);
+  font-size: 0.98em;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: var(--rf-heading-transform);
+  text-align: center;
+}
+.rf-t-receipt .rc-note {
+  text-align: center;
+  font-style: italic;
+}
+.rf-t-receipt .rc-note p {
+  margin: 0;
+}
+
+.rf-t-receipt .rc-row {
+  display: flex;
+  align-items: baseline;
+  gap: 1.4mm;
+}
+.rf-t-receipt .rc-row__l {
+  display: flex;
+  align-items: baseline;
+  gap: 2mm;
+  min-width: 0;
+}
+.rf-t-receipt .rc-row__dots {
+  flex: 1;
+  min-width: 4mm;
+  border-bottom: 0.45mm dotted #8a877f;
+  transform: translateY(-0.9mm);
+}
+.rf-t-receipt .rc-row__r {
+  flex: none;
+  font-weight: 600;
+  text-align: right;
+}
+.rf-t-receipt .rc-qty {
+  flex: none;
+  font-weight: 700;
+  color: var(--rf-accent);
+}
+.rf-t-receipt .rc-qty::after {
+  content: ' x';
+  font-weight: 400;
+}
+.rf-t-receipt .rc-item__title {
+  margin: 0;
+  font-family: var(--rf-font-mono);
+  font-size: 1em;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.rf-t-receipt .rc-item__name {
+  font-weight: 600;
+}
+.rf-t-receipt .rc-lvl {
+  font-weight: 400;
+  color: #6c6a64;
+}
+.rf-t-receipt .rc-sub {
+  padding-left: 7mm;
+  font-size: 0.9em;
+  color: #4a4844;
+}
+.rf-t-receipt .rc-item--one .rc-sub {
+  padding-left: 3mm;
+}
+.rf-t-receipt .rc-link {
+  display: block;
+  color: var(--rf-accent);
+}
+.rf-t-receipt .rc-desc {
+  margin: 0.5mm 0 0;
+}
+.rf-t-receipt .rc-kw {
+  font-style: italic;
+}
+.rf-t-receipt .rc-list {
+  margin: 0.6mm 0 0;
+  padding: 0 0 0 7mm;
+  list-style: none;
+  font-size: 0.9em;
+}
+.rf-t-receipt .rc-list li {
+  position: relative;
+  padding-left: 3.5mm;
+}
+.rf-t-receipt .rc-list li::before {
+  content: '+';
+  position: absolute;
+  left: 0;
+  font-weight: 700;
+  color: var(--rf-accent);
+}
+.rf-t-receipt .rc-skills {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2mm;
+}
+
+/* ---------- totals ---------- */
+
+.rf-t-receipt .rc-foot {
+  margin-top: auto;
+  padding-top: 3mm;
+  text-align: center;
+}
+.rf-t-receipt .rc-row--total {
+  font-size: 0.92em;
+  text-align: left;
+}
+.rf-t-receipt .rc-row--grand {
+  font-size: 1.15em;
+  text-transform: uppercase;
+}
+.rf-t-receipt .rc-row--grand .rc-row__r {
+  color: var(--rf-accent);
+}
+.rf-t-receipt .rc-thanks {
+  margin: 3mm 0 2.4mm;
+  font-size: 0.86em;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.rf-t-receipt .rc-barcode {
+  display: block;
+  width: 62mm;
+  height: 11mm;
+  margin: 0 auto;
+  fill: var(--rc-ink);
+}
+.rf-t-receipt .rc-code {
+  margin-top: 0.8mm;
+  font-size: 0.78em;
+  letter-spacing: 0.3em;
+}
