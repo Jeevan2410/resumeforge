@@ -1,0 +1,268 @@
+/* Warhol template — every selector is scoped to .rf-t-warhol. */
+
+.rf-t-warhol .wh-page {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+  background: #fffdf5;
+  color: var(--wh-ink);
+}
+.rf-t-warhol .wh-bar {
+  position: absolute;
+  inset: 0 0 auto;
+  height: 5mm;
+  background: linear-gradient(90deg, var(--rf-accent) 0 25%, var(--wh-cyan) 25% 50%, var(--wh-yellow) 50% 75%, var(--wh-orange) 75%);
+  border-bottom: 2px solid var(--wh-ink);
+}
+.rf-t-warhol .wh-dots {
+  position: absolute;
+  inset: auto 0 0;
+  height: 42mm;
+  background-image: radial-gradient(circle, rgb(var(--rf-accent-rgb) / 0.32) 34%, transparent 36%);
+  background-size: 3.2mm 3.2mm;
+  -webkit-mask-image: linear-gradient(to top, #000, transparent);
+  mask-image: linear-gradient(to top, #000, transparent);
+}
+.rf-t-warhol .wh-body {
+  position: relative;
+  height: 100%;
+  box-sizing: border-box;
+  padding: calc(var(--rf-margin) * 0.75 + 5mm) var(--rf-margin) 0;
+}
+
+/* ---------- header ---------- */
+
+.rf-t-warhol .wh-header {
+  display: flex;
+  align-items: center;
+  gap: 7mm;
+  margin-bottom: calc(var(--rf-section-gap) * 1.15);
+}
+.rf-t-warhol .wh-grid {
+  display: grid;
+  flex: none;
+  grid-template-columns: repeat(2, 21mm);
+  grid-template-rows: repeat(2, 21mm);
+  border: 2px solid var(--wh-ink);
+  box-shadow: 1.6mm 1.6mm 0 var(--wh-ink);
+}
+.rf-t-warhol .wh-tile {
+  position: relative;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+.rf-t-warhol .wh-tile::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  mix-blend-mode: multiply;
+}
+.rf-t-warhol .wh-photo {
+  width: 100%;
+  height: 100%;
+  filter: grayscale(1) contrast(1.5) brightness(1.1);
+}
+.rf-t-warhol .wh-tile--pink {
+  background: var(--wh-yellow);
+}
+.rf-t-warhol .wh-tile--pink::after {
+  background: var(--rf-accent);
+}
+.rf-t-warhol .wh-tile--cyan {
+  background: var(--rf-accent);
+}
+.rf-t-warhol .wh-tile--cyan::after {
+  background: var(--wh-cyan);
+}
+.rf-t-warhol .wh-tile--yellow {
+  background: var(--wh-cyan);
+}
+.rf-t-warhol .wh-tile--yellow::after {
+  background: var(--wh-yellow);
+}
+.rf-t-warhol .wh-tile--orange {
+  background: #7b2ff7;
+}
+.rf-t-warhol .wh-tile--orange::after {
+  background: var(--wh-orange);
+}
+.rf-t-warhol .wh-ini {
+  position: relative;
+  z-index: 1;
+  font-family: var(--rf-font-heading);
+  font-size: 1.9em;
+  font-weight: 900;
+  color: var(--wh-ink);
+}
+.rf-t-warhol .wh-tile--pink .wh-ini {
+  color: var(--rf-accent);
+}
+.rf-t-warhol .wh-tile--cyan .wh-ini {
+  color: var(--wh-yellow);
+}
+.rf-t-warhol .wh-tile--yellow .wh-ini {
+  color: #fff;
+}
+.rf-t-warhol .wh-tile--orange .wh-ini {
+  color: var(--wh-yellow);
+}
+/* with initials the tiles are flat colour fields, no wash */
+.rf-t-warhol .wh-tile:has(.wh-ini)::after {
+  display: none;
+}
+
+.rf-t-warhol .wh-header__text {
+  flex: 1;
+  min-width: 0;
+}
+.rf-t-warhol .wh-name {
+  font-family: var(--rf-font-heading);
+  font-size: 2.8em;
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  color: var(--wh-yellow);
+  -webkit-text-stroke: 1.6px var(--wh-ink);
+  paint-order: stroke fill;
+  text-shadow: 0.07em 0.07em 0 var(--rf-accent);
+}
+.rf-t-warhol .wh-bubble {
+  position: relative;
+  display: inline-block;
+  margin: 0.7em 0 0;
+  padding: 0.35em 1em;
+  border: 2px solid var(--wh-ink);
+  border-radius: 999px 999px 999px 0;
+  box-shadow: 1mm 1mm 0 var(--wh-cyan);
+  background: #fff;
+  font-weight: 800;
+  font-size: 1em;
+  color: var(--wh-ink);
+}
+.rf-t-warhol .wh-contact {
+  margin-top: 3mm;
+  padding: 1.2mm 3mm;
+  background: var(--wh-yellow);
+  font-size: 0.84em;
+  font-weight: 500;
+  color: var(--wh-ink);
+  box-decoration-break: clone;
+}
+.rf-t-warhol .wh-contact a {
+  color: inherit;
+}
+
+/* ---------- sections ---------- */
+
+.rf-t-warhol .wh-h {
+  display: flex;
+  align-items: center;
+  gap: 0.35em;
+  margin-bottom: 0.55em;
+  font-family: var(--rf-font-heading);
+  font-size: 1.35em;
+  font-weight: 900;
+  letter-spacing: var(--rf-heading-tracking);
+  text-transform: var(--rf-heading-transform);
+}
+.rf-t-warhol .wh-h__text {
+  color: var(--wh-ink);
+  text-shadow: 0.07em 0.07em 0 var(--wh-tone);
+}
+.rf-t-warhol .wh-h--pink {
+  --wh-tone: var(--rf-accent);
+}
+.rf-t-warhol .wh-h--cyan {
+  --wh-tone: var(--wh-cyan);
+}
+.rf-t-warhol .wh-h--yellow {
+  --wh-tone: #f5c400;
+}
+.rf-t-warhol .wh-h--orange {
+  --wh-tone: var(--wh-orange);
+}
+.rf-t-warhol .wh-burst {
+  flex: none;
+  width: 1.4em;
+  height: 1.4em;
+  fill: var(--wh-tone);
+  stroke: var(--wh-ink);
+  stroke-width: 1.6;
+  stroke-linejoin: round;
+}
+
+.rf-t-warhol .wh-summary,
+.rf-t-warhol .rf-entry__desc,
+.rf-t-warhol .rf-bullets > li,
+.rf-t-warhol .wh-compact {
+  color: #2a2a2a;
+}
+.rf-t-warhol .rf-entry__title,
+.rf-t-warhol .rf-srow__name,
+.rf-t-warhol .rf-cline__title {
+  font-family: var(--rf-font-heading);
+  font-weight: 800;
+  color: var(--wh-ink);
+}
+.rf-t-warhol .rf-entry__sub {
+  font-weight: 700;
+  color: var(--rf-accent-ink);
+}
+.rf-t-warhol .rf-entry--main .rf-entry__date {
+  display: inline-block;
+  padding: 0.1em 0.6em;
+  border: 1.5px solid var(--wh-ink);
+  background: var(--wh-yellow);
+  font-weight: 700;
+  font-size: 0.86em;
+  color: var(--wh-ink);
+  transform: rotate(-2deg);
+}
+.rf-t-warhol .rf-bullets > li::before {
+  border-radius: 0;
+  background: var(--rf-accent);
+  transform: rotate(45deg);
+}
+.rf-t-warhol .wh-compact {
+  font-size: 1em;
+}
+
+.rf-t-warhol .wh-skill {
+  display: flex;
+  align-items: baseline;
+  gap: 3mm;
+}
+.rf-t-warhol .wh-skill__name {
+  flex: 0 0 26mm;
+  font-family: var(--rf-font-heading);
+  font-weight: 800;
+}
+.rf-t-warhol .wh-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.4mm;
+}
+.rf-t-warhol .wh-chip {
+  padding: 0.12em 0.65em;
+  border: 1.5px solid var(--wh-ink);
+  font-size: 0.88em;
+  font-weight: 700;
+}
+.rf-t-warhol .wh-chip--pink {
+  background: var(--rf-accent);
+  color: #fff;
+}
+.rf-t-warhol .wh-chip--cyan {
+  background: var(--wh-cyan);
+  color: var(--wh-ink);
+}
+.rf-t-warhol .wh-chip--yellow {
+  background: var(--wh-yellow);
+  color: var(--wh-ink);
+}
+.rf-t-warhol .wh-chip--orange {
+  background: var(--wh-orange);
+  color: var(--wh-ink);
+}

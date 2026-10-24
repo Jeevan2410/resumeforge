@@ -121,6 +121,9 @@ export type TemplateId =
   | 'dashboard'
   | 'studio'
   | 'showcase'
+  | 'cutout'
+  | 'warhol'
+  | 'groovy'
 
 export type FontId = 'inter' | 'merriweather' | 'playfair' | 'garamond' | 'poppins' | 'plex' | 'montserrat' | 'raleway' | 'system' | 'georgia'
 

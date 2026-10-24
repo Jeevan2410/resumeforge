@@ -1,0 +1,241 @@
+/* Groovy template — every selector is scoped to .rf-t-groovy. */
+
+.rf-t-groovy .gr-page {
+  position: relative;
+  display: flex;
+  height: 100%;
+  background:
+    radial-gradient(circle at 100% 100%, rgb(239 91 140 / 0.12), transparent 35%),
+    var(--gr-cream);
+  color: #3d2416;
+}
+.rf-t-groovy .gr-ribbon {
+  flex: none;
+  width: 30mm;
+  height: 100%;
+}
+.rf-t-groovy .gr-band {
+  fill: none;
+  stroke-width: 6.6;
+}
+.rf-t-groovy .gr-band--orange,
+.rf-t-groovy .gr-arc--orange {
+  stroke: var(--rf-accent);
+}
+.rf-t-groovy .gr-band--pink,
+.rf-t-groovy .gr-arc--pink {
+  stroke: var(--gr-pink);
+}
+.rf-t-groovy .gr-band--purple,
+.rf-t-groovy .gr-arc--purple {
+  stroke: var(--gr-purple);
+}
+.rf-t-groovy .gr-band--teal,
+.rf-t-groovy .gr-arc--teal {
+  stroke: var(--gr-teal);
+}
+.rf-t-groovy .gr-band--mustard,
+.rf-t-groovy .gr-arc--mustard {
+  stroke: var(--gr-mustard);
+}
+.rf-t-groovy .gr-body {
+  flex: 1;
+  min-width: 0;
+  padding: calc(var(--rf-margin) * 0.8) var(--rf-margin) 0 7mm;
+}
+
+/* ---------- header ---------- */
+
+.rf-t-groovy .gr-header {
+  display: flex;
+  align-items: center;
+  gap: 4mm;
+  margin-bottom: calc(var(--rf-section-gap) * 1.1);
+}
+.rf-t-groovy .gr-header__text {
+  flex: 1;
+  min-width: 0;
+}
+.rf-t-groovy .gr-name {
+  font-family: var(--rf-font-heading);
+  font-size: 2.9em;
+  font-weight: 800;
+  line-height: 1.02;
+  letter-spacing: -0.01em;
+  color: var(--rf-accent);
+  text-shadow:
+    0.035em 0.035em 0 var(--gr-cream),
+    0.07em 0.07em 0 var(--gr-mustard),
+    0.105em 0.105em 0 var(--gr-cream),
+    0.14em 0.14em 0 var(--gr-pink);
+}
+.rf-t-groovy .gr-title {
+  display: inline-block;
+  margin-top: 0.6em;
+  padding: 0.25em 1em;
+  border-radius: 999px;
+  background: var(--gr-brown);
+  color: var(--gr-cream);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+.rf-t-groovy .gr-contact {
+  margin-top: 0.8em;
+  font-size: 0.86em;
+  color: #5c3a22;
+}
+.rf-t-groovy .gr-contact .rf-contact__icon {
+  color: var(--rf-accent-ink);
+}
+
+.rf-t-groovy .gr-art {
+  position: relative;
+  flex: 0 0 44mm;
+  height: 30mm;
+}
+.rf-t-groovy .gr-sun {
+  position: absolute;
+  inset: auto 0 0;
+  width: 100%;
+  height: auto;
+}
+.rf-t-groovy .gr-arc {
+  fill: none;
+  stroke-width: 9;
+}
+.rf-t-groovy .gr-sun__core {
+  fill: var(--gr-mustard);
+}
+.rf-t-groovy .gr-art .gr-daisy {
+  position: absolute;
+  width: 13mm;
+  height: 13mm;
+}
+.rf-t-groovy .gr-art .gr-daisy:nth-of-type(2) {
+  right: -2mm;
+  top: -3mm;
+}
+.rf-t-groovy .gr-art .gr-daisy:nth-of-type(3) {
+  left: -3mm;
+  top: 4mm;
+  width: 9mm;
+  height: 9mm;
+}
+.rf-t-groovy .gr-photo {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+  box-shadow:
+    0 0 0 1.2mm var(--gr-cream),
+    0 0 0 2.4mm var(--gr-pink),
+    0 0 0 3.6mm var(--gr-cream),
+    0 0 0 4.8mm var(--gr-mustard);
+}
+
+.rf-t-groovy .gr-daisy__petal {
+  fill: #fff;
+  stroke: var(--gr-brown);
+  stroke-width: 1.2;
+}
+.rf-t-groovy .gr-daisy__eye {
+  stroke: var(--gr-brown);
+  stroke-width: 1.2;
+  fill: var(--gr-mustard);
+}
+.rf-t-groovy .gr-daisy--pink .gr-daisy__petal {
+  fill: var(--gr-pink);
+}
+.rf-t-groovy .gr-daisy--purple .gr-daisy__petal {
+  fill: #c9a6f2;
+}
+.rf-t-groovy .gr-daisy--teal .gr-daisy__petal {
+  fill: #a7e3db;
+}
+.rf-t-groovy .gr-daisy--mustard .gr-daisy__petal {
+  fill: var(--gr-mustard);
+}
+.rf-t-groovy .gr-daisy--mustard .gr-daisy__eye {
+  fill: var(--rf-accent);
+}
+.rf-t-groovy .gr-daisy--orange .gr-daisy__petal {
+  fill: #ffd0b0;
+}
+
+/* ---------- sections ---------- */
+
+.rf-t-groovy .gr-h {
+  display: flex;
+  align-items: center;
+  gap: 0.45em;
+  margin-bottom: 0.8em;
+  font-family: var(--rf-font-heading);
+  font-size: 1.22em;
+  font-weight: 800;
+  letter-spacing: var(--rf-heading-tracking);
+  text-transform: var(--rf-heading-transform);
+  color: var(--gr-brown);
+}
+.rf-t-groovy .gr-h .gr-daisy {
+  flex: none;
+  width: 1.45em;
+  height: 1.45em;
+}
+.rf-t-groovy .gr-h__text {
+  text-decoration: underline wavy var(--gr-tone);
+  text-decoration-thickness: 2.5px;
+  text-underline-offset: 0.3em;
+}
+.rf-t-groovy .gr-h--orange {
+  --gr-tone: var(--rf-accent);
+}
+.rf-t-groovy .gr-h--pink {
+  --gr-tone: var(--gr-pink);
+}
+.rf-t-groovy .gr-h--purple {
+  --gr-tone: var(--gr-purple);
+}
+.rf-t-groovy .gr-h--teal {
+  --gr-tone: var(--gr-teal);
+}
+.rf-t-groovy .gr-h--mustard {
+  --gr-tone: var(--gr-mustard);
+}
+
+.rf-t-groovy .gr-summary,
+.rf-t-groovy .rf-entry__desc,
+.rf-t-groovy .rf-bullets > li,
+.rf-t-groovy .gr-compact {
+  color: #3d2416;
+}
+.rf-t-groovy .rf-entry__title,
+.rf-t-groovy .rf-srow__name,
+.rf-t-groovy .rf-cline__title {
+  font-family: var(--rf-font-heading);
+  font-weight: 700;
+  color: var(--gr-brown);
+}
+.rf-t-groovy .rf-entry__sub {
+  font-weight: 600;
+  color: var(--rf-accent-ink);
+}
+.rf-t-groovy .rf-entry--main .rf-entry__date {
+  display: inline-block;
+  padding: 0.05em 0.7em;
+  border-radius: 999px;
+  background: rgb(247 181 44 / 0.35);
+  font-weight: 600;
+  color: var(--gr-brown);
+}
+.rf-t-groovy .rf-bullets > li::before {
+  background: var(--gr-pink);
+}
+.rf-t-groovy .rf-bullets > li:nth-child(2n)::before {
+  background: var(--gr-teal);
+}
+.rf-t-groovy .rf-bullets > li:nth-child(3n)::before {
+  background: var(--gr-purple);
+}
+.rf-t-groovy .gr-compact {
+  font-size: 1em;
+}
