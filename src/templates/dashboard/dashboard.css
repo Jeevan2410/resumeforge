@@ -1,0 +1,401 @@
+/* Dashboard template — every selector is scoped to .rf-t-dashboard. */
+
+.rf-t-dashboard .db-page {
+  display: flex;
+  height: 100%;
+  background: var(--db-bg);
+  color: var(--db-ink);
+}
+
+/* ---------- app sidebar ---------- */
+
+.rf-t-dashboard .db-nav {
+  order: -1;
+  flex: 0 0 31%;
+  min-width: 0;
+  box-sizing: border-box;
+  padding: calc(var(--rf-margin) * 0.7) 5.5mm var(--rf-margin);
+  background:
+    radial-gradient(circle at 110% 0%, rgb(var(--rf-accent-rgb) / 0.45), transparent 45%),
+    var(--db-nav);
+  color: #d9d7f2;
+}
+.rf-t-dashboard .db-profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 6mm;
+  text-align: center;
+}
+.rf-t-dashboard .db-brand {
+  display: flex;
+  gap: 1.3mm;
+  align-self: flex-start;
+  margin-bottom: 6mm;
+}
+.rf-t-dashboard .db-brand > i {
+  width: 2.2mm;
+  height: 2.2mm;
+  border-radius: 50%;
+  background: #ff5f57;
+}
+.rf-t-dashboard .db-brand > i:nth-child(2) {
+  background: #febc2e;
+}
+.rf-t-dashboard .db-brand > i:nth-child(3) {
+  background: #28c840;
+}
+.rf-t-dashboard .db-avatar {
+  display: grid;
+  place-items: center;
+  width: 25mm;
+  height: 25mm;
+  border-radius: 50%;
+  background: conic-gradient(var(--rf-accent), var(--db-pink), #ffc65c, var(--rf-accent));
+}
+.rf-t-dashboard .db-photo {
+  border: 1.2mm solid var(--db-nav);
+}
+.rf-t-dashboard .db-initials {
+  display: grid;
+  place-items: center;
+  width: 22mm;
+  height: 22mm;
+  border: 1.2mm solid var(--db-nav);
+  border-radius: 50%;
+  box-sizing: border-box;
+  background: #2b2756;
+  font-family: var(--rf-font-heading);
+  font-size: 1.7em;
+  font-weight: 700;
+  color: #fff;
+}
+.rf-t-dashboard .db-name {
+  margin-top: 3.5mm;
+  font-family: var(--rf-font-heading);
+  font-size: 1.55em;
+  font-weight: 700;
+  line-height: 1.1;
+  color: #fff;
+}
+.rf-t-dashboard .db-title {
+  margin-top: 0.35em;
+  padding: 0.2em 0.8em;
+  border-radius: 999px;
+  background: rgb(var(--rf-accent-rgb) / 0.35);
+  font-size: 0.86em;
+  font-weight: 500;
+  color: #fff;
+}
+
+.rf-t-dashboard .db-sh {
+  margin-bottom: 0.6em;
+  font-family: var(--rf-font-heading);
+  font-size: 0.74em;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #8f8bc4;
+}
+.rf-t-dashboard .db-menu {
+  gap: 1.3mm;
+}
+.rf-t-dashboard .db-menu .db-menu__item {
+  display: flex;
+  align-items: center;
+  gap: 2.2mm;
+  padding: 1.2mm 2mm;
+  border-radius: 2mm;
+  background: rgb(255 255 255 / 0.05);
+  font-size: 0.84em;
+  color: #e7e5fb;
+  overflow-wrap: anywhere;
+}
+.rf-t-dashboard .db-menu .db-menu__item:first-child {
+  background: var(--rf-accent);
+  color: #fff;
+}
+.rf-t-dashboard .db-menu a {
+  color: inherit;
+}
+.rf-t-dashboard .db-menu .rf-contact__icon {
+  flex: none;
+  color: #b9b4ff;
+}
+.rf-t-dashboard .db-menu .db-menu__item:first-child .rf-contact__icon {
+  color: #fff;
+}
+
+/* skills as donut meters */
+.rf-t-dashboard .db-skill {
+  display: flex;
+  align-items: center;
+  gap: 2.6mm;
+}
+.rf-t-dashboard .db-donut {
+  flex: none;
+  width: 12mm;
+  height: 12mm;
+}
+.rf-t-dashboard .db-donut__track {
+  fill: none;
+  stroke: rgb(255 255 255 / 0.1);
+  stroke-width: 5;
+}
+.rf-t-dashboard .db-donut__fill {
+  fill: none;
+  stroke: var(--rf-accent);
+  stroke-width: 5;
+  stroke-linecap: round;
+}
+.rf-t-dashboard .rf-block:nth-child(3n) .db-donut__fill {
+  stroke: var(--db-pink);
+}
+.rf-t-dashboard .rf-block:nth-child(3n + 1) .db-donut__fill {
+  stroke: #ffc65c;
+}
+.rf-t-dashboard .db-donut__text {
+  font-family: var(--rf-font-heading);
+  font-size: 8px;
+  font-weight: 700;
+  fill: #fff;
+}
+.rf-t-dashboard .db-skill__text {
+  min-width: 0;
+}
+.rf-t-dashboard .db-skill__name {
+  font-family: var(--rf-font-heading);
+  font-weight: 600;
+  color: #fff;
+}
+.rf-t-dashboard .db-skill__kw {
+  font-size: 0.8em;
+  line-height: 1.35;
+  color: #aeaad6;
+}
+
+.rf-t-dashboard .db-langs {
+  display: flex;
+  flex-direction: column;
+  gap: 2mm;
+}
+.rf-t-dashboard .db-lang__head {
+  display: flex;
+  justify-content: space-between;
+  gap: 2mm;
+  font-size: 0.9em;
+  font-weight: 600;
+  color: #fff;
+}
+.rf-t-dashboard .db-lang__lvl {
+  font-size: 0.85em;
+  font-weight: 400;
+  color: #aeaad6;
+}
+.rf-t-dashboard .db-lang__bar {
+  display: block;
+  height: 1.6mm;
+  margin-top: 0.8mm;
+  border-radius: 999px;
+  background: rgb(255 255 255 / 0.1);
+}
+.rf-t-dashboard .db-lang__bar > span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--rf-accent), var(--db-pink));
+}
+.rf-t-dashboard .db-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.4mm;
+}
+.rf-t-dashboard .db-tag {
+  padding: 0.25em 0.7em;
+  border: 1px solid rgb(255 255 255 / 0.18);
+  border-radius: 999px;
+  font-size: 0.82em;
+  color: #e7e5fb;
+}
+.rf-t-dashboard .db-nav .rf-entry__title,
+.rf-t-dashboard .db-nav .rf-cline__title {
+  color: #fff;
+}
+.rf-t-dashboard .db-nav .rf-entry,
+.rf-t-dashboard .db-nav .rf-cline,
+.rf-t-dashboard .db-nav .rf-entry__sub,
+.rf-t-dashboard .db-nav .rf-entry__when,
+.rf-t-dashboard .db-nav .rf-cline__by,
+.rf-t-dashboard .db-nav .rf-cline__date {
+  color: #c4c0ea;
+}
+.rf-t-dashboard .db-nav:not(:has(.rf-block)) > :not(.db-profile) {
+  visibility: hidden;
+}
+
+/* ---------- main area ---------- */
+
+.rf-t-dashboard .db-main {
+  flex: 1;
+  min-width: 0;
+  padding: calc(var(--rf-margin) * 0.7) calc(var(--rf-margin) * 0.8) 0 6mm;
+}
+
+.rf-t-dashboard .db-hero {
+  position: relative;
+  overflow: hidden;
+  padding: 4.5mm 6mm;
+  border-radius: 4.5mm;
+  background: linear-gradient(120deg, var(--rf-accent) 0%, #8f6cf0 55%, var(--db-pink) 100%);
+  color: #fff;
+  box-shadow: 0 2.5mm 6mm rgb(var(--rf-accent-rgb) / 0.3);
+}
+.rf-t-dashboard .db-hero__art {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 55%;
+  height: auto;
+  opacity: 0.85;
+}
+.rf-t-dashboard .db-hero__orb {
+  fill: rgb(255 255 255 / 0.12);
+}
+.rf-t-dashboard .db-hero__orb--b {
+  fill: rgb(255 198 92 / 0.35);
+}
+.rf-t-dashboard .db-hero__area {
+  fill: rgb(255 255 255 / 0.07);
+}
+.rf-t-dashboard .db-hero__line {
+  fill: none;
+  stroke: rgb(255 255 255 / 0.3);
+  stroke-width: 1.4;
+  stroke-linejoin: round;
+}
+.rf-t-dashboard .db-hero__text {
+  position: relative;
+}
+.rf-t-dashboard .db-hero__hi {
+  margin-bottom: 0.4em;
+  font-family: var(--rf-font-heading);
+  font-size: 1.35em;
+  font-weight: 700;
+}
+.rf-t-dashboard .db-hero__summary {
+  font-size: 0.98em;
+  color: rgb(255 255 255 / 0.94);
+}
+.rf-t-dashboard .db-hero__summary strong {
+  color: #fff;
+}
+.rf-t-dashboard .db-hero a {
+  color: #fff;
+}
+
+.rf-t-dashboard .db-kpis {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(0, 1fr);
+  gap: 3mm;
+}
+.rf-t-dashboard .db-kpi {
+  display: flex;
+  flex-direction: column;
+  padding: 3mm 3.5mm;
+  border-radius: 3.5mm;
+  background: #fff;
+  box-shadow: 0 1mm 3mm rgb(27 24 64 / 0.06);
+  border-bottom: 1.1mm solid var(--rf-accent);
+}
+.rf-t-dashboard .db-kpi--b {
+  border-bottom-color: var(--db-pink);
+}
+.rf-t-dashboard .db-kpi--c {
+  border-bottom-color: #ffc65c;
+}
+.rf-t-dashboard .db-kpi--d {
+  border-bottom-color: #2ec4b6;
+}
+.rf-t-dashboard .db-kpi__value {
+  font-family: var(--rf-font-heading);
+  font-size: 1.8em;
+  font-weight: 700;
+  line-height: 1.05;
+}
+.rf-t-dashboard .db-kpi__label {
+  font-size: 0.8em;
+  color: #6f6c93;
+}
+
+/* section cards (blocks of a section join into one card) */
+.rf-t-dashboard .db-card {
+  padding: 1.2mm 5mm;
+  background: #fff;
+}
+.rf-t-dashboard .db-card--first,
+.rf-t-dashboard .rf-block:first-child > .db-card {
+  padding-top: 3.6mm;
+  border-top-left-radius: 3.5mm;
+  border-top-right-radius: 3.5mm;
+}
+.rf-t-dashboard .db-card--last,
+.rf-t-dashboard .rf-block:last-child > .db-card {
+  padding-bottom: 3.6mm;
+  border-bottom-left-radius: 3.5mm;
+  border-bottom-right-radius: 3.5mm;
+  box-shadow: 0 1.2mm 3mm rgb(27 24 64 / 0.06);
+}
+.rf-t-dashboard .db-h {
+  display: flex;
+  align-items: center;
+  gap: 0.55em;
+  margin-bottom: 0.65em;
+  font-family: var(--rf-font-heading);
+  font-size: 1.1em;
+  font-weight: 700;
+  letter-spacing: var(--rf-heading-tracking);
+  text-transform: var(--rf-heading-transform);
+}
+.rf-t-dashboard .db-h__icon {
+  display: grid;
+  place-items: center;
+  width: 1.9em;
+  height: 1.9em;
+  border-radius: 0.6em;
+  background: rgb(var(--rf-accent-rgb) / 0.12);
+  color: var(--rf-accent-ink);
+  font-size: 0.9em;
+}
+
+.rf-t-dashboard .db-main .rf-entry__title,
+.rf-t-dashboard .db-main .rf-srow__name,
+.rf-t-dashboard .db-main .rf-cline__title {
+  font-family: var(--rf-font-heading);
+  font-weight: 600;
+  color: var(--db-ink);
+}
+.rf-t-dashboard .db-main .rf-entry__sub {
+  font-weight: 500;
+  color: var(--rf-accent-ink);
+}
+.rf-t-dashboard .db-main .rf-entry--main .rf-entry__date {
+  display: inline-block;
+  padding: 0.08em 0.65em;
+  border-radius: 999px;
+  background: var(--db-bg);
+  font-size: 0.86em;
+  font-weight: 600;
+  color: #4d4a78;
+}
+.rf-t-dashboard .db-main .rf-entry__desc,
+.rf-t-dashboard .db-main .rf-bullets > li,
+.rf-t-dashboard .db-compact {
+  color: #3a3760;
+}
+.rf-t-dashboard .rf-bullets > li::before {
+  background: var(--rf-accent);
+}
+.rf-t-dashboard .db-compact {
+  font-size: 1em;
+}

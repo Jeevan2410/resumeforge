@@ -1,0 +1,307 @@
+/* Showcase template — every selector is scoped to .rf-t-showcase. */
+
+.rf-t-showcase .sc-page {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+  padding: calc(var(--rf-margin) * 0.7) var(--rf-margin) 0;
+  color: var(--sc-ink);
+}
+.rf-t-showcase .sc-corner {
+  position: absolute;
+  right: -18mm;
+  bottom: -18mm;
+  width: 48mm;
+  height: 48mm;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgb(var(--rf-accent-rgb) / 0.14) 0 55%, transparent 56%), radial-gradient(circle, var(--sc-soft) 0 70%, transparent 71%);
+}
+
+/* ---------- hero ---------- */
+
+.rf-t-showcase .sc-hero {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 4mm;
+  margin-bottom: calc(var(--rf-section-gap) * 1.1);
+  padding: 6mm 4mm 6mm 8mm;
+  border-radius: 7mm;
+  background:
+    radial-gradient(circle at 0% 100%, rgb(91 108 255 / 0.12), transparent 40%),
+    var(--sc-soft);
+}
+.rf-t-showcase .sc-hero__text {
+  flex: 1;
+  min-width: 0;
+}
+.rf-t-showcase .sc-hello {
+  display: inline-block;
+  margin-bottom: 0.5em;
+  padding: 0.2em 0.8em;
+  border-radius: 999px;
+  background: #fff;
+  font-size: 0.82em;
+  font-weight: 600;
+  color: var(--rf-accent-ink);
+  box-shadow: 0 0.8mm 2mm rgb(35 32 65 / 0.08);
+}
+.rf-t-showcase .sc-name {
+  font-family: var(--rf-font-heading);
+  font-size: 2.7em;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+.rf-t-showcase .sc-title {
+  margin-top: 0.35em;
+  font-size: 1.15em;
+  font-weight: 600;
+  color: var(--rf-accent-ink);
+}
+.rf-t-showcase .sc-contact {
+  gap: 1.4mm;
+  margin-top: 3.5mm;
+  font-size: 0.82em;
+}
+.rf-t-showcase .sc-contact .sc-contact__item {
+  padding: 0.25em 0.75em;
+  border-radius: 999px;
+  background: #fff;
+  color: #3d3a5c;
+}
+.rf-t-showcase .sc-contact a {
+  color: inherit;
+}
+.rf-t-showcase .sc-contact .rf-contact__icon {
+  color: var(--rf-accent-ink);
+}
+.rf-t-showcase .sc-contact .rf-contact__sep {
+  display: none;
+}
+
+.rf-t-showcase .sc-art {
+  position: relative;
+  flex: 0 0 64mm;
+}
+.rf-t-showcase .sc-art__svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.rf-t-showcase .sc-art__photo {
+  position: absolute;
+  left: -2mm;
+  top: -3mm;
+}
+.rf-t-showcase .sc-photo {
+  box-shadow:
+    0 0 0 1.2mm #fff,
+    0 1.5mm 4mm rgb(35 32 65 / 0.2);
+}
+.rf-t-showcase .sc-f-soft {
+  fill: rgb(var(--rf-accent-rgb) / 0.16);
+}
+.rf-t-showcase .sc-f-ink {
+  fill: var(--sc-ink);
+}
+.rf-t-showcase .sc-f-ink2 {
+  fill: #3b3766;
+}
+.rf-t-showcase .sc-f-white {
+  fill: #fff;
+}
+.rf-t-showcase .sc-f-line {
+  fill: #e6e4f2;
+}
+.rf-t-showcase .sc-f-accent {
+  fill: var(--rf-accent);
+}
+.rf-t-showcase .sc-f-blue {
+  fill: var(--sc-blue);
+}
+.rf-t-showcase .sc-f-yellow {
+  fill: var(--sc-yellow);
+}
+.rf-t-showcase .sc-f-teal {
+  fill: var(--sc-teal);
+}
+.rf-t-showcase .sc-cursor {
+  stroke: #fff;
+  stroke-width: 1.2;
+}
+.rf-t-showcase .sc-s-blue,
+.rf-t-showcase .sc-s-accent {
+  fill: none;
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+.rf-t-showcase .sc-s-blue {
+  stroke: var(--sc-blue);
+}
+.rf-t-showcase .sc-s-accent {
+  stroke: var(--rf-accent);
+}
+
+/* ---------- sections ---------- */
+
+.rf-t-showcase .sc-body {
+  position: relative;
+}
+.rf-t-showcase .sc-h {
+  --sc-tone: var(--rf-accent);
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+  margin-bottom: 0.6em;
+  font-family: var(--rf-font-heading);
+  font-size: 1.18em;
+  font-weight: 700;
+  letter-spacing: var(--rf-heading-tracking);
+  text-transform: var(--rf-heading-transform);
+}
+.rf-t-showcase .sc-h--b {
+  --sc-tone: var(--sc-blue);
+}
+.rf-t-showcase .sc-h--c {
+  --sc-tone: var(--sc-yellow);
+}
+.rf-t-showcase .sc-h--d {
+  --sc-tone: var(--sc-teal);
+}
+.rf-t-showcase .sc-h__icon {
+  display: grid;
+  place-items: center;
+  width: 2em;
+  height: 2em;
+  border-radius: 50%;
+  background: var(--sc-tone);
+  color: #fff;
+  font-size: 0.82em;
+  box-shadow: 0 0 0 1mm color-mix(in srgb, var(--sc-tone) 22%, transparent);
+}
+.rf-t-showcase .sc-h--c .sc-h__icon {
+  color: var(--sc-ink);
+}
+.rf-t-showcase .sc-h__rule {
+  flex: 1;
+  height: 0;
+  border-top: 2px dotted color-mix(in srgb, var(--sc-tone) 55%, #fff);
+}
+
+.rf-t-showcase .sc-glance {
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1fr);
+  gap: 4mm;
+}
+.rf-t-showcase .sc-glance--chips {
+  grid-template-columns: minmax(0, 1fr);
+}
+.rf-t-showcase .sc-glance__card {
+  padding: 3.5mm 4mm;
+  border-radius: 4mm;
+  background: #f6f5fc;
+}
+.rf-t-showcase .sc-glance__card--radar {
+  display: grid;
+  place-items: center;
+  padding: 1mm 2mm;
+}
+.rf-t-showcase .sc-glance__label {
+  margin-bottom: 0.6em;
+  font-size: 0.78em;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #8a86ab;
+}
+.rf-t-showcase .sc-radar {
+  width: 100%;
+  max-width: 58mm;
+  height: auto;
+  overflow: visible;
+}
+.rf-t-showcase .sc-radar__ring {
+  fill: none;
+  stroke: #dcd9ee;
+  stroke-width: 0.8;
+}
+.rf-t-showcase .sc-radar__spoke {
+  stroke: #dcd9ee;
+  stroke-width: 0.8;
+}
+.rf-t-showcase .sc-radar__shape {
+  fill: rgb(var(--rf-accent-rgb) / 0.28);
+  stroke: var(--rf-accent);
+  stroke-width: 1.6;
+  stroke-linejoin: round;
+}
+.rf-t-showcase .sc-radar__dot {
+  fill: #fff;
+  stroke: var(--rf-accent);
+  stroke-width: 1.6;
+}
+.rf-t-showcase .sc-radar__label {
+  font-family: var(--rf-font-heading);
+  font-size: 9.5px;
+  font-weight: 600;
+  fill: var(--sc-ink);
+}
+.rf-t-showcase .sc-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5mm;
+}
+.rf-t-showcase .sc-chip {
+  padding: 0.25em 0.75em;
+  border-radius: 999px;
+  font-size: 0.86em;
+  font-weight: 500;
+  background: rgb(var(--rf-accent-rgb) / 0.14);
+  color: var(--rf-accent-ink);
+}
+.rf-t-showcase .sc-chip--b {
+  background: rgb(91 108 255 / 0.14);
+  color: #3a47c4;
+}
+.rf-t-showcase .sc-chip--c {
+  background: rgb(255 201 60 / 0.3);
+  color: #7a5600;
+}
+.rf-t-showcase .sc-chip--d {
+  background: rgb(46 196 182 / 0.18);
+  color: #11766c;
+}
+
+.rf-t-showcase .sc-summary,
+.rf-t-showcase .rf-entry__desc,
+.rf-t-showcase .rf-bullets > li,
+.rf-t-showcase .sc-compact {
+  color: #3d3a5c;
+}
+.rf-t-showcase .rf-entry__title,
+.rf-t-showcase .rf-srow__name,
+.rf-t-showcase .rf-cline__title {
+  font-family: var(--rf-font-heading);
+  font-weight: 600;
+  color: var(--sc-ink);
+}
+.rf-t-showcase .rf-entry__sub {
+  font-weight: 500;
+  color: var(--rf-accent-ink);
+}
+.rf-t-showcase .rf-entry--main .rf-entry__date {
+  display: inline-block;
+  padding: 0.08em 0.7em;
+  border-radius: 999px;
+  background: #f6f5fc;
+  font-size: 0.88em;
+  font-weight: 600;
+  color: #5d5982;
+}
+.rf-t-showcase .rf-bullets > li::before {
+  background: var(--rf-accent);
+}
+.rf-t-showcase .sc-compact {
+  font-size: 1em;
+}

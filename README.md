@@ -4,7 +4,7 @@
 
 **Live demo:** [resumeforge-jeevan.vercel.app](https://resumeforge-jeevan.vercel.app)
 
-Write one resume, then tailor a copy for every application. ResumeForge has 42 templates, real page-by-page pagination, an ATS checker, a job-description matcher and cover letters, and it exports text-based PDF and Word files. You don't need an account and nothing is uploaded: your data stays in your browser.
+Write one resume, then tailor a copy for every application. ResumeForge has 45 templates, real page-by-page pagination, an ATS checker, a job-description matcher and cover letters, and it exports text-based PDF and Word files. You don't need an account and nothing is uploaded: your data stays in your browser.
 
 ![Editor with live preview](docs/editor.png)
 
@@ -42,10 +42,18 @@ Three templates that change how the resume is organised, not just how it looks.
 |:-:|:-:|:-:|
 | <img src="docs/templates/infographic.png" width="200" alt="Infographic template"><br>**Infographic**<br>Stat tiles, a career Gantt chart and skill gauges | <img src="docs/templates/portfolio.png" width="200" alt="Portfolio template"><br>**Portfolio**<br>Projects first, as a grid of tiles | <img src="docs/templates/skillsfirst.png" width="200" alt="Skills-first template"><br>**Skills-first**<br>Functional: a core-competencies grid before the career history |
 
+### UI templates
+
+Three graphic templates in the style of a product designer's portfolio, with illustrations, charts and colour blocks. The text stays real, selectable text.
+
+| | | |
+|:-:|:-:|:-:|
+| <img src="docs/templates/dashboard.png" width="200" alt="Dashboard template"><br>**Dashboard**<br>An app sidebar with donut skill meters, a gradient hero and KPI tiles | <img src="docs/templates/studio.png" width="200" alt="Studio template"><br>**Studio**<br>A design-tool canvas: a toolbar, a layers panel and sections as frames | <img src="docs/templates/showcase.png" width="200" alt="Showcase template"><br>**Showcase**<br>An illustrated hero, a skills radar chart and a colourful toolbox |
+
 ## Features
 
 ### Templates & design
-- **42 templates** covering one- and two-column layouts, photo layouts, ATS-safe single-column layouts, an academic CV, 26 design-style templates (Art Nouveau to Type Collage) and three resume formats (Infographic, Portfolio and Skills-first). The gallery can be filtered by *ATS-friendly*, *Two-column*, *Photo*, *Creative* and *One-page*.
+- **45 templates** covering one- and two-column layouts, photo layouts, ATS-safe single-column layouts, an academic CV, 26 design-style templates (Art Nouveau to Type Collage), three resume formats (Infographic, Portfolio and Skills-first) and three graphic UI templates (Dashboard, Studio and Showcase). The gallery can be filtered by *ATS-friendly*, *Two-column*, *Photo*, *Creative* and *One-page*.
 - **Real pagination.** Entries are never split across pages, headings stay with their first entry, and side columns continue onto the next page. Running headers and page numbers appear where the template uses them. Both A4 and US Letter are supported.
 - **Fit to pages.** If the last page is nearly empty, one click tightens spacing, then line height, font size and margins, changing as little as possible. You can undo it.
 - **Design controls.** Choose an accent preset or a custom colour, one of 10 font pairings (Google Fonts loaded on demand), font size, line height, spacing, margins, heading case, date format, photo shape and contact icons.
@@ -106,7 +114,7 @@ flowchart LR
     P[paginate · fit · design]
   end
   subgraph Templates["templates/"]
-    REG[registry<br/>auto-discovers 42 templates]
+    REG[registry<br/>auto-discovers 45 templates]
     PD[PagedDocument<br/>measure → paginate → pages]
   end
   subgraph Features["features/ + app/"]
@@ -133,7 +141,7 @@ flowchart LR
 
 ## Testing
 
-- **308 tests in 22 test files** (`node --test` with native TypeScript stripping, no test framework). They cover normalisation and migration of old or corrupt data, undo history, the store and throttled storage, ATS scoring, keyword extraction and job matching, rewrites, pagination and fit-to-pages, DOCX / Markdown / text / JSON Resume export and import round-trips, share links, and template helpers. They include regression tests for ReDoS-style slow inputs.
+- **311 tests in 22 test files** (`node --test` with native TypeScript stripping, no test framework). They cover normalisation and migration of old or corrupt data, undo history, the store and throttled storage, ATS scoring, keyword extraction and job matching, rewrites, pagination and fit-to-pages, DOCX / Markdown / text / JSON Resume export and import round-trips, share links, and template helpers. They include regression tests for ReDoS-style slow inputs.
 - **Strict TypeScript** (`tsc -b`) and **oxlint** run on every build.
 - **CI** (GitHub Actions on Node 22) runs `npm ci`, lint, tests and build.
 - Each template was also checked by hand in Chromium (through Playwright) at A4 and US Letter, in light and dark mode, and at 390 px phone width.

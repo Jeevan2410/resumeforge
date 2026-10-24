@@ -75,6 +75,8 @@ const TEMPLATE_IDS: TemplateId[] = [
   'bento', 'japandi', 'risograph', 'pixel', 'victorian', 'kawaii', 'cybercore', 'typecollage',
   // resume formats
   'infographic', 'portfolio', 'skillsfirst',
+  // graphic UI templates
+  'dashboard', 'studio', 'showcase',
 ]
 
 export function isTemplateId(v: unknown): v is TemplateId {

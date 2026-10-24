@@ -118,6 +118,9 @@ export type TemplateId =
   | 'infographic'
   | 'portfolio'
   | 'skillsfirst'
+  | 'dashboard'
+  | 'studio'
+  | 'showcase'
 
 export type FontId = 'inter' | 'merriweather' | 'playfair' | 'garamond' | 'poppins' | 'plex' | 'montserrat' | 'raleway' | 'system' | 'georgia'
 
