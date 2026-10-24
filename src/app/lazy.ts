@@ -17,9 +17,12 @@ export const TemplateLab = lazy(() => import('./TemplateLab.tsx').then((m) => ({
 /* routes (shell) */
 const loadEditor = () => import('./EditorScreen.tsx')
 const loadDashboard = () => import('./DashboardScreen.tsx')
+const loadTemplates = () => import('./TemplatesScreen.tsx')
 export const EditorScreen = lazy(() => loadEditor().then((m) => ({ default: m.EditorScreen })))
 export const DashboardScreen = lazy(() => loadDashboard().then((m) => ({ default: m.DashboardScreen })))
+export const TemplatesScreen = lazy(() => loadTemplates().then((m) => ({ default: m.TemplatesScreen })))
 export const ShortcutsDialog = lazy(() => import('./ShortcutsDialog.tsx').then((m) => ({ default: m.ShortcutsDialog })))
+export const TemplatePreviewDialog = lazy(() => import('../features/gallery/TemplatePreviewDialog.tsx').then((m) => ({ default: m.TemplatePreviewDialog })))
 export const NewResumeDialog = lazy(() => import('../features/dashboard/NewResumeDialog.tsx').then((m) => ({ default: m.NewResumeDialog })))
 
 /** Warm the chunks the user is likely to need next (called when the editor becomes idle). */

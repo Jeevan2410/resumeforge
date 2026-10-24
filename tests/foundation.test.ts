@@ -207,7 +207,9 @@ describe('routes', () => {
     assert.deepEqual(parseRoute('#/view/'), { name: 'dashboard' })
     assert.deepEqual(parseRoute('#/lab'), { name: 'lab', params: {} })
     assert.deepEqual(parseRoute('#/lab?t=classic&photo=1'), { name: 'lab', params: { t: 'classic', photo: '1' } })
-    for (const r of [{ name: 'dashboard' }, { name: 'edit' }, { name: 'edit', id: 'a b' }, { name: 'view', payload: 'r1.Q' }, { name: 'lab', params: { t: 'modern', s: 'kitchen' } }] as const) {
+    assert.deepEqual(parseRoute('#/templates'), { name: 'templates', params: {} })
+    assert.deepEqual(parseRoute('#/templates?c=style&q=neon'), { name: 'templates', params: { c: 'style', q: 'neon' } })
+    for (const r of [{ name: 'templates', params: {} }, { name: 'templates', params: { c: 'ui' } }, { name: 'dashboard' }, { name: 'edit' }, { name: 'edit', id: 'a b' }, { name: 'view', payload: 'r1.Q' }, { name: 'lab', params: { t: 'modern', s: 'kitchen' } }] as const) {
       assert.deepEqual(parseRoute(routeHash(r)), r)
     }
   })

@@ -33,6 +33,7 @@ export const meta: TemplateMeta = {
   description: 'A mosaic of rounded tiles for your name, photo, title and contact, then every section in its own neat card across two columns.',
   tags: ['Modern', 'Two-column', 'Photo'],
   order: 380,
+  collection: 'style',
   supportsPhoto: true,
   columns: 2,
   defaultFont: 'inter',

@@ -35,6 +35,7 @@ export const meta: TemplateMeta = {
   description: 'Formal serif CV with a hanging date column, education first, numbered publications with your name in bold, and a references grid.',
   tags: ['Classic', 'ATS-friendly'],
   order: 130,
+  collection: 'classic',
   supportsPhoto: true,
   columns: 1,
   defaultFont: 'merriweather',

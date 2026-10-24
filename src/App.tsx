@@ -3,13 +3,14 @@
  *   #/            Dashboard
  *   #/edit[/id]   Editor (activates the resume id when given)
  *   #/view/<enc>  Read-only shared resume
+ *   #/templates   Template gallery (?q= search, ?c= collection, ?tags=)
  *   #/lab?…       Template QA lab (unlinked, see app/TemplateLab.tsx) — dev builds only, or opt in with
  *                 `?lab=1` (before or inside the hash, remembered in localStorage['resumeforge-lab'])
  * Routes are code-split (app/lazy.ts). OWNER: shell agent.
  */
 import { Suspense, useEffect } from 'react'
 import { useApplyTheme } from './app/hooks.ts'
-import { DashboardScreen, EditorScreen, SharedView, TemplateLab } from './app/lazy.ts'
+import { DashboardScreen, EditorScreen, SharedView, TemplateLab, TemplatesScreen } from './app/lazy.ts'
 import { LogoMark } from './app/Logo.tsx'
 import { ModalHost } from './app/ModalHost.tsx'
 import { PrintRoot } from './app/PrintRoot.tsx'
@@ -88,6 +89,10 @@ export default function App() {
       ) : route.name === 'view' ? (
         <Suspense fallback={<RouteFallback label="Loading resume…" />}>
           <SharedView payload={route.payload} />
+        </Suspense>
+      ) : route.name === 'templates' ? (
+        <Suspense fallback={<RouteFallback label="Loading templates…" />}>
+          <TemplatesScreen params={route.params} />
         </Suspense>
       ) : route.name === 'edit' ? (
         <EditRoute id={route.id} />

@@ -30,6 +30,7 @@ export const meta: TemplateMeta = {
   description: 'Your career as a brass steam-pipe timeline: gear nodes for every role, engraved dates in the left track and a riveted sepia frame.',
   tags: ['Creative', 'Classic', 'Photo'],
   order: 350,
+  collection: 'style',
   supportsPhoto: true,
   columns: 1,
   defaultFont: 'playfair',

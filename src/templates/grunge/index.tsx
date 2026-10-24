@@ -29,6 +29,7 @@ export const meta: TemplateMeta = {
   description: 'A scrapbook: every section on its own torn paper scrap with masking tape, zigzagging down a grainy page with brush-stamped headings.',
   tags: ['Creative', 'Photo'],
   order: 310,
+  collection: 'style',
   supportsPhoto: true,
   columns: 1,
   defaultFont: 'plex',

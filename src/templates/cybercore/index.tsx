@@ -33,6 +33,7 @@ export const meta: TemplateMeta = {
   description: 'A night-mode HUD: neon type with harsh drop shadows, circuit traces, bracketed sections and a terminal console for your stack.',
   tags: ['Creative', 'Two-column', 'Photo'],
   order: 440,
+  collection: 'style',
   supportsPhoto: true,
   columns: 2,
   defaultFont: 'montserrat',

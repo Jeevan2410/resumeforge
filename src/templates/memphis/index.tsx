@@ -29,6 +29,7 @@ export const meta: TemplateMeta = {
   description: 'A landing-page hero with a flat geometric character, and section headings hung in a left gutter as big friendly colour blobs.',
   tags: ['Creative', 'Modern', 'Photo'],
   order: 340,
+  collection: 'style',
   supportsPhoto: true,
   columns: 1,
   defaultFont: 'poppins',

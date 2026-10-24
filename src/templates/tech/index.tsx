@@ -34,6 +34,7 @@ export const meta: TemplateMeta = {
   description: 'Built for developers: monospace headings, repo-style project cards with topic tags and a slim rail for your links and stack.',
   tags: ['Modern', 'Two-column', 'One-page'],
   order: 90,
+  collection: 'classic',
   supportsPhoto: true,
   columns: 2,
   defaultFont: 'plex',

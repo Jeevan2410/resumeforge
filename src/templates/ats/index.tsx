@@ -29,6 +29,7 @@ export const meta: TemplateMeta = {
   description: 'Zero graphics, a single column and standard section headings — clean, predictable text that every applicant tracking system parses correctly.',
   tags: ['ATS-friendly', 'Classic', 'One-page'],
   order: 40,
+  collection: 'classic',
   supportsPhoto: false,
   columns: 1,
   defaultFont: 'system',

@@ -30,6 +30,7 @@ export const meta: TemplateMeta = {
   description: 'A black-and-gold header with a stepped sunburst, sharp geometric frames and tracked capitals over a crisp two-column body.',
   tags: ['Creative', 'Two-column', 'Photo'],
   order: 210,
+  collection: 'style',
   supportsPhoto: true,
   columns: 2,
   defaultFont: 'playfair',

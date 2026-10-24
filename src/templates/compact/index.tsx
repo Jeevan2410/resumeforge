@@ -37,6 +37,7 @@ export const meta: TemplateMeta = {
   description: 'Dense two-column layout with small, crisp type and inline dates that fits a whole career on one page without feeling cramped.',
   tags: ['Two-column', 'One-page', 'Modern'],
   order: 120,
+  collection: 'classic',
   supportsPhoto: true,
   columns: 2,
   defaultFont: 'inter',

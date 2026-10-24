@@ -30,6 +30,7 @@ export const meta: TemplateMeta = {
   description: 'Letterforms as the artwork: a cut-and-pasted name in mixed fonts and scales, giant outlined initials and three-voice section headings.',
   tags: ['Creative', 'Photo'],
   order: 450,
+  collection: 'style',
   supportsPhoto: true,
   columns: 1,
   defaultFont: 'montserrat',

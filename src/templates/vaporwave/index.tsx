@@ -29,6 +29,7 @@ export const meta: TemplateMeta = {
   description: 'A neon 1980s sunset with a perspective grid, a classical bust and glitchy lettering over a clean white page.',
   tags: ['Creative', 'Photo'],
   order: 360,
+  collection: 'style',
   supportsPhoto: true,
   columns: 1,
   defaultFont: 'montserrat',

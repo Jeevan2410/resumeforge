@@ -38,6 +38,7 @@ export const meta: TemplateMeta = {
   description: 'Commanding full-width colour band with name, title and contacts, strong section rules and a refined serif pairing for senior and leadership roles.',
   tags: ['Classic', 'Photo'],
   order: 50,
+  collection: 'classic',
   supportsPhoto: true,
   columns: 1,
   defaultFont: 'playfair',

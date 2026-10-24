@@ -1,16 +1,20 @@
 /**
- * Dashboard (#/): landing hero, "start new" starters, the "My resumes" grid (live thumbnails,
- * search, sort, rename, duplicate, delete) and a template showcase. OWNER: shell agent.
+ * Dashboard (#/): landing hero, "start new" starters, a "Browse templates" block (search, collection
+ * cards, popular picks → #/templates and the big preview), and the "My resumes" grid (live
+ * thumbnails, search, sort, rename, duplicate, delete). OWNER: shell agent.
  */
-import { Anvil, ArrowRight, Code2, FilePlus2, FileUp, FlaskConical, Gauge, Lock, Mail, Search, Target, type LucideIcon } from 'lucide-react'
-import { useEffect, useMemo, useState, type CSSProperties } from 'react'
+import { Anvil, ArrowRight, Code2, FilePlus2, FileUp, FlaskConical, Gauge, LayoutGrid, Lock, Mail, Search, Target, type LucideIcon } from 'lucide-react'
+import { useEffect, useMemo, useState, type CSSProperties, type FormEvent } from 'react'
 import type { StarterKind } from '../../lib/samples.ts'
-import { developerSample } from '../../lib/samples.ts'
-import { defaultDesign } from '../../lib/design.ts'
+import { COLLECTIONS, type CollectionInfo } from '../../lib/gallery.ts'
+import type { TemplateId } from '../../lib/types.ts'
 import { sortResumes, type ResumeSort } from '../../lib/shell.ts'
 import { navigate, uiActions, useResumes } from '../../store'
-import { TEMPLATES, TemplateThumbnail } from '../../templates'
+import { getTemplate, TEMPLATES, TemplateThumbnail } from '../../templates'
 import { Button, cn, inputClass, LazyMount, Segmented } from '../../ui'
+import { openPreview, useSampleDesigns } from '../gallery/galleryState.ts'
+import { TemplateCard } from '../gallery/TemplateGallery.tsx'
+import { TemplateSearch } from '../gallery/TemplateFilters.tsx'
 import { HeroGraphic } from './HeroGraphic.tsx'
 import { ResumeCard } from './ResumeCard.tsx'
 
@@ -68,13 +72,16 @@ export function Dashboard() {
               <Button size="md" variant="primary" iconRight={ArrowRight} onClick={() => newResume({ starter: 'developer' })}>
                 Create my resume
               </Button>
+              <Button size="md" icon={LayoutGrid} onClick={() => navigate({ name: 'templates', params: {} })}>
+                Browse {TEMPLATES.length} templates
+              </Button>
               {!empty && (
                 <Button size="md" onClick={() => navigate({ name: 'edit', id: resumes[0].id })}>
                   Explore the sample
                 </Button>
               )}
-              <Button size="md" icon={FileUp} onClick={() => uiActions.openModal('import')}>
-                Import JSON
+              <Button size="md" variant="ghost" icon={FileUp} onClick={() => uiActions.openModal('import')}>
+                Import
               </Button>
             </div>
           )}
@@ -124,6 +131,8 @@ export function Dashboard() {
           </button>
         </div>
       </section>
+
+      {fresh && <TemplateShelves />}
 
       {/* My resumes */}
       <section aria-labelledby="mine-h" className="mt-10">
@@ -178,7 +187,7 @@ export function Dashboard() {
         ))}
       </section>
 
-      <TemplateShowcase />
+      {!fresh && <TemplateShelves />}
 
       <footer className="mt-14 flex flex-wrap items-center justify-between gap-2 border-t border-slate-200 pt-6 text-xs text-slate-500 dark:border-slate-800 dark:text-slate-400">
         <p>ResumeForge — free, open-source resume builder. Your data never leaves this device.</p>
@@ -193,30 +202,87 @@ export function Dashboard() {
   )
 }
 
-function TemplateShowcase() {
-  const sample = useMemo(() => developerSample(), [])
-  const designs = useMemo(() => Object.fromEntries(TEMPLATES.map((t) => [t.id, { ...defaultDesign, template: t.id, accent: t.defaultAccent }])), [])
+/** Representative templates fanned out on each collection card. */
+const COVER: Record<CollectionInfo['id'], TemplateId[]> = {
+  classic: ['executive', 'classic', 'modern'],
+  style: ['popart', 'bauhaus', 'swiss'],
+  format: ['portfolio', 'infographic', 'skillsfirst'],
+  ui: ['studio', 'dashboard', 'showcase'],
+}
+const POPULAR: TemplateId[] = ['modern', 'classic', 'ats', 'swiss', 'dashboard']
+const browse = (params: Record<string, string> = {}) => navigate({ name: 'templates', params })
+
+function TemplateShelves() {
+  const { data, designs } = useSampleDesigns('developer')
+  const [q, setQ] = useState('')
+  const search = (e: FormEvent) => {
+    e.preventDefault()
+    browse(q.trim() ? { q: q.trim() } : {})
+  }
+  const counts = useMemo(() => Object.fromEntries(COLLECTIONS.map((c) => [c.id, TEMPLATES.filter((t) => t.collection === c.id).length])), [])
+  const popular = POPULAR.map((id) => getTemplate(id))
   return (
     <section aria-labelledby="tpl-h" className="mt-12">
-      <div className="mb-4 flex items-end justify-between gap-3">
-        <div>
+      <div className="mb-5 flex flex-wrap items-end gap-3">
+        <div className="mr-auto">
           <h2 id="tpl-h" className="text-lg font-extrabold tracking-tight text-slate-900 dark:text-white">
-            Templates
+            Browse templates <span className="ml-1 text-sm font-semibold text-slate-400">{TEMPLATES.length}</span>
           </h2>
           <p className="text-xs text-slate-500 dark:text-slate-400">Every template reads cleanly in applicant-tracking systems. Switch any time — your content stays.</p>
         </div>
+        <form onSubmit={search} role="search" className="flex w-full gap-2 sm:w-auto">
+          <TemplateSearch compact value={q} onChange={setQ} className="flex-1 sm:w-64" />
+          <Button type="submit" size="sm">
+            Search
+          </Button>
+        </form>
       </div>
-      <ul className="rf-scroll -mx-4 flex snap-x scroll-px-4 gap-4 overflow-x-auto px-4 pb-3 sm:mx-0 sm:scroll-px-0 sm:px-0">
-        {TEMPLATES.map((t) => (
-          <li key={t.id} className="w-40 shrink-0 snap-start sm:w-48">
-            <button type="button" onClick={() => newResume({ template: t.id, starter: 'developer' })} className="group block w-full rounded-xl text-left outline-none focus-visible:ring-2 focus-visible:ring-indigo-500" aria-label={`Use the ${t.name} template`}>
-              <LazyMount className="aspect-[210/297] w-full overflow-hidden rounded-lg bg-white shadow-sm ring-1 ring-slate-200 transition group-hover:-translate-y-0.5 group-hover:shadow-lg group-hover:ring-indigo-300 dark:ring-slate-800">
-                {(w) => <TemplateThumbnail data={sample} design={designs[t.id]} templateId={t.id} width={w} />}
-              </LazyMount>
-              <span className="mt-2 block text-sm font-bold text-slate-900 dark:text-white">{t.name}</span>
-              <span className="block truncate text-xs text-slate-500 dark:text-slate-400">{t.tags.slice(0, 2).join(' · ')}</span>
+
+      <ul className="rf-stagger grid gap-3 sm:grid-cols-2 lg:grid-cols-4" style={{ '--rf-step': '70ms' } as CSSProperties}>
+        {COLLECTIONS.map((c) => (
+          <li key={c.id}>
+            <button
+              type="button"
+              onClick={() => browse({ c: c.id })}
+              className="group flex h-full w-full flex-col overflow-hidden rounded-2xl bg-white text-left ring-1 ring-slate-200 transition outline-none hover:-translate-y-0.5 hover:shadow-lg hover:ring-indigo-300 focus-visible:ring-2 focus-visible:ring-indigo-500 dark:bg-slate-900 dark:ring-slate-800 dark:hover:ring-indigo-500/50"
+            >
+              <span className="relative block h-40 overflow-hidden bg-slate-100 dark:bg-slate-800/60" aria-hidden>
+                {COVER[c.id].map((id, i) => (
+                  <span
+                    key={id}
+                    className="absolute top-5 left-1/2 w-[38%] origin-bottom transition duration-300 ease-out"
+                    style={{ transform: `translateX(${-50 + (i - 1) * 62}%) rotate(${(i - 1) * 7}deg) translateY(${i === 1 ? 0 : 10}px)`, zIndex: i === 1 ? 2 : 1 }}
+                  >
+                    <LazyMount className="aspect-[210/297] w-full overflow-hidden rounded-[3px] bg-white shadow-md ring-1 ring-slate-900/10 transition duration-300 group-hover:shadow-xl">
+                      {(w) => <TemplateThumbnail data={data} design={designs[id]} templateId={id} width={w} />}
+                    </LazyMount>
+                  </span>
+                ))}
+              </span>
+              <span className="flex flex-1 flex-col p-4">
+                <span className="flex items-baseline gap-2">
+                  <span className="text-sm font-bold text-slate-900 dark:text-white">{c.label}</span>
+                  <span className="text-xs font-semibold text-slate-400 tabular-nums">{counts[c.id]}</span>
+                </span>
+                <span className="mt-0.5 block text-xs text-pretty text-slate-500 dark:text-slate-400">{c.blurb}</span>
+                <span className="mt-auto inline-flex items-center gap-1 pt-3 text-xs font-bold text-indigo-600 dark:text-indigo-300">
+                  See all {counts[c.id]} <ArrowRight className="size-3.5 transition group-hover:translate-x-0.5" aria-hidden />
+                </span>
+              </span>
             </button>
           </li>
+        ))}
+      </ul>
+
+      <div className="mt-8 mb-3 flex items-center justify-between gap-3">
+        <h3 className="text-sm font-bold text-slate-900 dark:text-white">Popular picks</h3>
+        <button type="button" onClick={() => browse()} className="inline-flex items-center gap-1 text-sm font-semibold text-indigo-600 hover:underline dark:text-indigo-300">
+          All {TEMPLATES.length} templates <ArrowRight className="size-4" aria-hidden />
+        </button>
+      </div>
+      <ul className="grid grid-cols-2 gap-x-4 gap-y-6 sm:grid-cols-3 lg:grid-cols-5">
+        {popular.map((t) => (
+          <TemplateCard key={t.id} t={t} data={data} design={designs[t.id]} onPreview={() => openPreview(t.id, POPULAR)} />
         ))}
       </ul>
     </section>

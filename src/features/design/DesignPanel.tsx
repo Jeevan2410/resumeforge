@@ -1,5 +1,5 @@
 /**
- * Design side-panel tab: template gallery (live thumbnails + tag filters), accent presets + custom
+ * Design side-panel tab: template gallery (live thumbnails, search, collections + tag filters), accent presets + custom
  * hex, font pairings (previewed in their own fonts, loaded on demand), size/spacing/margin sliders,
  * headings, dates, paper, photo & icons, reset to template defaults. OWNER: shell agent.
  */
@@ -7,11 +7,13 @@ import { Check, RotateCcw } from 'lucide-react'
 import { useEffect, useMemo, useState, type ReactNode } from 'react'
 import { ACCENT_PRESETS, DATE_FORMATS, defaultDesign, DESIGN_LIMITS, isHexColor, normalizeHex } from '../../lib/design.ts'
 import { FONT_PAIRINGS } from '../../lib/fonts.ts'
-import { filterByTag, resetDesignToTemplate, TEMPLATE_FILTERS, type TemplateFilter } from '../../lib/shell.ts'
+import { resetDesignToTemplate } from '../../lib/shell.ts'
 import type { Design, FontId } from '../../lib/types.ts'
 import { resumeActions, toast, useActiveDoc } from '../../store'
 import { ensureFont, getTemplate, TEMPLATES, TemplateThumbnail } from '../../templates'
 import { Button, cn, inputClass, LazyMount, Segmented, Slider, Toggle } from '../../ui'
+import { useTemplateFilter } from '../gallery/galleryState.ts'
+import { TemplateFilterBar } from '../gallery/TemplateFilters.tsx'
 import { FitControls } from './FitControls.tsx'
 
 const set = (patch: Partial<Design>, key?: string | null) => resumeActions.updateDesign(patch, key)
@@ -111,8 +113,7 @@ export function DesignPanel() {
 
 function TemplateGallery() {
   const doc = useActiveDoc()
-  const [filter, setFilter] = useState<TemplateFilter>('All')
-  const shown = filterByTag(TEMPLATES, filter)
+  const { filter, setFilter, shown } = useTemplateFilter()
   const design = doc?.design
   const designs = useMemo(() => {
     if (!design) return {}
@@ -122,22 +123,7 @@ function TemplateGallery() {
   const current = doc.design.template
   return (
     <Group title="Template" action={<span className="text-xs text-slate-500 dark:text-slate-400">{getTemplate(current).name}</span>}>
-      <div className="-mx-1 mb-3 flex flex-wrap gap-1 px-1" role="group" aria-label="Filter templates">
-        {TEMPLATE_FILTERS.map((f) => {
-          const n = filterByTag(TEMPLATES, f).length
-          return (
-            <button
-              key={f}
-              type="button"
-              aria-pressed={filter === f}
-              onClick={() => setFilter(f)}
-              className={cn('rounded-full px-2.5 py-1 text-xs font-semibold transition outline-none focus-visible:ring-2 focus-visible:ring-indigo-500', filter === f ? 'bg-slate-900 text-white dark:bg-white dark:text-slate-900' : 'bg-slate-100 text-slate-600 hover:bg-slate-200 dark:bg-slate-800 dark:text-slate-300 dark:hover:bg-slate-700')}
-            >
-              {f} <span className="opacity-60">{n}</span>
-            </button>
-          )
-        })}
-      </div>
+      <TemplateFilterBar compact withSearch value={filter} onChange={setFilter} className="mb-3" />
       <div className="grid grid-cols-2 gap-3 sm:grid-cols-3" role="radiogroup" aria-label="Template">
         {shown.map((t) => {
           const on = t.id === current
@@ -162,7 +148,7 @@ function TemplateGallery() {
             </button>
           )
         })}
-        {shown.length === 0 && <p className="col-span-full py-4 text-center text-sm text-slate-500">No templates with this tag yet.</p>}
+        {shown.length === 0 && <p className="col-span-full py-4 text-center text-sm text-slate-500">No templates match — try another word or reset the filters.</p>}
       </div>
     </Group>
   )

@@ -31,6 +31,7 @@ export const meta: TemplateMeta = {
   description: 'A full-height patterned right strip crowned by a collage name card, clashing stripes and dots, with calm cream cards for the text.',
   tags: ['Creative', 'Two-column', 'Photo'],
   order: 280,
+  collection: 'style',
   supportsPhoto: true,
   columns: 2,
   defaultFont: 'playfair',

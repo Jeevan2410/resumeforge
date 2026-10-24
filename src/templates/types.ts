@@ -12,6 +12,9 @@ import type { Design, FontId, ResumeData, SectionKind, TemplateId } from '../lib
 
 export type TemplateTag = 'ATS-friendly' | 'Two-column' | 'Photo' | 'Creative' | 'One-page' | 'Classic' | 'Modern'
 
+/** Gallery shelf: classic layouts, design styles, résumé formats (infographic …) and app-like UI templates. */
+export type TemplateCollection = 'classic' | 'style' | 'format' | 'ui'
+
 export interface TemplateMeta {
   id: TemplateId
   name: string
@@ -20,6 +23,8 @@ export interface TemplateMeta {
   tags: TemplateTag[]
   /** Gallery position (ascending). Modern = 10, then 20, 30 … */
   order: number
+  /** Gallery shelf (see TemplateCollection). */
+  collection: TemplateCollection
   /** Renders basics.photo when design.showPhoto is on. */
   supportsPhoto: boolean
   columns: 1 | 2

@@ -1,23 +1,28 @@
 /**
  * "New resume" dialog: name, starter content (blank / developer / researcher) and template (live
- * thumbnails with tag filters). Opened with uiActions.openModal('new-resume', { starter?, template? }).
+ * thumbnails with search, collection tabs and tag filters). Opened with
+ * uiActions.openModal('new-resume', { starter?, template?, accent? }).
  * OWNER: shell agent.
  */
 import { Check, Code2, FilePlus2, FlaskConical, type LucideIcon } from 'lucide-react'
 import { useId, useMemo, useState, type FormEvent } from 'react'
 import { defaultDesign } from '../../lib/design.ts'
 import { developerSample, researcherSample, type StarterKind } from '../../lib/samples.ts'
-import { filterByTag, TEMPLATE_FILTERS, uniqueName, type TemplateFilter } from '../../lib/shell.ts'
+import { uniqueName } from '../../lib/shell.ts'
 import type { Design, TemplateId } from '../../lib/types.ts'
 import { navigate, resumeActions, toast, useResumes } from '../../store'
 import { getTemplate, TEMPLATES, TemplateThumbnail } from '../../templates'
 import { Button, cn, LazyMount, Modal, TextField } from '../../ui'
+import { useTemplateFilter } from '../gallery/galleryState.ts'
+import { TemplateFilterBar, TemplateSearch } from '../gallery/TemplateFilters.tsx'
 
 export interface NewResumeDialogProps {
   open: boolean
   onClose: () => void
   starter?: StarterKind
   template?: TemplateId
+  /** Accent picked in the template preview (default: the template's own). */
+  accent?: string
 }
 
 const STARTERS: { id: StarterKind; label: string; hint: string; icon: LucideIcon }[] = [
@@ -28,12 +33,13 @@ const STARTERS: { id: StarterKind; label: string; hint: string; icon: LucideIcon
 
 const DEFAULT_TEMPLATE: Record<StarterKind, TemplateId> = { blank: 'modern', developer: 'modern', researcher: 'academic' }
 
-export function NewResumeDialog({ open, onClose, starter: initialStarter, template: initialTemplate }: NewResumeDialogProps) {
+export function NewResumeDialog({ open, onClose, starter: initialStarter, template: initialTemplate, accent: initialAccent }: NewResumeDialogProps) {
   const resumes = useResumes()
   const [starter, setStarter] = useState<StarterKind>(initialStarter ?? 'blank')
   const [template, setTemplate] = useState<TemplateId>(() => getTemplate(initialTemplate ?? DEFAULT_TEMPLATE[initialStarter ?? 'blank']).id)
   const [templateTouched, setTemplateTouched] = useState(!!initialTemplate)
-  const [filter, setFilter] = useState<TemplateFilter>('All')
+  // Opened from a template card: start on that template's shelf so the selection is in view.
+  const { filter, setFilter, shown } = useTemplateFilter(initialTemplate ? { collection: getTemplate(initialTemplate).collection } : {})
   const [name, setName] = useState('')
   const groupId = useId()
 
@@ -44,7 +50,6 @@ export function NewResumeDialog({ open, onClose, starter: initialStarter, templa
     for (const t of TEMPLATES) out[t.id] = { ...defaultDesign, template: t.id, accent: t.defaultAccent }
     return out
   }, [])
-  const shown = filterByTag(TEMPLATES, filter)
   const defaultName = starter === 'blank' ? 'Untitled resume' : `${sample.basics.name} — ${sample.basics.title}`
 
   const pickStarter = (s: StarterKind) => {
@@ -56,7 +61,8 @@ export function NewResumeDialog({ open, onClose, starter: initialStarter, templa
     e?.preventDefault()
     const meta = getTemplate(template)
     const finalName = uniqueName(name.trim() || defaultName, resumes.map((r) => r.name))
-    const id = resumeActions.createResume(starter, { name: finalName, design: { template: meta.id, accent: meta.defaultAccent } })
+    const accent = initialAccent && meta.id === initialTemplate ? initialAccent : meta.defaultAccent
+    const id = resumeActions.createResume(starter, { name: finalName, design: { template: meta.id, accent } })
     onClose()
     navigate({ name: 'edit', id })
     toast(starter === 'blank' ? 'New resume created — start with your name' : 'Sample loaded — replace it with your own details', 'success')
@@ -119,20 +125,9 @@ export function NewResumeDialog({ open, onClose, starter: initialStarter, templa
             <legend className="mr-auto text-xs font-semibold text-slate-600 dark:text-slate-300">
               Template · <span className="text-slate-900 dark:text-white">{getTemplate(template).name}</span>
             </legend>
-            <div className="flex flex-wrap gap-1" role="group" aria-label="Filter templates">
-              {TEMPLATE_FILTERS.map((f) => (
-                <button
-                  key={f}
-                  type="button"
-                  aria-pressed={filter === f}
-                  onClick={() => setFilter(f)}
-                  className={cn('rounded-full px-2.5 py-1 text-xs font-semibold transition outline-none focus-visible:ring-2 focus-visible:ring-indigo-500', filter === f ? 'bg-slate-900 text-white dark:bg-white dark:text-slate-900' : 'bg-slate-100 text-slate-600 hover:bg-slate-200 dark:bg-slate-800 dark:text-slate-300 dark:hover:bg-slate-700')}
-                >
-                  {f}
-                </button>
-              ))}
-            </div>
+            <TemplateSearch compact value={filter.query} onChange={(query) => setFilter({ ...filter, query })} className="w-full sm:w-56" />
           </div>
+          <TemplateFilterBar compact value={filter} onChange={setFilter} className="mb-3" />
           <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4" role="radiogroup" aria-label="Template">
             {shown.map((t) => {
               const on = t.id === template
@@ -163,7 +158,7 @@ export function NewResumeDialog({ open, onClose, starter: initialStarter, templa
                 </button>
               )
             })}
-            {shown.length === 0 && <p className="col-span-full py-6 text-center text-sm text-slate-500">No templates with this tag yet.</p>}
+            {shown.length === 0 && <p className="col-span-full py-6 text-center text-sm text-slate-500">No templates match — try another word or reset the filters.</p>}
           </div>
         </fieldset>
       </form>

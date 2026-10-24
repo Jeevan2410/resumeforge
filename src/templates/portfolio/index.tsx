@@ -34,6 +34,7 @@ export const meta: TemplateMeta = {
   description: 'Projects first: a grid of project tiles with colour covers, links and stack chips, followed by a compact experience and skills section.',
   tags: ['Modern', 'Creative', 'Photo'],
   order: 510,
+  collection: 'format',
   supportsPhoto: true,
   columns: 1,
   defaultFont: 'inter',

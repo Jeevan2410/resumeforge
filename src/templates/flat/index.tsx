@@ -31,6 +31,7 @@ export const meta: TemplateMeta = {
   description: 'Solid colour blocks, a two-dimensional illustration and label headings, with zero gradients or drop shadows.',
   tags: ['Modern', 'Two-column', 'Photo'],
   order: 250,
+  collection: 'style',
   supportsPhoto: true,
   columns: 2,
   defaultFont: 'poppins',

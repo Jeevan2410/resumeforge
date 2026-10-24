@@ -36,6 +36,7 @@ export const meta: TemplateMeta = {
   description: 'Playful but polished: a rounded header card, icon contact chips, accent pills for dates and skills, and a soft side panel — made for product and tech teams.',
   tags: ['Modern', 'Two-column', 'Photo', 'Creative'],
   order: 100,
+  collection: 'classic',
   supportsPhoto: true,
   columns: 2,
   defaultFont: 'montserrat',

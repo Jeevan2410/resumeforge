@@ -34,6 +34,7 @@ export const meta: TemplateMeta = {
   description: 'A career at a glance: key figures, a timeline chart of your roles, skill percentage bars, language rings and certification badges.',
   tags: ['Modern', 'Two-column', 'Photo'],
   order: 500,
+  collection: 'format',
   supportsPhoto: true,
   columns: 2,
   defaultFont: 'poppins',

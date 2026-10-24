@@ -31,6 +31,7 @@ export const meta: TemplateMeta = {
   description: 'A 1960s mission-control console: a teal space-age header over an instrument panel of skill dials, then one clean column.',
   tags: ['Creative', 'Photo'],
   order: 370,
+  collection: 'style',
   supportsPhoto: true,
   columns: 1,
   defaultFont: 'montserrat',

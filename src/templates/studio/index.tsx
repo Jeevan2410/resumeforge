@@ -34,6 +34,7 @@ export const meta: TemplateMeta = {
   description: 'Built like a design tool: a toolbar, a layers panel listing your skills as components, and every section as a frame on a dotted canvas.',
   tags: ['Modern', 'Creative', 'Two-column', 'Photo'],
   order: 540,
+  collection: 'ui',
   supportsPhoto: true,
   columns: 2,
   defaultFont: 'inter',

@@ -30,6 +30,7 @@ export const meta: TemplateMeta = {
   description: 'A modular header grid of red, blue and yellow tiles, heavy geometric type and colour-block section headings on thick black rules.',
   tags: ['Creative', 'Photo'],
   order: 230,
+  collection: 'style',
   supportsPhoto: true,
   columns: 1,
   defaultFont: 'poppins',

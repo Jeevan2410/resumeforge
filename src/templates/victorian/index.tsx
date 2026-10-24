@@ -31,6 +31,7 @@ export const meta: TemplateMeta = {
   description: 'An engraved certificate: ornate jewel-tone borders with corner flourishes, a centred cartouche and two columns split by a spine of fleurons.',
   tags: ['Classic', 'Two-column', 'Photo'],
   order: 420,
+  collection: 'style',
   supportsPhoto: true,
   columns: 2,
   defaultFont: 'playfair',

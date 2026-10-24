@@ -32,6 +32,7 @@ export const meta: TemplateMeta = {
   description: 'A functional résumé: a core-competencies grid of skill cards with level meters up front, then a condensed career history.',
   tags: ['Modern', 'Classic', 'Photo'],
   order: 520,
+  collection: 'format',
   supportsPhoto: true,
   columns: 1,
   defaultFont: 'montserrat',

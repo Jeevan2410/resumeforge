@@ -38,6 +38,7 @@ export const meta: TemplateMeta = {
   description: 'A bold colour band with your photo and a display-weight name over a tinted skills sidebar, with icon-led sections and date pills.',
   tags: ['Creative', 'Two-column', 'Photo', 'Modern'],
   order: 80,
+  collection: 'classic',
   supportsPhoto: true,
   columns: 2,
   defaultFont: 'poppins',
