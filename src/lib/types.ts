@@ -124,6 +124,9 @@ export type TemplateId =
   | 'cutout'
   | 'warhol'
   | 'groovy'
+  | 'newspaper'
+  | 'boardingpass'
+  | 'chat'
 
 export type FontId = 'inter' | 'merriweather' | 'playfair' | 'garamond' | 'poppins' | 'plex' | 'montserrat' | 'raleway' | 'system' | 'georgia'
 
