@@ -355,3 +355,54 @@
 :where(.rf-doc) :where(.rf-interest__details)::before {
   content: ' — ';
 }
+
+/* ---------- compact rows (shared/inline.tsx) ---------- */
+
+:where(.rf-doc) :where(.rf-srows) {
+  display: grid;
+  grid-template-columns: minmax(0, max-content) minmax(0, 1fr);
+  column-gap: 1.1em;
+  row-gap: 0.22em;
+}
+:where(.rf-doc) :where(.rf-srow) {
+  display: contents;
+}
+:where(.rf-doc) :where(.rf-srow__name) {
+  font-weight: 600;
+  color: var(--rf-heading);
+}
+:where(.rf-doc) :where(.rf-srow__level) {
+  color: var(--rf-muted);
+}
+:where(.rf-doc) :where(.rf-clines) > :where(.rf-cline + .rf-cline) {
+  margin-top: 0.3em;
+}
+:where(.rf-doc) :where(.rf-cline__row) {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1em;
+}
+:where(.rf-doc) :where(.rf-cline__l) {
+  min-width: 0;
+}
+:where(.rf-doc) :where(.rf-cline__title) {
+  font-weight: 600;
+  color: var(--rf-heading);
+}
+:where(.rf-doc) :where(.rf-cline__by),
+:where(.rf-doc) :where(.rf-cline__dash) {
+  color: var(--rf-muted);
+}
+:where(.rf-doc) :where(.rf-cline__date) {
+  flex: none;
+  font-size: 0.88em;
+  color: var(--rf-muted);
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+:where(.rf-doc) :where(.rf-cline__link),
+:where(.rf-doc) :where(.rf-cline__note) {
+  display: block;
+  font-size: 0.9em;
+}

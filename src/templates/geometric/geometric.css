@@ -1,0 +1,152 @@
+/* Geometric template — every selector is scoped to .rf-t-geometric. */
+
+.rf-t-geometric .gm-page {
+  position: relative;
+  height: 100%;
+  padding: calc(var(--rf-margin) * 0.75) var(--rf-margin) var(--rf-margin);
+  background-color: #fff;
+  background-image: radial-gradient(circle, #d9e2ea 0.55px, transparent 0.7px);
+  background-size: 5mm 5mm;
+  background-position: center;
+  color: #1c2530;
+}
+
+.rf-t-geometric .gm-tri {
+  fill: var(--rf-accent);
+}
+.rf-t-geometric .gm-tri--soft {
+  fill: rgb(var(--rf-accent-rgb) / 0.35);
+}
+.rf-t-geometric .gm-dot {
+  fill: var(--rf-accent);
+}
+.rf-t-geometric .gm-ring {
+  fill: #fff;
+}
+.rf-t-geometric .gm-frieze {
+  display: block;
+  width: 62%;
+  height: auto;
+  margin: 0 auto;
+}
+.rf-t-geometric .gm-frieze--foot {
+  position: absolute;
+  left: 19%;
+  bottom: calc(var(--rf-margin) * 0.35);
+  width: 62%;
+  transform: scaleY(-1);
+}
+
+/* ---------- header ---------- */
+
+.rf-t-geometric .gm-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: calc(var(--rf-section-gap) * 0.75);
+}
+.rf-t-geometric .gm-frieze + * {
+  margin-top: 3.5mm;
+}
+.rf-t-geometric .gm-photo {
+  margin-bottom: 3mm;
+  box-shadow:
+    0 0 0 1.5px #fff,
+    0 0 0 3px var(--rf-accent);
+}
+.rf-t-geometric .gm-name {
+  font-family: var(--rf-font-heading);
+  font-size: 2.4em;
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #111a24;
+}
+.rf-t-geometric .gm-title {
+  margin-top: 0.35em;
+  font-family: var(--rf-font-heading);
+  font-size: 0.98em;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--rf-accent-ink);
+}
+.rf-t-geometric .gm-contact {
+  justify-content: center;
+  margin-top: 0.8em;
+  font-size: 0.88em;
+  color: #3b4754;
+}
+.rf-t-geometric .gm-contact .rf-contact__icon {
+  color: var(--rf-accent-ink);
+}
+
+/* ---------- sections ---------- */
+
+.rf-t-geometric .gm-h {
+  display: flex;
+  align-items: center;
+  gap: 0.8em;
+  margin-bottom: 0.6em;
+  font-family: var(--rf-font-heading);
+  font-size: 0.9em;
+  font-weight: 700;
+  letter-spacing: calc(var(--rf-heading-tracking) + 0.1em);
+  text-transform: var(--rf-heading-transform);
+  color: #111a24;
+}
+.rf-t-geometric .gm-h__text {
+  padding: 0 0.2em;
+  background: #fff;
+}
+.rf-t-geometric .gm-h__rule {
+  position: relative;
+  flex: 1;
+  height: 1.5px;
+  background: var(--rf-accent);
+}
+.rf-t-geometric .gm-h__rule::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 0.5em;
+  height: 0.5em;
+  background: var(--rf-accent);
+  transform: translateY(-50%) rotate(45deg);
+}
+.rf-t-geometric .gm-h__rule:first-child::after {
+  left: 0;
+}
+.rf-t-geometric .gm-h__rule:last-child::after {
+  right: 0;
+}
+
+.rf-t-geometric .gm-summary {
+  text-align: center;
+  color: #2a3542;
+}
+.rf-t-geometric .rf-entry__title,
+.rf-t-geometric .rf-srow__name,
+.rf-t-geometric .rf-cline__title {
+  font-family: var(--rf-font-heading);
+  font-weight: 700;
+  color: #111a24;
+}
+.rf-t-geometric .rf-entry__desc,
+.rf-t-geometric .rf-bullets > li,
+.rf-t-geometric .gm-compact {
+  color: #2a3542;
+}
+.rf-t-geometric .rf-entry__date {
+  font-weight: 600;
+  color: #3b4754;
+}
+.rf-t-geometric .rf-bullets > li::before {
+  background: var(--rf-accent);
+  transform: rotate(45deg) scale(0.85);
+}
+.rf-t-geometric .gm-compact {
+  font-size: 1em;
+}

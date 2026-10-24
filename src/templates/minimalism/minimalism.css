@@ -1,0 +1,93 @@
+/* Minimalism template — every selector is scoped to .rf-t-minimalism. */
+
+.rf-t-minimalism .mn-page {
+  height: 100%;
+  padding: var(--rf-margin) calc(var(--rf-margin) * 1.25) var(--rf-margin);
+  color: #111;
+}
+
+.rf-t-minimalism .mn-header {
+  margin-bottom: calc(var(--rf-section-gap) * 1.15);
+}
+.rf-t-minimalism .mn-photo {
+  margin-bottom: 1.2em;
+  filter: grayscale(1);
+}
+.rf-t-minimalism .mn-name {
+  font-family: var(--rf-font-heading);
+  font-size: 2.7em;
+  font-weight: 300;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  color: #111;
+}
+.rf-t-minimalism .mn-role {
+  margin-top: 0.3em;
+  font-size: 1.1em;
+  font-weight: 400;
+  color: #555;
+}
+.rf-t-minimalism .mn-contact {
+  margin-top: 1.1em;
+  font-size: 0.88em;
+  color: #555;
+  column-gap: 1.6em;
+}
+.rf-t-minimalism .mn-contact .rf-link {
+  color: inherit;
+}
+
+.rf-t-minimalism .mn-h {
+  margin-bottom: 0.85em;
+  font-family: var(--rf-font-heading);
+  font-size: 0.7em;
+  font-weight: 600;
+  letter-spacing: calc(var(--rf-heading-tracking) + 0.12em);
+  text-transform: var(--rf-heading-transform);
+  color: #767676;
+}
+
+.rf-t-minimalism .mn-summary {
+  max-width: 92%;
+  font-size: 1.04em;
+  color: #222;
+}
+.rf-t-minimalism .rf-entry__title,
+.rf-t-minimalism .rf-cline__title,
+.rf-t-minimalism .rf-srow__name {
+  font-weight: 600;
+  color: #111;
+}
+.rf-t-minimalism .rf-entry__sub {
+  font-weight: 400;
+  color: #555;
+}
+.rf-t-minimalism .rf-entry__location,
+.rf-t-minimalism .rf-entry__dot,
+.rf-t-minimalism .rf-entry__aside,
+.rf-t-minimalism .rf-entry__date,
+.rf-t-minimalism .rf-cline__date,
+.rf-t-minimalism .rf-cline__by,
+.rf-t-minimalism .rf-cline__dash,
+.rf-t-minimalism .rf-srow__level {
+  color: #888;
+  font-weight: 400;
+}
+.rf-t-minimalism .rf-entry__desc,
+.rf-t-minimalism .rf-bullets > li,
+.rf-t-minimalism .mn-compact {
+  color: #333;
+}
+.rf-t-minimalism .rf-bullets {
+  margin-top: 0.35em;
+}
+.rf-t-minimalism .rf-entry__keywords {
+  color: #888;
+}
+.rf-t-minimalism .rf-link {
+  color: var(--rf-accent-ink);
+  text-decoration: none;
+}
+.rf-t-minimalism .mn-compact {
+  font-size: 1em;
+}
