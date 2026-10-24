@@ -1,0 +1,211 @@
+/* Retro-Futurism template — every selector is scoped to .rf-t-retrofuturism. */
+
+.rf-t-retrofuturism .rf2-page {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: var(--rf2-cream);
+  color: var(--rf2-ink);
+}
+
+/* ---------- header ---------- */
+
+.rf-t-retrofuturism .rf2-header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 5mm;
+  min-height: 38mm;
+  padding: calc(var(--rf-margin) * 0.8) var(--rf-margin);
+  overflow: hidden;
+  background: var(--rf-accent);
+  color: var(--rf-on-accent);
+  border-radius: 0 0 26mm 0;
+}
+.rf-t-retrofuturism .rf2-space {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.rf-t-retrofuturism .rf2-boomerang {
+  fill: rgb(248 241 226 / 0.16);
+}
+.rf-t-retrofuturism .rf2-orbit {
+  fill: none;
+  stroke: var(--rf2-cream);
+  stroke-width: 1.4;
+  opacity: 0.8;
+}
+.rf-t-retrofuturism .rf2-orbit--front {
+  opacity: 1;
+  stroke-width: 1.8;
+}
+.rf-t-retrofuturism .rf2-planet {
+  fill: var(--rf2-coral);
+}
+.rf-t-retrofuturism .rf2-moon,
+.rf-t-retrofuturism .rf2-dot {
+  fill: var(--rf2-cream);
+}
+.rf-t-retrofuturism .rf2-star path:first-child {
+  stroke: none;
+}
+.rf-t-retrofuturism .rf2-ray {
+  fill: none;
+  stroke-width: 0.9;
+}
+.rf-t-retrofuturism .rf2-star--sun {
+  fill: var(--rf2-mustard);
+  stroke: var(--rf2-mustard);
+}
+.rf-t-retrofuturism .rf2-star--coral {
+  fill: var(--rf2-coral);
+  stroke: var(--rf2-coral);
+}
+.rf-t-retrofuturism .rf2-star--cream {
+  fill: var(--rf2-cream);
+  stroke: var(--rf2-cream);
+}
+.rf-t-retrofuturism .rf2-header__text {
+  position: relative;
+  min-width: 0;
+  max-width: 60%;
+}
+.rf-t-retrofuturism .rf2-name {
+  font-family: var(--rf-font-heading);
+  font-size: 2.5em;
+  font-weight: 800;
+  font-style: italic;
+  line-height: 1.02;
+  letter-spacing: -0.01em;
+}
+.rf-t-retrofuturism .rf2-title {
+  display: inline-block;
+  margin-top: 0.6em;
+  padding: 0.18em 0.85em;
+  font-family: var(--rf-font-heading);
+  font-size: 0.95em;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  border-radius: 999px 999px 999px 0;
+  background: var(--rf2-mustard);
+  color: var(--rf2-ink);
+}
+.rf-t-retrofuturism .rf2-photo {
+  position: relative;
+  flex: none;
+  box-shadow:
+    0 0 0 1.2mm var(--rf2-cream),
+    0 0 0 2.4mm var(--rf2-mustard);
+}
+.rf-t-retrofuturism .rf2-cap {
+  height: 4mm;
+  background: linear-gradient(90deg, var(--rf-accent) 0 60%, var(--rf2-mustard) 60% 80%, var(--rf2-coral) 80%);
+}
+
+/* ---------- columns ---------- */
+
+.rf-t-retrofuturism .rf2-cols {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+  gap: 5mm;
+  padding: calc(var(--rf-margin) * 0.75) var(--rf-margin) 0;
+}
+.rf-t-retrofuturism .rf2-main {
+  flex: 1 1 0;
+  min-width: 0;
+}
+.rf-t-retrofuturism .rf2-side {
+  flex: 0 0 31%;
+  align-self: flex-start;
+  min-width: 0;
+  padding: 5mm 4.5mm 3mm;
+  background: #efe3c8;
+  border: 1.5px solid rgb(36 48 47 / 0.15);
+  border-radius: 14mm 3mm 14mm 3mm;
+  font-size: 0.92em;
+  --rf-level-on: var(--rf2-coral);
+  --rf-level-off: rgb(226 103 76 / 0.2);
+}
+/* continuation pages with nothing left for the side column: keep its width, drop the empty panel */
+.rf-t-retrofuturism .rf2-side:not(:has(.rf-block)) {
+  visibility: hidden;
+}
+
+.rf-t-retrofuturism .rf2-h {
+  display: flex;
+  align-items: center;
+  gap: 0.45em;
+  margin-bottom: 0.55em;
+  font-family: var(--rf-font-heading);
+  font-size: 1.15em;
+  font-weight: 800;
+  font-style: italic;
+  letter-spacing: var(--rf-heading-tracking);
+  text-transform: var(--rf-heading-transform);
+  color: var(--rf-accent-ink);
+}
+.rf-t-retrofuturism .rf2-h::after {
+  content: '';
+  flex: 1;
+  height: 3px;
+  margin-left: 0.3em;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--rf2-mustard) 0 30%, transparent 30% 34%, rgb(var(--rf-accent-rgb) / 0.3) 34%);
+}
+.rf-t-retrofuturism .rf2-mark {
+  width: 0.9em;
+  height: 0.9em;
+  fill: var(--rf2-coral);
+}
+.rf-t-retrofuturism .rf2-sh {
+  margin-bottom: 0.55em;
+  font-family: var(--rf-font-heading);
+  font-size: 0.82em;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--rf2-ink);
+}
+.rf-t-retrofuturism .rf2-sh::after {
+  content: '';
+  display: block;
+  width: 2em;
+  height: 3px;
+  margin-top: 0.3em;
+  border-radius: 2px;
+  background: var(--rf2-coral);
+}
+.rf-t-retrofuturism .rf2-contact {
+  row-gap: 0.45em;
+}
+.rf-t-retrofuturism .rf2-contact .rf-contact__icon {
+  color: var(--rf-accent-ink);
+}
+.rf-t-retrofuturism .rf2-summary,
+.rf-t-retrofuturism .rf-entry__desc,
+.rf-t-retrofuturism .rf-bullets > li,
+.rf-t-retrofuturism .rf2-inline {
+  color: #2f3b3a;
+}
+.rf-t-retrofuturism .rf-entry__title {
+  font-family: var(--rf-font-heading);
+  font-weight: 700;
+  color: var(--rf2-ink);
+}
+.rf-t-retrofuturism .rf-entry__date {
+  font-weight: 700;
+  color: #6b5a3a;
+}
+.rf-t-retrofuturism .rf-bullets > li::before {
+  background: var(--rf2-mustard);
+}
+.rf-t-retrofuturism .rf2-side .rf-skill__name,
+.rf-t-retrofuturism .rf2-side .rf-lang__name {
+  font-weight: 700;
+}
+.rf-t-retrofuturism .rf2-inline {
+  font-size: 1em;
+}

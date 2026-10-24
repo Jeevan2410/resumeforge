@@ -1,0 +1,139 @@
+/* Vaporwave template — every selector is scoped to .rf-t-vaporwave. */
+
+.rf-t-vaporwave .vw-page {
+  height: 100%;
+  color: var(--vw-ink);
+}
+
+/* ---------- header ---------- */
+
+.rf-t-vaporwave .vw-header {
+  position: relative;
+  min-height: 46mm;
+  overflow: hidden;
+  background: linear-gradient(180deg, var(--vw-night) 0%, var(--vw-violet) 45%, var(--rf-accent) 78%, #ff9a8b 100%);
+}
+.rf-t-vaporwave .vw-scene {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.rf-t-vaporwave .vw-floor {
+  fill: var(--vw-night);
+}
+.rf-t-vaporwave .vw-grid line {
+  stroke: var(--vw-cyan);
+  stroke-width: 0.6;
+  opacity: 0.85;
+}
+.rf-t-vaporwave .vw-palm {
+  fill: var(--vw-night);
+  stroke: var(--vw-night);
+}
+.rf-t-vaporwave .vw-bust path {
+  fill: #e9e3f5;
+}
+.rf-t-vaporwave .vw-bust .vw-bust__hair {
+  fill: #c9bce6;
+}
+.rf-t-vaporwave .vw-header__inner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 5mm;
+  padding: calc(var(--rf-margin) * 0.85) var(--rf-margin) 18mm;
+}
+.rf-t-vaporwave .vw-header__text {
+  min-width: 0;
+  max-width: 50%;
+}
+.rf-t-vaporwave .vw-name {
+  font-family: var(--rf-font-heading);
+  font-size: 2.5em;
+  font-weight: 800;
+  line-height: 1.02;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: #fff;
+  text-shadow:
+    -2px 0 0 var(--vw-cyan),
+    2px 0 0 #ff3d9a;
+}
+.rf-t-vaporwave .vw-title {
+  display: inline-block;
+  margin-top: 0.55em;
+  padding: 0.15em 0.6em;
+  font-size: 0.95em;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--vw-night);
+  background: var(--vw-cyan);
+}
+.rf-t-vaporwave .vw-photo {
+  flex: none;
+  box-shadow:
+    0 0 0 1mm var(--vw-cyan),
+    0 0 0 2mm #ff3d9a;
+}
+.rf-t-vaporwave .vw-cap {
+  height: 5mm;
+  background:
+    repeating-linear-gradient(90deg, rgb(37 216 240 / 0.8) 0 1px, transparent 1px 6mm),
+    linear-gradient(90deg, var(--vw-violet), var(--rf-accent));
+}
+
+/* ---------- body ---------- */
+
+.rf-t-vaporwave .vw-body {
+  padding: calc(var(--rf-margin) * 0.55) var(--rf-margin) 0;
+}
+.rf-t-vaporwave .vw-contact {
+  margin-bottom: var(--rf-section-gap);
+  font-size: 0.9em;
+  color: #3a2f55;
+}
+.rf-t-vaporwave .vw-contact .rf-contact__icon {
+  color: var(--rf-accent-ink);
+}
+.rf-t-vaporwave .vw-h {
+  margin-bottom: 0.55em;
+  font-family: var(--rf-font-heading);
+  font-size: 0.92em;
+  font-weight: 800;
+  letter-spacing: calc(var(--rf-heading-tracking) + 0.06em);
+  text-transform: var(--rf-heading-transform);
+  color: var(--vw-violet);
+}
+.rf-t-vaporwave .vw-h::after {
+  content: '';
+  display: block;
+  height: 2px;
+  margin-top: 0.3em;
+  background: linear-gradient(90deg, var(--vw-cyan), var(--vw-violet) 40%, var(--rf-accent) 75%, transparent);
+}
+.rf-t-vaporwave .vw-summary,
+.rf-t-vaporwave .rf-entry__desc,
+.rf-t-vaporwave .rf-bullets > li,
+.rf-t-vaporwave .vw-compact {
+  color: #2d2445;
+}
+.rf-t-vaporwave .rf-entry__title,
+.rf-t-vaporwave .rf-srow__name,
+.rf-t-vaporwave .rf-cline__title {
+  font-family: var(--rf-font-heading);
+  font-weight: 700;
+  color: var(--vw-ink);
+}
+.rf-t-vaporwave .rf-entry__date {
+  font-weight: 700;
+  color: var(--vw-violet);
+}
+.rf-t-vaporwave .rf-bullets > li::before {
+  border-radius: 0;
+  background: linear-gradient(135deg, var(--vw-cyan), var(--rf-accent));
+}
+.rf-t-vaporwave .vw-compact {
+  font-size: 1em;
+}

@@ -1,0 +1,130 @@
+/* Psychedelic template — every selector is scoped to .rf-t-psychedelic. */
+
+.rf-t-psychedelic .ps-page {
+  height: 100%;
+  color: #1d1029;
+}
+
+/* ---------- header ---------- */
+
+.rf-t-psychedelic .ps-header {
+  position: relative;
+  overflow: hidden;
+  background: var(--ps-deep);
+}
+.rf-t-psychedelic .ps-swirl {
+  position: absolute;
+  inset: -40%;
+  background:
+    repeating-radial-gradient(circle at 78% 50%, transparent 0 7mm, rgb(255 45 149 / 0.55) 7mm 9mm, transparent 9mm 13mm, rgb(255 138 0 / 0.5) 13mm 15mm, transparent 15mm 19mm, rgb(182 227 0 / 0.45) 19mm 20.5mm),
+    repeating-conic-gradient(from 0deg at 78% 50%, var(--rf-accent) 0deg 10deg, var(--ps-deep) 10deg 20deg);
+}
+.rf-t-psychedelic .ps-header__inner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 6mm;
+  padding: calc(var(--rf-margin) * 0.6) var(--rf-margin) calc(var(--rf-margin) * 0.4);
+}
+.rf-t-psychedelic .ps-header__text {
+  min-width: 0;
+  max-width: 68%;
+  padding: 3mm 7mm 3.5mm;
+  border-radius: 10mm;
+  background: rgb(42 8 69 / 0.86);
+}
+.rf-t-psychedelic .ps-name {
+  font-family: var(--rf-font-heading);
+  font-size: 2.6em;
+  font-weight: 800;
+  line-height: 1.02;
+  letter-spacing: -0.01em;
+  color: #fff7d6;
+  text-shadow:
+    2px 2px 0 var(--ps-pink),
+    4px 4px 0 var(--ps-orange),
+    6px 6px 0 var(--rf-accent);
+}
+.rf-t-psychedelic .ps-title {
+  margin-top: 0.5em;
+  font-family: var(--rf-font-heading);
+  font-size: 1.05em;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--ps-lime);
+}
+.rf-t-psychedelic .ps-photo {
+  flex: none;
+  box-shadow:
+    0 0 0 1.2mm var(--ps-lime),
+    0 0 0 2.4mm var(--ps-pink);
+}
+.rf-t-psychedelic .ps-drip {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 6mm;
+  margin-bottom: -1px;
+  fill: #fff;
+  transform: scaleY(-1);
+}
+.rf-t-psychedelic .ps-cap {
+  height: 5mm;
+  background: repeating-linear-gradient(90deg, var(--rf-accent) 0 8mm, var(--ps-pink) 8mm 16mm, var(--ps-orange) 16mm 24mm, var(--ps-lime) 24mm 32mm);
+}
+
+/* ---------- body ---------- */
+
+.rf-t-psychedelic .ps-body {
+  padding: calc(var(--rf-margin) * 0.45) var(--rf-margin) 0;
+}
+.rf-t-psychedelic .ps-contact {
+  margin-bottom: var(--rf-section-gap);
+  font-size: 0.9em;
+  color: #3a2a4a;
+}
+.rf-t-psychedelic .ps-contact .rf-contact__icon {
+  color: var(--rf-accent-ink);
+}
+
+.rf-t-psychedelic .ps-h {
+  margin-bottom: 0.5em;
+  font-family: var(--rf-font-heading);
+  font-size: 1.2em;
+  font-weight: 800;
+  letter-spacing: var(--rf-heading-tracking);
+  text-transform: var(--rf-heading-transform);
+  color: var(--rf-accent-ink);
+}
+.rf-t-psychedelic .ps-h__text {
+  text-decoration: underline wavy var(--ps-pink);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.3em;
+}
+
+.rf-t-psychedelic .ps-summary,
+.rf-t-psychedelic .rf-entry__desc,
+.rf-t-psychedelic .rf-bullets > li,
+.rf-t-psychedelic .ps-compact {
+  color: #2b1d38;
+}
+.rf-t-psychedelic .rf-entry__title,
+.rf-t-psychedelic .rf-srow__name,
+.rf-t-psychedelic .rf-cline__title {
+  font-family: var(--rf-font-heading);
+  font-weight: 700;
+  color: #1d1029;
+}
+.rf-t-psychedelic .rf-entry__sub {
+  font-weight: 600;
+}
+.rf-t-psychedelic .rf-entry__date {
+  font-weight: 600;
+  color: #5b3f74;
+}
+.rf-t-psychedelic .rf-bullets > li::before {
+  background: conic-gradient(var(--ps-pink), var(--ps-orange), var(--rf-accent), var(--ps-pink));
+}
+.rf-t-psychedelic .ps-compact {
+  font-size: 1em;
+}

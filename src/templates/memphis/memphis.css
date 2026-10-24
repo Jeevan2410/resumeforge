@@ -1,0 +1,177 @@
+/* Corporate Memphis template — every selector is scoped to .rf-t-memphis. */
+
+.rf-t-memphis .me-page {
+  height: 100%;
+  padding: calc(var(--rf-margin) * 0.75) var(--rf-margin) var(--rf-margin);
+  color: var(--me-ink);
+}
+
+/* ---------- header ---------- */
+
+.rf-t-memphis .me-header {
+  display: flex;
+  align-items: center;
+  gap: 4mm;
+  margin-bottom: var(--rf-section-gap);
+  padding: 5mm 4mm 5mm 7mm;
+  border-radius: 8mm;
+  background: var(--me-sky);
+}
+.rf-t-memphis .me-header__text {
+  flex: 1;
+  min-width: 0;
+}
+.rf-t-memphis .me-photo {
+  margin-bottom: 2.5mm;
+  box-shadow: 0 0 0 1.2mm #fff;
+}
+.rf-t-memphis .me-name {
+  font-family: var(--rf-font-heading);
+  font-size: 2.4em;
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--me-ink);
+}
+.rf-t-memphis .me-title {
+  display: inline-block;
+  margin-top: 0.45em;
+  padding: 0.18em 0.75em;
+  font-family: var(--rf-font-heading);
+  font-size: 0.98em;
+  font-weight: 600;
+  border-radius: 999px;
+  background: var(--rf-accent);
+  color: var(--rf-on-accent);
+}
+.rf-t-memphis .me-contact {
+  margin-top: 0.75em;
+  font-size: 0.86em;
+  color: #34324f;
+}
+.rf-t-memphis .me-contact .rf-contact__icon {
+  color: var(--rf-accent-ink);
+}
+
+.rf-t-memphis .me-art {
+  flex: none;
+  width: 54mm;
+  height: auto;
+  overflow: visible;
+}
+.rf-t-memphis .me-blob {
+  fill: var(--me-sun);
+}
+.rf-t-memphis .me-squig {
+  fill: none;
+  stroke: var(--me-coral);
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+.rf-t-memphis .me-squig--b {
+  stroke: var(--rf-accent);
+}
+.rf-t-memphis .me-dot {
+  fill: var(--me-mint);
+}
+.rf-t-memphis .me-tri {
+  fill: var(--rf-accent);
+}
+.rf-t-memphis .me-tri2 {
+  fill: var(--me-coral);
+}
+.rf-t-memphis .me-leg {
+  fill: none;
+  stroke: var(--me-ink);
+  stroke-width: 7;
+  stroke-linecap: round;
+}
+.rf-t-memphis .me-shoe {
+  fill: var(--me-coral);
+}
+.rf-t-memphis .me-body {
+  fill: var(--rf-accent);
+}
+.rf-t-memphis .me-arm {
+  fill: none;
+  stroke: #f2a07b;
+  stroke-width: 6;
+  stroke-linecap: round;
+}
+.rf-t-memphis .me-skin,
+.rf-t-memphis .me-neck {
+  fill: #f2a07b;
+}
+.rf-t-memphis .me-hair {
+  fill: var(--me-ink);
+}
+.rf-t-memphis .me-laptop {
+  fill: #fff;
+  stroke: var(--me-ink);
+  stroke-width: 2;
+  stroke-linejoin: round;
+}
+.rf-t-memphis .me-laptop-base {
+  fill: var(--me-ink);
+}
+.rf-t-memphis .me-logo {
+  fill: var(--me-mint);
+}
+
+/* ---------- sections ---------- */
+
+.rf-t-memphis .me-h {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5em;
+  font-family: var(--rf-font-heading);
+  font-size: 1.18em;
+  font-weight: 700;
+  letter-spacing: var(--rf-heading-tracking);
+  text-transform: var(--rf-heading-transform);
+}
+.rf-t-memphis .me-h__blob {
+  position: absolute;
+  left: -0.45em;
+  top: 50%;
+  width: 1.5em;
+  height: 1.2em;
+  border-radius: 58% 42% 55% 45% / 50% 60% 40% 50%;
+  background: var(--me-sun);
+  transform: translateY(-50%);
+}
+.rf-t-memphis .me-h__text {
+  position: relative;
+}
+
+.rf-t-memphis .me-summary,
+.rf-t-memphis .rf-entry__desc,
+.rf-t-memphis .rf-bullets > li,
+.rf-t-memphis .me-compact {
+  color: #2c2a45;
+}
+.rf-t-memphis .rf-entry__title,
+.rf-t-memphis .rf-srow__name,
+.rf-t-memphis .rf-cline__title {
+  font-family: var(--rf-font-heading);
+  font-weight: 600;
+  color: var(--me-ink);
+}
+.rf-t-memphis .rf-entry__sub {
+  font-weight: 600;
+}
+.rf-t-memphis .rf-entry--main .rf-entry__date {
+  display: inline-block;
+  padding: 0.05em 0.65em;
+  border-radius: 999px;
+  background: #efecff;
+  color: var(--rf-accent-ink);
+  font-weight: 600;
+}
+.rf-t-memphis .rf-bullets > li::before {
+  background: var(--me-coral);
+}
+.rf-t-memphis .me-compact {
+  font-size: 1em;
+}

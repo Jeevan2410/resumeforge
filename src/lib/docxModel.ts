@@ -118,7 +118,7 @@ const TEXT = '1F2937'
 const HEADING = '111827'
 const MUTED = '6B7280'
 /** Templates whose header is centred on the page. */
-const CENTRED: TemplateId[] = ['classic', 'elegant', 'academic']
+const CENTRED: TemplateId[] = ['classic', 'elegant', 'academic', 'artdeco', 'geometric']
 
 export const mmToTwip = (mm: number) => Math.round((mm / 25.4) * 1440)
 

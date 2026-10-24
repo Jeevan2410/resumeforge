@@ -1,0 +1,165 @@
+/* Flat template — every selector is scoped to .rf-t-flat. No gradients, no shadows. */
+
+.rf-t-flat .fl-page {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  color: #1e2a36;
+}
+
+/* ---------- header ---------- */
+
+.rf-t-flat .fl-header {
+  display: flex;
+  align-items: center;
+  gap: 6mm;
+  padding: calc(var(--rf-margin) * 0.8) var(--rf-margin);
+  background: var(--rf-accent);
+  color: var(--rf-on-accent);
+}
+.rf-t-flat .fl-header__text {
+  flex: 1;
+  min-width: 0;
+}
+.rf-t-flat .fl-name {
+  font-family: var(--rf-font-heading);
+  font-size: 2.45em;
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+}
+.rf-t-flat .fl-title {
+  display: inline-block;
+  margin-top: 0.55em;
+  padding: 0.15em 0.6em;
+  font-family: var(--rf-font-heading);
+  font-size: 0.95em;
+  font-weight: 600;
+  background: var(--rf-on-accent);
+  color: var(--rf-accent-ink);
+}
+.rf-t-flat .fl-photo {
+  flex: none;
+  box-shadow: 0 0 0 1.2mm var(--rf-on-accent);
+}
+.rf-t-flat .fl-desk {
+  flex: none;
+  width: 40mm;
+  height: auto;
+}
+.rf-t-flat .fl-c-dark {
+  fill: #22313f;
+}
+.rf-t-flat .fl-c-screen {
+  fill: #34495e;
+}
+.rf-t-flat .fl-c-pale {
+  fill: #ecf0f1;
+}
+.rf-t-flat .fl-c-orange {
+  fill: var(--fl-orange);
+}
+.rf-t-flat .fl-c-green {
+  fill: var(--fl-green);
+}
+.rf-t-flat .fl-c-green2 {
+  fill: #1e8449;
+}
+.rf-t-flat .fl-c-red {
+  fill: var(--fl-red);
+}
+.rf-t-flat .fl-c-desk {
+  fill: rgb(var(--rf-on-accent-rgb) / 0.25);
+}
+
+/* ---------- columns ---------- */
+
+.rf-t-flat .fl-cols {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+}
+.rf-t-flat .fl-main {
+  flex: 1 1 0;
+  min-width: 0;
+  padding: calc(var(--rf-margin) * 0.8) calc(var(--rf-margin) * 0.8) 0 var(--rf-margin);
+}
+.rf-t-flat .fl-side {
+  flex: 0 0 31%;
+  min-width: 0;
+  padding: calc(var(--rf-margin) * 0.8) var(--rf-margin) 0 calc(var(--rf-margin) * 0.7);
+  background: #eef2f6;
+  font-size: 0.92em;
+  --rf-level-on: var(--rf-accent);
+  --rf-level-off: #d5dde6;
+}
+
+.rf-t-flat .fl-h {
+  margin-bottom: 0.6em;
+  font-family: var(--rf-font-heading);
+  font-size: 0.86em;
+  font-weight: 700;
+  letter-spacing: var(--rf-heading-tracking);
+  text-transform: var(--rf-heading-transform);
+  border-bottom: 2px solid var(--rf-accent);
+}
+.rf-t-flat .fl-h__tag {
+  display: inline-block;
+  padding: 0.3em 0.75em 0.2em;
+  background: var(--rf-accent);
+  color: var(--rf-on-accent);
+}
+.rf-t-flat .fl-sh {
+  margin-bottom: 0.6em;
+  padding: 0.25em 0.6em 0.2em;
+  font-family: var(--rf-font-heading);
+  font-size: 0.82em;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background: #22313f;
+  color: #fff;
+}
+.rf-t-flat .fl-contact {
+  row-gap: 0.45em;
+}
+.rf-t-flat .fl-contact .rf-contact__icon {
+  color: var(--rf-accent-ink);
+}
+.rf-t-flat .fl-summary,
+.rf-t-flat .rf-entry__desc,
+.rf-t-flat .rf-bullets > li {
+  color: #2c3e50;
+}
+.rf-t-flat .rf-entry__title {
+  font-family: var(--rf-font-heading);
+  font-weight: 600;
+  color: #1e2a36;
+}
+.rf-t-flat .rf-entry__date {
+  display: inline-block;
+  padding: 0.05em 0.5em;
+  background: #eef2f6;
+  color: #34495e;
+  font-weight: 600;
+}
+.rf-t-flat .fl-side .rf-entry__date {
+  padding: 0;
+  background: none;
+}
+.rf-t-flat .rf-bullets > li::before {
+  background: var(--rf-accent);
+}
+.rf-t-flat .fl-skill .rf-skill__name {
+  font-weight: 600;
+}
+.rf-t-flat .fl-skill__bar {
+  margin: 0.3em 0 0.25em;
+}
+.rf-t-flat .fl-inline {
+  font-size: 1em;
+  color: #2c3e50;
+}
+.rf-t-flat .rf-chip {
+  border-radius: 0;
+}

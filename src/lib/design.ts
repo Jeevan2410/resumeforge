@@ -68,7 +68,11 @@ const clamp = (n: unknown, min: number, max: number, fallback: number) => {
   return Math.min(max, Math.max(min, v))
 }
 
-const TEMPLATE_IDS: TemplateId[] = ['modern', 'classic', 'minimal', 'executive', 'creative', 'tech', 'elegant', 'compact', 'timeline', 'academic', 'corporate', 'startup', 'ats']
+const TEMPLATE_IDS: TemplateId[] = [
+  'modern', 'classic', 'minimal', 'executive', 'creative', 'tech', 'elegant', 'compact', 'timeline', 'academic', 'corporate', 'startup', 'ats',
+  // design-style collection
+  'artnouveau', 'artdeco', 'swiss', 'bauhaus', 'minimalism', 'flat', 'geometric', 'popart', 'maximalism', 'psychedelic', 'neobrutalism', 'grunge', 'y2k', 'glassmorphism', 'memphis', 'steampunk', 'vaporwave', 'retrofuturism',
+]
 
 export function isTemplateId(v: unknown): v is TemplateId {
   return typeof v === 'string' && (TEMPLATE_IDS as string[]).includes(v)

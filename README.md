@@ -4,13 +4,13 @@
 
 **Live demo:** [resumeforge-jeevan.vercel.app](https://resumeforge-jeevan.vercel.app)
 
-Write one resume, then tailor a copy for every application. ResumeForge has 13 templates, real page-by-page pagination, an ATS checker, a job-description matcher and cover letters, and it exports text-based PDF and Word files. You don't need an account and nothing is uploaded: your data stays in your browser.
+Write one resume, then tailor a copy for every application. ResumeForge has 31 templates, real page-by-page pagination, an ATS checker, a job-description matcher and cover letters, and it exports text-based PDF and Word files. You don't need an account and nothing is uploaded: your data stays in your browser.
 
 ![Editor with live preview](docs/editor.png)
 
 ## Template gallery
 
-All 13 templates below show the built-in developer sample on one A4 page.
+Every template below shows page 1 of the built-in developer sample on A4.
 
 | | | | |
 |:-:|:-:|:-:|:-:|
@@ -19,10 +19,23 @@ All 13 templates below show the built-in developer sample on one A4 page.
 | <img src="docs/templates/tech.png" width="200" alt="Tech template"><br>**Tech** | <img src="docs/templates/startup.png" width="200" alt="Startup template"><br>**Startup** | <img src="docs/templates/timeline.png" width="200" alt="Timeline template"><br>**Timeline** | <img src="docs/templates/compact.png" width="200" alt="Compact template"><br>**Compact** |
 | <img src="docs/templates/academic.png" width="200" alt="Academic CV template"><br>**Academic CV** | | | |
 
+
+### Design styles
+
+Eighteen templates built around well-known graphic design movements. Their ornaments are decorative SVG and CSS behind the text, so the words stay real, selectable text in the PDF.
+
+| | | | |
+|:-:|:-:|:-:|:-:|
+| <img src="docs/templates/artnouveau.png" width="200" alt="Art Nouveau template"><br>**Art Nouveau** | <img src="docs/templates/artdeco.png" width="200" alt="Art Deco template"><br>**Art Deco** | <img src="docs/templates/swiss.png" width="200" alt="Swiss template"><br>**Swiss** | <img src="docs/templates/bauhaus.png" width="200" alt="Bauhaus template"><br>**Bauhaus** |
+| <img src="docs/templates/minimalism.png" width="200" alt="Minimalism template"><br>**Minimalism** | <img src="docs/templates/flat.png" width="200" alt="Flat template"><br>**Flat** | <img src="docs/templates/geometric.png" width="200" alt="Geometric template"><br>**Geometric** | <img src="docs/templates/popart.png" width="200" alt="Pop Art template"><br>**Pop Art** |
+| <img src="docs/templates/maximalism.png" width="200" alt="Maximalism template"><br>**Maximalism** | <img src="docs/templates/psychedelic.png" width="200" alt="Psychedelic template"><br>**Psychedelic** | <img src="docs/templates/neobrutalism.png" width="200" alt="Neo-Brutalism template"><br>**Neo-Brutalism** | <img src="docs/templates/grunge.png" width="200" alt="Grunge template"><br>**Grunge** |
+| <img src="docs/templates/y2k.png" width="200" alt="Y2K template"><br>**Y2K** | <img src="docs/templates/glassmorphism.png" width="200" alt="Glassmorphism template"><br>**Glassmorphism** | <img src="docs/templates/memphis.png" width="200" alt="Corporate Memphis template"><br>**Corporate Memphis** | <img src="docs/templates/steampunk.png" width="200" alt="Steampunk template"><br>**Steampunk** |
+| <img src="docs/templates/vaporwave.png" width="200" alt="Vaporwave template"><br>**Vaporwave** | <img src="docs/templates/retrofuturism.png" width="200" alt="Retro-Futurism template"><br>**Retro-Futurism** |  |  |
+
 ## Features
 
 ### Templates & design
-- **13 templates** covering one- and two-column layouts, photo layouts, ATS-safe single-column layouts and an academic CV. The gallery can be filtered by *ATS-friendly*, *Two-column*, *Photo*, *Creative* and *One-page*.
+- **31 templates** covering one- and two-column layouts, photo layouts, ATS-safe single-column layouts, an academic CV and 18 design-style templates (Art Nouveau to Retro-Futurism). The gallery can be filtered by *ATS-friendly*, *Two-column*, *Photo*, *Creative* and *One-page*.
 - **Real pagination.** Entries are never split across pages, headings stay with their first entry, and side columns continue onto the next page. Running headers and page numbers appear where the template uses them. Both A4 and US Letter are supported.
 - **Fit to pages.** If the last page is nearly empty, one click tightens spacing, then line height, font size and margins, changing as little as possible. You can undo it.
 - **Design controls.** Choose an accent preset or a custom colour, one of 10 font pairings (Google Fonts loaded on demand), font size, line height, spacing, margins, heading case, date format, photo shape and contact icons.
@@ -83,7 +96,7 @@ flowchart LR
     P[paginate · fit · design]
   end
   subgraph Templates["templates/"]
-    REG[registry<br/>auto-discovers 13 templates]
+    REG[registry<br/>auto-discovers 31 templates]
     PD[PagedDocument<br/>measure → paginate → pages]
   end
   subgraph Features["features/ + app/"]

@@ -1,0 +1,185 @@
+/* Grunge template — every selector is scoped to .rf-t-grunge. */
+
+.rf-t-grunge .gr-page {
+  position: relative;
+  height: 100%;
+  background:
+    radial-gradient(ellipse at 12% 88%, rgb(120 92 52 / 0.12), transparent 40%),
+    radial-gradient(ellipse at 90% 20%, rgb(120 92 52 / 0.1), transparent 35%),
+    var(--gr-paper);
+  color: var(--gr-ink);
+}
+.rf-t-grunge .gr-grain {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.55;
+  pointer-events: none;
+}
+.rf-t-grunge .gr-splat {
+  position: absolute;
+  top: 6mm;
+  right: 9mm;
+  width: 30mm;
+  height: 30mm;
+  fill: rgb(var(--rf-accent-rgb) / 0.22);
+  stroke: rgb(var(--rf-accent-rgb) / 0.22);
+  stroke-linecap: round;
+  transform: rotate(18deg);
+}
+.rf-t-grunge .gr-body {
+  position: relative;
+  padding: var(--rf-margin);
+}
+
+/* ---------- header ---------- */
+
+.rf-t-grunge .gr-header {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 6mm;
+  margin-bottom: var(--rf-section-gap);
+  padding: 5mm 6mm 4.5mm;
+  background: rgb(250 247 240 / 0.7);
+  border: 1px solid rgb(36 33 29 / 0.18);
+  transform: rotate(-0.4deg);
+}
+.rf-t-grunge .gr-tape {
+  position: absolute;
+  top: -3.5mm;
+  width: 24mm;
+  height: 7mm;
+  background: var(--gr-tape);
+  border-left: 1px dashed rgb(36 33 29 / 0.12);
+  border-right: 1px dashed rgb(36 33 29 / 0.12);
+}
+.rf-t-grunge .gr-tape--l {
+  left: -6mm;
+  transform: rotate(-32deg);
+}
+.rf-t-grunge .gr-tape--r {
+  right: -6mm;
+  transform: rotate(28deg);
+}
+.rf-t-grunge .gr-header__text {
+  position: relative;
+  min-width: 0;
+}
+.rf-t-grunge .gr-photo {
+  flex: none;
+  filter: grayscale(0.6) sepia(0.25) contrast(1.05);
+  border: 2mm solid #f7f3ea;
+  box-shadow: 0 0 0 1px rgb(36 33 29 / 0.2);
+  transform: rotate(-2deg);
+}
+.rf-t-grunge .gr-name {
+  position: relative;
+  z-index: 1;
+  font-family: var(--rf-font-mono);
+  font-size: 2.35em;
+  font-weight: 600;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  color: var(--gr-ink);
+}
+.rf-t-grunge .gr-name__brush {
+  display: block;
+  width: 62mm;
+  height: 3.6mm;
+  margin: -1.5mm 0 0 -1mm;
+  fill: rgb(var(--rf-accent-rgb) / 0.75);
+}
+.rf-t-grunge .gr-name__brush .gr-brush__fray {
+  fill: none;
+  stroke: rgb(var(--rf-accent-rgb) / 0.5);
+  stroke-width: 1.2;
+}
+.rf-t-grunge .gr-title {
+  margin-top: 0.45em;
+  font-family: var(--rf-font-mono);
+  font-size: 1.02em;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--gr-olive);
+}
+.rf-t-grunge .gr-contact {
+  margin-top: 0.7em;
+  font-size: 0.88em;
+  color: #3d3830;
+}
+.rf-t-grunge .gr-contact .rf-contact__icon {
+  color: var(--rf-accent-ink);
+}
+
+/* ---------- sections ---------- */
+
+.rf-t-grunge .gr-h {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 0.55em;
+  padding: 0.15em 0.7em 0.1em 0.4em;
+  font-family: var(--rf-font-mono);
+  font-size: 1em;
+  font-weight: 600;
+  letter-spacing: calc(var(--rf-heading-tracking) + 0.04em);
+  text-transform: var(--rf-heading-transform);
+  color: var(--gr-ink);
+}
+.rf-t-grunge .gr-h__brush {
+  position: absolute;
+  inset: 0 -0.4em 0 -0.6em;
+  width: calc(100% + 1em);
+  height: 100%;
+  fill: rgb(var(--rf-accent-rgb) / 0.28);
+}
+.rf-t-grunge .gr-h__brush .gr-brush__fray {
+  fill: none;
+  stroke: rgb(var(--rf-accent-rgb) / 0.3);
+  stroke-width: 1.2;
+}
+.rf-t-grunge .gr-h__text {
+  position: relative;
+}
+
+.rf-t-grunge .gr-summary,
+.rf-t-grunge .rf-entry__desc,
+.rf-t-grunge .rf-bullets > li,
+.rf-t-grunge .gr-compact {
+  color: #2e2a24;
+}
+.rf-t-grunge .rf-entry__title,
+.rf-t-grunge .rf-srow__name,
+.rf-t-grunge .rf-cline__title {
+  font-weight: 700;
+  color: var(--gr-ink);
+}
+.rf-t-grunge .rf-entry__sub {
+  color: var(--gr-olive);
+  font-weight: 600;
+}
+.rf-t-grunge .rf-entry__date,
+.rf-t-grunge .rf-cline__date {
+  font-family: var(--rf-font-mono);
+  font-size: 0.86em;
+  color: #4e473c;
+}
+.rf-t-grunge .rf-entry__location,
+.rf-t-grunge .rf-entry__keywords,
+.rf-t-grunge .rf-cline__by,
+.rf-t-grunge .rf-srow__level {
+  color: #6b6253;
+}
+.rf-t-grunge .rf-bullets > li::before {
+  color: var(--rf-accent-ink);
+  font-weight: 700;
+}
+.rf-t-grunge .rf-link {
+  color: var(--rf-accent-ink);
+}
+.rf-t-grunge .gr-compact {
+  font-size: 1em;
+}

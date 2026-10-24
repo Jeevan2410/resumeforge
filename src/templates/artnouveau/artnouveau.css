@@ -1,0 +1,197 @@
+/* Art Nouveau template — every selector is scoped to .rf-t-artnouveau. */
+
+.rf-t-artnouveau .an-page {
+  position: relative;
+  height: 100%;
+  background: #fdfaf2;
+  --an-gold: #a8875a;
+  --an-ink: #2f2a22;
+}
+
+/* asymmetric frame: open on the right, a long sweep down the left */
+.rf-t-artnouveau .an-frame {
+  position: absolute;
+  top: calc(var(--rf-margin) * 0.45);
+  bottom: calc(var(--rf-margin) * 0.45);
+  left: calc(var(--rf-margin) * 0.45);
+  right: calc(var(--rf-margin) * 0.45);
+  border: 1px solid rgb(var(--rf-accent-rgb) / 0.35);
+  border-radius: 0 0 0 46mm;
+  border-right-color: transparent;
+  pointer-events: none;
+}
+.rf-t-artnouveau .an-frame::after {
+  content: '';
+  position: absolute;
+  inset: 2.2mm 0 2.2mm 2.2mm;
+  border: 0.6px solid rgb(var(--rf-accent-rgb) / 0.22);
+  border-right: 0;
+  border-radius: 0 0 0 43mm;
+}
+
+.rf-t-artnouveau .an-vine {
+  position: absolute;
+  left: calc(var(--rf-margin) * 0.45 + 1.5mm);
+  top: calc(var(--rf-margin) * 1.2);
+  bottom: calc(var(--rf-margin) * 0.8);
+  width: 13mm;
+  height: auto;
+  overflow: visible;
+}
+.rf-t-artnouveau .an-vine__stem,
+.rf-t-artnouveau .an-vine__tendril {
+  fill: none;
+  stroke: var(--rf-accent);
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  opacity: 0.75;
+}
+.rf-t-artnouveau .an-vine__tendril {
+  stroke-width: 1.3;
+}
+.rf-t-artnouveau .an-vine__leaves path {
+  fill: rgb(var(--rf-accent-rgb) / 0.55);
+}
+.rf-t-artnouveau .an-vine__bloom ellipse {
+  fill: rgb(168 135 90 / 0.35);
+  stroke: var(--an-gold);
+  stroke-width: 1.2;
+}
+.rf-t-artnouveau .an-vine__heart {
+  fill: var(--an-gold);
+}
+
+.rf-t-artnouveau .an-body {
+  position: relative;
+  padding: calc(var(--rf-margin) * 0.85) var(--rf-margin) var(--rf-margin) calc(var(--rf-margin) + 15mm);
+}
+
+/* ---------- header ---------- */
+
+.rf-t-artnouveau .an-header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 6mm;
+  padding-bottom: calc(var(--rf-section-gap) * 0.7);
+  margin-bottom: calc(var(--rf-section-gap) * 0.85);
+  border-bottom: 1px solid rgb(var(--rf-accent-rgb) / 0.3);
+}
+.rf-t-artnouveau .an-flourish {
+  position: absolute;
+  top: calc(var(--rf-margin) * -0.55);
+  right: calc(var(--rf-margin) * -0.55);
+  width: 48mm;
+  height: auto;
+  fill: none;
+  stroke: var(--an-gold);
+  stroke-width: 1.4;
+  stroke-linecap: round;
+}
+.rf-t-artnouveau .an-flourish > path:last-of-type {
+  stroke: var(--rf-accent);
+  opacity: 0.6;
+}
+.rf-t-artnouveau .an-flourish > path[transform] {
+  fill: rgb(var(--rf-accent-rgb) / 0.5);
+  stroke: none;
+}
+.rf-t-artnouveau .an-photo {
+  flex: none;
+  box-shadow:
+    0 0 0 2px #fdfaf2,
+    0 0 0 3px var(--an-gold);
+}
+.rf-t-artnouveau .an-header__text {
+  min-width: 0;
+  padding-right: 22mm;
+}
+.rf-t-artnouveau .an-name {
+  font-family: var(--rf-font-heading);
+  font-size: 2.4em;
+  font-weight: 500;
+  line-height: 1.05;
+  letter-spacing: 0.01em;
+  color: var(--an-ink);
+}
+.rf-t-artnouveau .an-title {
+  margin-top: 0.25em;
+  font-family: var(--rf-font-heading);
+  font-style: italic;
+  font-size: 1.2em;
+  color: var(--rf-accent-ink);
+}
+.rf-t-artnouveau .an-contact {
+  margin-top: 0.7em;
+  font-size: 0.9em;
+  color: #5c5244;
+}
+.rf-t-artnouveau .an-contact .rf-contact__icon {
+  color: var(--an-gold);
+}
+
+/* ---------- sections ---------- */
+
+.rf-t-artnouveau .an-h {
+  display: flex;
+  align-items: center;
+  gap: 0.55em;
+  margin-bottom: 0.4em;
+  font-family: var(--rf-font-heading);
+  font-size: 1.16em;
+  font-weight: 500;
+  font-style: italic;
+  letter-spacing: var(--rf-heading-tracking);
+  text-transform: var(--rf-heading-transform);
+  color: var(--rf-accent-ink);
+}
+.rf-t-artnouveau .an-h__rule {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, rgb(168 135 90 / 0.7), rgb(168 135 90 / 0.1));
+}
+.rf-t-artnouveau .an-sprig {
+  flex: none;
+  width: 2.2em;
+  height: auto;
+  fill: none;
+  stroke: var(--an-gold);
+  stroke-width: 1.2;
+}
+.rf-t-artnouveau .an-sprig__leaf {
+  fill: rgb(var(--rf-accent-rgb) / 0.6);
+  stroke: none;
+}
+
+.rf-t-artnouveau .an-summary {
+  color: #3d362c;
+}
+.rf-t-artnouveau .rf-entry__title {
+  font-family: var(--rf-font-heading);
+  font-size: 1.06em;
+  font-weight: 600;
+  color: var(--an-ink);
+}
+.rf-t-artnouveau .rf-entry__subtitle {
+  font-style: italic;
+}
+.rf-t-artnouveau .rf-entry__date {
+  font-style: italic;
+  color: #7a6c58;
+}
+.rf-t-artnouveau .rf-entry__desc,
+.rf-t-artnouveau .rf-bullets > li {
+  color: #3d362c;
+}
+.rf-t-artnouveau .rf-bullets > li::before {
+  background: var(--an-gold);
+}
+.rf-t-artnouveau .rf-skill__name {
+  font-weight: 600;
+  color: var(--an-ink);
+}
+.rf-t-artnouveau .rf-skill__keywords,
+.rf-t-artnouveau .an-compact {
+  color: #4a4236;
+  font-size: 1em;
+}
