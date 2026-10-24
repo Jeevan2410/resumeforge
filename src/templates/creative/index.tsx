@@ -15,6 +15,7 @@ import {
   PageLayout,
   Photo,
   RichParagraphs,
+  SectionIcon,
   contactEntries,
   ContactText,
   cx,
@@ -29,7 +30,6 @@ import {
   type TemplateProps,
 } from '../shared'
 import type { Basics } from '../../lib/types.ts'
-import { SectionIcon } from './icons.tsx'
 import './creative.css'
 
 export const meta: TemplateMeta = {

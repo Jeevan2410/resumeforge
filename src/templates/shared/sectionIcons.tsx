@@ -1,5 +1,5 @@
 /**
- * Decorative section icons for the Creative template (outline glyphs drawn after Lucide, ISC licence).
+ * Decorative section icons shared by templates (outline glyphs drawn after Lucide, ISC licence).
  * Purely ornamental: always aria-hidden, never carry text.
  */
 import type { ReactNode } from 'react'
