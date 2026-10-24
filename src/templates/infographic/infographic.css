@@ -1,0 +1,322 @@
+/* Infographic template — every selector is scoped to .rf-t-infographic. */
+
+.rf-t-infographic .ig-page {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  color: var(--ig-ink);
+}
+
+/* ---------- identity + key figures ---------- */
+
+.rf-t-infographic .ig-header {
+  padding: calc(var(--rf-margin) * 0.8) var(--rf-margin) 5mm;
+  background: var(--ig-soft);
+  border-bottom: 1.2mm solid var(--rf-accent);
+}
+.rf-t-infographic .ig-id {
+  display: flex;
+  align-items: center;
+  gap: 5mm;
+}
+.rf-t-infographic .ig-avatar {
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 27mm;
+  height: 27mm;
+  border-radius: 50%;
+  background: conic-gradient(var(--rf-accent) 0 72%, var(--ig-coral) 72% 88%, #f2c14e 88%);
+}
+.rf-t-infographic .ig-photo {
+  box-shadow: 0 0 0 1mm #fff;
+}
+.rf-t-infographic .ig-initials {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 23mm;
+  height: 23mm;
+  border-radius: 50%;
+  background: #fff;
+  font-family: var(--rf-font-heading);
+  font-size: 1.9em;
+  font-weight: 700;
+  color: var(--rf-accent-ink);
+}
+.rf-t-infographic .ig-id__text {
+  min-width: 0;
+}
+.rf-t-infographic .ig-name {
+  font-family: var(--rf-font-heading);
+  font-size: 2.3em;
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.015em;
+}
+.rf-t-infographic .ig-title {
+  margin-top: 0.25em;
+  font-size: 1.05em;
+  font-weight: 600;
+  color: var(--rf-accent-ink);
+}
+.rf-t-infographic .ig-contact {
+  margin-top: 0.55em;
+  font-size: 0.84em;
+  color: #46525f;
+}
+.rf-t-infographic .ig-contact .rf-contact__icon {
+  color: var(--rf-accent-ink);
+}
+.rf-t-infographic .ig-stats {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(0, 1fr);
+  gap: 3mm;
+  margin-top: 4.5mm;
+}
+.rf-t-infographic .ig-stat {
+  display: flex;
+  flex-direction: column;
+  padding: 2.4mm 3.5mm;
+  border-radius: 2.5mm;
+  background: #fff;
+  border-left: 1.2mm solid var(--rf-accent);
+}
+.rf-t-infographic .ig-stat:nth-child(2) {
+  border-left-color: var(--ig-coral);
+}
+.rf-t-infographic .ig-stat:nth-child(3) {
+  border-left-color: #f2c14e;
+}
+.rf-t-infographic .ig-stat:nth-child(4) {
+  border-left-color: #6c63ff;
+}
+.rf-t-infographic .ig-stat__value {
+  font-family: var(--rf-font-heading);
+  font-size: 1.85em;
+  font-weight: 700;
+  line-height: 1;
+}
+.rf-t-infographic .ig-stat__value small {
+  font-size: 0.45em;
+  font-weight: 600;
+  color: #6b7785;
+}
+.rf-t-infographic .ig-stat__label {
+  margin-top: 0.3em;
+  font-size: 0.74em;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #6b7785;
+}
+
+/* ---------- columns ---------- */
+
+.rf-t-infographic .ig-cols {
+  display: flex;
+  gap: 7mm;
+  flex: 1;
+  min-height: 0;
+  padding: 6mm var(--rf-margin) 0;
+}
+.rf-t-infographic .ig-main {
+  flex: 1 1 0;
+  min-width: 0;
+}
+.rf-t-infographic .ig-side {
+  flex: 0 0 33%;
+  min-width: 0;
+  font-size: 0.92em;
+}
+.rf-t-infographic .ig-h {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  margin-bottom: 0.6em;
+  font-family: var(--rf-font-heading);
+  font-size: 1.08em;
+  font-weight: 700;
+  letter-spacing: var(--rf-heading-tracking);
+  text-transform: var(--rf-heading-transform);
+}
+.rf-t-infographic .ig-h__dot {
+  width: 0.7em;
+  height: 0.7em;
+  border-radius: 50%;
+  border: 0.22em solid var(--rf-accent);
+}
+
+/* ---------- career chart ---------- */
+
+.rf-t-infographic .ig-chart {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6mm;
+}
+.rf-t-infographic .ig-chart__row {
+  display: grid;
+  grid-template-columns: 30mm minmax(0, 1fr);
+  align-items: center;
+  gap: 2.5mm;
+}
+.rf-t-infographic .ig-chart__label {
+  overflow: hidden;
+  font-size: 0.8em;
+  font-weight: 600;
+  text-align: right;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.rf-t-infographic .ig-chart__track {
+  position: relative;
+  height: 3.6mm;
+  border-radius: 999px;
+  background: repeating-linear-gradient(90deg, #eef2f4 0 1px, transparent 1px 8mm), var(--ig-soft);
+}
+.rf-t-infographic .ig-chart__bar {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  min-width: 2mm;
+  border-radius: 999px;
+  background: var(--rf-accent);
+}
+.rf-t-infographic .ig-chart__bar--study {
+  background: var(--ig-coral);
+}
+.rf-t-infographic .ig-chart__axis {
+  height: 3.6mm;
+  background: none;
+}
+.rf-t-infographic .ig-chart__tick {
+  position: absolute;
+  top: 0;
+  font-size: 0.68em;
+  color: #6b7785;
+  transform: translateX(-50%);
+}
+
+/* ---------- main text ---------- */
+
+.rf-t-infographic .ig-summary,
+.rf-t-infographic .rf-entry__desc,
+.rf-t-infographic .rf-bullets > li,
+.rf-t-infographic .ig-inline {
+  color: #33404e;
+}
+.rf-t-infographic .rf-entry__title,
+.rf-t-infographic .rf-cline__title {
+  font-family: var(--rf-font-heading);
+  font-weight: 600;
+}
+.rf-t-infographic .rf-entry__sub {
+  color: var(--rf-accent-ink);
+  font-weight: 500;
+}
+.rf-t-infographic .rf-entry--main .rf-entry__date {
+  font-weight: 600;
+  color: #4a5664;
+}
+.rf-t-infographic .rf-bullets > li::before {
+  background: var(--rf-accent);
+}
+
+/* ---------- side charts ---------- */
+
+.rf-t-infographic .ig-skill__head {
+  display: flex;
+  justify-content: space-between;
+  gap: 2mm;
+}
+.rf-t-infographic .ig-skill__name {
+  font-weight: 600;
+}
+.rf-t-infographic .ig-skill__pct {
+  font-weight: 700;
+  color: var(--rf-accent-ink);
+}
+.rf-t-infographic .ig-skill__bar {
+  display: block;
+  height: 2.2mm;
+  margin: 1mm 0 0.8mm;
+  border-radius: 999px;
+  background: var(--ig-soft);
+  overflow: hidden;
+}
+.rf-t-infographic .ig-skill__bar > span {
+  display: block;
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--rf-accent), var(--ig-coral));
+}
+.rf-t-infographic .ig-skill__kw {
+  font-size: 0.9em;
+  color: #5d6976;
+}
+.rf-t-infographic .ig-rings {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 3mm 2mm;
+}
+.rf-t-infographic .ig-ring {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.rf-t-infographic .ig-ring__svg {
+  width: 15mm;
+  height: 15mm;
+}
+.rf-t-infographic .ig-ring__track {
+  fill: none;
+  stroke: var(--ig-soft);
+  stroke-width: 4.5;
+}
+.rf-t-infographic .ig-ring__fill {
+  fill: none;
+  stroke: var(--rf-accent);
+  stroke-width: 4.5;
+  stroke-linecap: round;
+}
+.rf-t-infographic .ig-ring__text {
+  font-size: 8.5px;
+  font-weight: 700;
+  fill: var(--ig-ink);
+}
+.rf-t-infographic .ig-ring__name {
+  margin-top: 0.5mm;
+  font-weight: 600;
+}
+.rf-t-infographic .ig-ring__level {
+  font-size: 0.78em;
+  line-height: 1.25;
+  color: #6b7785;
+}
+.rf-t-infographic .ig-badge {
+  display: flex;
+  gap: 2.5mm;
+}
+.rf-t-infographic .ig-badge__icon {
+  flex: none;
+  width: 7mm;
+  height: 7mm;
+  fill: rgb(var(--rf-accent-rgb) / 0.15);
+  stroke: var(--rf-accent);
+  stroke-width: 1.6;
+  stroke-linejoin: round;
+}
+.rf-t-infographic .ig-badge__title {
+  font-weight: 600;
+  line-height: 1.3;
+}
+.rf-t-infographic .ig-badge__meta {
+  font-size: 0.88em;
+  color: #6b7785;
+}
+.rf-t-infographic .ig-inline {
+  font-size: 1em;
+}

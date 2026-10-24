@@ -1,0 +1,248 @@
+/* Victorian template — every selector is scoped to .rf-t-victorian. */
+
+.rf-t-victorian .vc-page {
+  position: relative;
+  height: 100%;
+  background: var(--vc-paper);
+  color: var(--vc-ink);
+}
+.rf-t-victorian .vc-frame {
+  position: absolute;
+  inset: 6mm;
+  border: 1.6px solid var(--rf-accent);
+  outline: 0.6px solid var(--vc-gold);
+  outline-offset: -2.4mm;
+  pointer-events: none;
+}
+.rf-t-victorian .vc-corner {
+  position: absolute;
+  width: 20mm;
+  height: 20mm;
+  fill: none;
+  stroke: var(--vc-gold);
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  pointer-events: none;
+}
+.rf-t-victorian .vc-corner__thin {
+  stroke: var(--rf-accent);
+  stroke-width: 1;
+}
+.rf-t-victorian .vc-corner__dot {
+  fill: var(--vc-emerald);
+  stroke: none;
+}
+.rf-t-victorian .vc-corner--tl {
+  top: 4mm;
+  left: 4mm;
+}
+.rf-t-victorian .vc-corner--tr {
+  top: 4mm;
+  right: 4mm;
+  transform: scaleX(-1);
+}
+.rf-t-victorian .vc-corner--bl {
+  bottom: 4mm;
+  left: 4mm;
+  transform: scaleY(-1);
+}
+.rf-t-victorian .vc-corner--br {
+  bottom: 4mm;
+  right: 4mm;
+  transform: scale(-1);
+}
+.rf-t-victorian .vc-body {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: calc(var(--rf-margin) * 0.95) calc(var(--rf-margin) + 2mm) 0;
+}
+
+/* ---------- cartouche ---------- */
+
+.rf-t-victorian .vc-cartouche {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: var(--rf-section-gap);
+  text-align: center;
+}
+.rf-t-victorian .vc-photo {
+  margin-bottom: 3mm;
+  box-shadow:
+    0 0 0 0.8mm var(--vc-paper),
+    0 0 0 1.3mm var(--vc-gold),
+    0 0 0 2.4mm var(--vc-paper),
+    0 0 0 2.8mm var(--rf-accent);
+}
+.rf-t-victorian .vc-name-row {
+  display: flex;
+  align-items: center;
+  gap: 4mm;
+}
+.rf-t-victorian .vc-fleuron {
+  flex: none;
+  width: 11mm;
+  height: auto;
+  fill: var(--vc-gold);
+}
+.rf-t-victorian .vc-fleuron__eye {
+  fill: var(--rf-accent);
+}
+.rf-t-victorian .vc-name {
+  font-family: var(--rf-font-heading);
+  font-size: 2.55em;
+  font-weight: 600;
+  font-style: italic;
+  line-height: 1.1;
+  color: var(--rf-accent-ink);
+}
+.rf-t-victorian .vc-title {
+  margin-top: 0.3em;
+  font-family: var(--rf-font-heading);
+  font-size: 1em;
+  font-variant: small-caps;
+  letter-spacing: 0.16em;
+  color: var(--vc-emerald);
+}
+.rf-t-victorian .vc-ribbon {
+  position: relative;
+  margin-top: 3mm;
+  padding: 1.4mm 9mm;
+  background: var(--rf-accent);
+  color: #fbeee0;
+  clip-path: polygon(0 0, 100% 0, calc(100% - 3mm) 50%, 100% 100%, 0 100%, 3mm 50%);
+}
+.rf-t-victorian .vc-contact {
+  justify-content: center;
+  font-size: 0.82em;
+  column-gap: 0.6em;
+}
+.rf-t-victorian .vc-contact .rf-link {
+  color: inherit;
+}
+.rf-t-victorian .vc-contact .rf-contact__sep {
+  color: var(--vc-gold);
+}
+
+/* ---------- columns + fleuron spine ---------- */
+
+.rf-t-victorian .vc-cols {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+}
+.rf-t-victorian .vc-main {
+  flex: 1 1 0;
+  min-width: 0;
+}
+.rf-t-victorian .vc-spine {
+  position: relative;
+  order: -1;
+  flex: none;
+  width: 9mm;
+  margin-bottom: var(--rf-margin);
+}
+.rf-t-victorian .vc-spine::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 2.4px;
+  border-left: 0.6px solid var(--vc-gold);
+  border-right: 0.6px solid var(--vc-gold);
+  background: var(--vc-paper);
+  transform: translateX(-50%);
+}
+.rf-t-victorian .vc-spine__mark {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  width: 9mm;
+  height: auto;
+  padding: 1mm 0;
+  background: var(--vc-paper);
+  fill: var(--rf-accent);
+  transform: translateX(-50%) rotate(90deg);
+}
+/* side column on the left of the spine (it stays last in the DOM) */
+.rf-t-victorian .vc-side {
+  order: -2;
+  flex: 0 0 31%;
+  min-width: 0;
+  padding-right: 1mm;
+  font-size: 0.92em;
+}
+
+.rf-t-victorian .vc-h {
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+  margin-bottom: 0.5em;
+  font-family: var(--rf-font-heading);
+  font-size: 1.22em;
+  font-weight: 600;
+  font-style: italic;
+  letter-spacing: var(--rf-heading-tracking);
+  text-transform: var(--rf-heading-transform);
+  color: var(--rf-accent-ink);
+}
+.rf-t-victorian .vc-h::after {
+  content: '';
+  flex: 1;
+  height: 3px;
+  border-top: 1px solid var(--vc-gold);
+  border-bottom: 0.5px solid var(--vc-gold);
+}
+.rf-t-victorian .vc-sh {
+  display: flex;
+  align-items: center;
+  gap: 0.4em;
+  margin-bottom: 0.5em;
+  font-family: var(--rf-font-heading);
+  font-size: 1.05em;
+  font-weight: 600;
+  font-variant: small-caps;
+  letter-spacing: 0.06em;
+  color: var(--vc-emerald);
+}
+.rf-t-victorian .vc-sh__mark {
+  width: 1.4em;
+  height: auto;
+  fill: var(--vc-gold);
+}
+.rf-t-victorian .vc-sh__mark .vc-fleuron__eye {
+  fill: var(--vc-emerald);
+}
+.rf-t-victorian .vc-summary,
+.rf-t-victorian .rf-entry__desc,
+.rf-t-victorian .rf-bullets > li,
+.rf-t-victorian .vc-inline {
+  color: #3a2b22;
+}
+.rf-t-victorian .rf-entry__title,
+.rf-t-victorian .rf-cline__title,
+.rf-t-victorian .rf-skill__name,
+.rf-t-victorian .rf-lang__name {
+  font-family: var(--rf-font-heading);
+  font-weight: 700;
+  color: var(--vc-ink);
+}
+.rf-t-victorian .rf-entry__sub {
+  font-style: italic;
+  color: var(--vc-emerald);
+}
+.rf-t-victorian .rf-entry__date {
+  font-style: italic;
+  color: #6b5643;
+}
+.rf-t-victorian .rf-bullets > li::before {
+  background: var(--vc-gold);
+  transform: rotate(45deg);
+  border-radius: 0;
+}
+.rf-t-victorian .vc-inline {
+  font-size: 1em;
+}

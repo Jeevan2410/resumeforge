@@ -107,6 +107,17 @@ export type TemplateId =
   | 'steampunk'
   | 'vaporwave'
   | 'retrofuturism'
+  | 'bento'
+  | 'japandi'
+  | 'risograph'
+  | 'pixel'
+  | 'victorian'
+  | 'kawaii'
+  | 'cybercore'
+  | 'typecollage'
+  | 'infographic'
+  | 'portfolio'
+  | 'skillsfirst'
 
 export type FontId = 'inter' | 'merriweather' | 'playfair' | 'garamond' | 'poppins' | 'plex' | 'montserrat' | 'raleway' | 'system' | 'georgia'
 

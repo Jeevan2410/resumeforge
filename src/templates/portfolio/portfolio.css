@@ -1,0 +1,188 @@
+/* Portfolio template — every selector is scoped to .rf-t-portfolio. */
+
+.rf-t-portfolio .pf-page {
+  height: 100%;
+  padding: calc(var(--rf-margin) * 0.9) var(--rf-margin) 0;
+  color: var(--pf-ink);
+}
+
+/* ---------- header ---------- */
+
+.rf-t-portfolio .pf-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 6mm;
+  margin-bottom: 6mm;
+  padding-bottom: 5mm;
+  border-bottom: 1px solid #e3e1dc;
+}
+.rf-t-portfolio .pf-header__text {
+  min-width: 0;
+}
+.rf-t-portfolio .pf-name {
+  font-family: var(--rf-font-heading);
+  font-size: 3.1em;
+  font-weight: 800;
+  line-height: 0.95;
+  letter-spacing: -0.045em;
+}
+.rf-t-portfolio .pf-title {
+  margin-top: 0.4em;
+  font-size: 1.15em;
+  font-weight: 500;
+  color: var(--rf-accent-ink);
+}
+.rf-t-portfolio .pf-contact {
+  margin-top: 0.8em;
+  font-size: 0.86em;
+  color: #4b4e57;
+}
+.rf-t-portfolio .pf-contact .rf-contact__icon {
+  color: var(--rf-accent-ink);
+}
+.rf-t-portfolio .pf-photo {
+  flex: none;
+}
+
+/* ---------- sections ---------- */
+
+.rf-t-portfolio .pf-h {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5em;
+  margin-bottom: 0.65em;
+  font-family: var(--rf-font-heading);
+  font-size: 1.25em;
+  font-weight: 800;
+  letter-spacing: calc(var(--rf-heading-tracking) - 0.02em);
+  text-transform: var(--rf-heading-transform);
+}
+.rf-t-portfolio .pf-h__count {
+  font-size: 0.62em;
+  font-weight: 700;
+  color: var(--rf-accent-ink);
+}
+.rf-t-portfolio .pf-intro {
+  max-width: 92%;
+  font-size: 1.12em;
+  line-height: 1.5;
+  color: #2c2f36;
+}
+
+/* ---------- project tiles ---------- */
+
+.rf-t-portfolio .pf-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 4mm;
+}
+.rf-t-portfolio .pf-tile {
+  overflow: hidden;
+  border-radius: 3.5mm;
+  background: var(--pf-soft);
+}
+.rf-t-portfolio .pf-cover {
+  position: relative;
+  height: 20mm;
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--rf-accent) 0%, var(--rf-accent-deep) 100%);
+  color: #fff;
+}
+.rf-t-portfolio .pf-tile--b .pf-cover {
+  background: linear-gradient(135deg, #2c3e8f 0%, #5b6ee1 100%);
+}
+.rf-t-portfolio .pf-tile--c .pf-cover {
+  background: linear-gradient(135deg, #0f7a5c 0%, #3cc39b 100%);
+}
+.rf-t-portfolio .pf-tile--d .pf-cover {
+  background: linear-gradient(135deg, #22252d 0%, #4a4f5c 100%);
+}
+.rf-t-portfolio .pf-cover__n {
+  position: absolute;
+  left: 4mm;
+  top: 3mm;
+  font-family: var(--rf-font-mono);
+  font-size: 0.8em;
+  font-weight: 600;
+  opacity: 0.85;
+}
+.rf-t-portfolio .pf-cover__letter {
+  position: absolute;
+  right: 3mm;
+  bottom: -6mm;
+  font-family: var(--rf-font-heading);
+  font-size: 4.6em;
+  font-weight: 800;
+  line-height: 1;
+  opacity: 0.35;
+}
+.rf-t-portfolio .pf-tile__body {
+  padding: 3.5mm 4mm 4mm;
+}
+.rf-t-portfolio .pf-tile__title {
+  font-family: var(--rf-font-heading);
+  font-size: 1.05em;
+  font-weight: 700;
+  line-height: 1.25;
+}
+.rf-t-portfolio .pf-tile__meta {
+  margin-top: 0.2em;
+  font-size: 0.86em;
+  color: #6a6d75;
+}
+.rf-t-portfolio .pf-tile__link {
+  display: inline-block;
+  margin-top: 0.25em;
+  font-size: 0.86em;
+  color: var(--rf-accent-ink);
+}
+.rf-t-portfolio .pf-tile__desc,
+.rf-t-portfolio .pf-tile__bullets {
+  margin-top: 0.45em;
+  font-size: 0.94em;
+  color: #34373e;
+}
+.rf-t-portfolio .pf-tile__bullets {
+  padding-left: 1.1em;
+  list-style: disc;
+}
+.rf-t-portfolio .pf-chips {
+  margin-top: 0.6em;
+  gap: 1.2mm;
+}
+.rf-t-portfolio .pf-chip {
+  padding: 0.1em 0.6em;
+  border: 0;
+  border-radius: 999px;
+  background: #fff;
+  font-size: 0.82em;
+  color: #3c3f47;
+}
+
+/* ---------- compact rest ---------- */
+
+.rf-t-portfolio .rf-entry__desc,
+.rf-t-portfolio .rf-bullets > li,
+.rf-t-portfolio .pf-compact {
+  color: #34373e;
+}
+.rf-t-portfolio .rf-entry__title,
+.rf-t-portfolio .rf-cline__title,
+.rf-t-portfolio .rf-srow__name {
+  font-family: var(--rf-font-heading);
+  font-weight: 700;
+}
+.rf-t-portfolio .rf-entry__sub {
+  color: var(--rf-accent-ink);
+}
+.rf-t-portfolio .rf-entry--main .rf-entry__date {
+  font-weight: 600;
+  color: #5a5d65;
+}
+.rf-t-portfolio .rf-bullets > li::before {
+  background: var(--rf-accent);
+}
+.rf-t-portfolio .pf-compact {
+  font-size: 1em;
+}

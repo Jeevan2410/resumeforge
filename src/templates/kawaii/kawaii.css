@@ -1,0 +1,230 @@
+/* Kawaii template — every selector is scoped to .rf-t-kawaii. */
+
+.rf-t-kawaii .kw-page {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+  background-color: #fffafc;
+  background-image: radial-gradient(circle, rgb(242 102 139 / 0.18) 0.5px, transparent 0.9px);
+  background-size: 5mm 5mm;
+  color: var(--kw-ink);
+}
+
+/* binder rings down the left edge */
+.rf-t-kawaii .kw-rings {
+  position: absolute;
+  top: 10mm;
+  bottom: 10mm;
+  left: 3mm;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.rf-t-kawaii .kw-rings i {
+  width: 9mm;
+  height: 4mm;
+  border-radius: 999px;
+  border: 1.4px solid #c7b9cc;
+  background: linear-gradient(180deg, #fff 0%, #ece4ef 100%);
+}
+.rf-t-kawaii .kw-rings i::after {
+  content: '';
+  display: block;
+  width: 2.4mm;
+  height: 2.4mm;
+  margin: 0.2mm 0 0 5.8mm;
+  border-radius: 50%;
+  background: #e9dfec;
+}
+
+.rf-t-kawaii .kw-body {
+  position: relative;
+  padding: var(--rf-margin) calc(var(--rf-margin) + 9mm) 0 calc(var(--rf-margin) + 6mm);
+}
+
+/* ---------- cloud header ---------- */
+
+.rf-t-kawaii .kw-cloud {
+  display: flex;
+  align-items: center;
+  gap: 5mm;
+  margin-bottom: calc(var(--rf-section-gap) * 1.1);
+  padding: 4mm 6mm 4mm 4mm;
+  border-radius: 14mm 10mm 14mm 10mm;
+  background: linear-gradient(135deg, var(--kw-pink) 0%, var(--kw-lilac) 100%);
+  box-shadow: 0 1.4mm 0 rgb(74 58 79 / 0.08);
+}
+.rf-t-kawaii .kw-mascot {
+  flex: none;
+  width: 30mm;
+  height: auto;
+}
+.rf-t-kawaii .kw-mascot__body {
+  fill: #fff;
+  stroke: var(--kw-ink);
+  stroke-width: 2;
+}
+.rf-t-kawaii .kw-mascot__eye {
+  fill: var(--kw-ink);
+}
+.rf-t-kawaii .kw-mascot__shine {
+  fill: #fff;
+}
+.rf-t-kawaii .kw-mascot__blush {
+  fill: #ff9fb8;
+}
+.rf-t-kawaii .kw-mascot__smile {
+  fill: none;
+  stroke: var(--kw-ink);
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+.rf-t-kawaii .kw-mascot__spark {
+  fill: var(--rf-accent);
+}
+.rf-t-kawaii .kw-mascot__spark--b {
+  fill: #ffd84d;
+}
+.rf-t-kawaii .kw-photo {
+  flex: none;
+  box-shadow:
+    0 0 0 1.4mm #fff,
+    0 0 0 2.2mm var(--rf-accent);
+}
+.rf-t-kawaii .kw-cloud__text {
+  min-width: 0;
+}
+.rf-t-kawaii .kw-name {
+  font-family: var(--rf-font-heading);
+  font-size: 2.3em;
+  font-weight: 700;
+  line-height: 1.05;
+  color: var(--kw-ink);
+}
+.rf-t-kawaii .kw-title {
+  display: inline-block;
+  margin-top: 0.45em;
+  padding: 0.2em 0.9em;
+  border-radius: 999px;
+  background: #fff;
+  color: var(--rf-accent-ink);
+  font-weight: 600;
+  box-shadow: inset 0 -0.6mm 0 rgb(242 102 139 / 0.25);
+}
+.rf-t-kawaii .kw-contact {
+  margin-top: 0.7em;
+  font-size: 0.84em;
+}
+.rf-t-kawaii .kw-contact .rf-contact__icon {
+  color: var(--rf-accent-ink);
+}
+
+/* ---------- headings + edge tabs ---------- */
+
+.rf-t-kawaii .kw-h {
+  position: relative;
+  margin-bottom: 0.5em;
+  font-family: var(--rf-font-heading);
+  font-size: 1.12em;
+  font-weight: 700;
+  letter-spacing: var(--rf-heading-tracking);
+  text-transform: var(--rf-heading-transform);
+}
+.rf-t-kawaii .kw-h__text {
+  display: inline-block;
+  padding: 0 0.5em;
+  border-radius: 999px;
+  background: linear-gradient(transparent 52%, var(--kw-tab) 52%);
+}
+.rf-t-kawaii .kw-tab {
+  position: absolute;
+  top: -0.1em;
+  right: calc((var(--rf-margin) + 9mm) * -1);
+  max-width: 30mm;
+  padding: 0.35em 0.6em 0.35em 0.9em;
+  overflow: hidden;
+  border-radius: 3mm 0 0 3mm;
+  background: var(--kw-tab);
+  font-size: 0.62em;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--kw-ink);
+  box-shadow: -0.6mm 0.6mm 0 rgb(74 58 79 / 0.1);
+}
+.rf-t-kawaii .kw-h--pink {
+  --kw-tab: var(--kw-pink);
+}
+.rf-t-kawaii .kw-h--mint {
+  --kw-tab: var(--kw-mint);
+}
+.rf-t-kawaii .kw-h--lilac {
+  --kw-tab: var(--kw-lilac);
+}
+.rf-t-kawaii .kw-h--butter {
+  --kw-tab: var(--kw-butter);
+}
+
+/* ---------- content ---------- */
+
+.rf-t-kawaii .kw-summary,
+.rf-t-kawaii .rf-entry__desc,
+.rf-t-kawaii .rf-bullets > li,
+.rf-t-kawaii .kw-inline {
+  color: #4f4255;
+}
+.rf-t-kawaii .rf-entry__title,
+.rf-t-kawaii .rf-cline__title {
+  font-family: var(--rf-font-heading);
+  font-weight: 600;
+  color: var(--kw-ink);
+}
+.rf-t-kawaii .rf-entry__sub {
+  color: var(--rf-accent-ink);
+  font-weight: 500;
+}
+.rf-t-kawaii .rf-entry--main .rf-entry__date {
+  display: inline-block;
+  padding: 0.05em 0.7em;
+  border-radius: 999px;
+  background: var(--kw-mint);
+  font-weight: 600;
+  color: #2f5a48;
+}
+.rf-t-kawaii .rf-bullets > li::before {
+  background: var(--rf-accent);
+  border-radius: 50%;
+}
+.rf-t-kawaii .kw-skill {
+  display: flex;
+  align-items: baseline;
+  gap: 2.5mm;
+}
+.rf-t-kawaii .kw-skill__name {
+  flex: none;
+  width: 24mm;
+  font-weight: 600;
+}
+.rf-t-kawaii .kw-chips {
+  gap: 1.4mm;
+}
+.rf-t-kawaii .kw-chip {
+  padding: 0.15em 0.75em;
+  border-radius: 999px;
+  border: 0;
+  background: var(--kw-lilac);
+  color: var(--kw-ink);
+  font-size: 0.9em;
+}
+.rf-t-kawaii .kw-skill:nth-child(odd) .kw-chip:nth-child(3n + 1),
+.rf-t-kawaii .kw-chip:nth-child(3n + 2) {
+  background: var(--kw-pink);
+}
+.rf-t-kawaii .kw-chip:nth-child(3n) {
+  background: var(--kw-butter);
+}
+.rf-t-kawaii .kw-inline {
+  font-size: 1em;
+}

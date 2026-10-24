@@ -4,7 +4,7 @@
 
 **Live demo:** [resumeforge-jeevan.vercel.app](https://resumeforge-jeevan.vercel.app)
 
-Write one resume, then tailor a copy for every application. ResumeForge has 31 templates, real page-by-page pagination, an ATS checker, a job-description matcher and cover letters, and it exports text-based PDF and Word files. You don't need an account and nothing is uploaded: your data stays in your browser.
+Write one resume, then tailor a copy for every application. ResumeForge has 42 templates, real page-by-page pagination, an ATS checker, a job-description matcher and cover letters, and it exports text-based PDF and Word files. You don't need an account and nothing is uploaded: your data stays in your browser.
 
 ![Editor with live preview](docs/editor.png)
 
@@ -22,7 +22,7 @@ Every template below shows page 1 of the built-in developer sample on A4.
 
 ### Design styles
 
-Eighteen templates built around well-known graphic design movements. Their ornaments are decorative SVG and CSS behind the text, so the words stay real, selectable text in the PDF.
+Twenty-six templates built around well-known graphic design movements, each with its own page structure: sidebars, tile grids, timelines, comic panels, a desktop window, a console header and more. Their ornaments are decorative SVG and CSS behind the text, so the words stay real, selectable text in the PDF.
 
 | | | | |
 |:-:|:-:|:-:|:-:|
@@ -30,12 +30,22 @@ Eighteen templates built around well-known graphic design movements. Their ornam
 | <img src="docs/templates/minimalism.png" width="200" alt="Minimalism template"><br>**Minimalism** | <img src="docs/templates/flat.png" width="200" alt="Flat template"><br>**Flat** | <img src="docs/templates/geometric.png" width="200" alt="Geometric template"><br>**Geometric** | <img src="docs/templates/popart.png" width="200" alt="Pop Art template"><br>**Pop Art** |
 | <img src="docs/templates/maximalism.png" width="200" alt="Maximalism template"><br>**Maximalism** | <img src="docs/templates/psychedelic.png" width="200" alt="Psychedelic template"><br>**Psychedelic** | <img src="docs/templates/neobrutalism.png" width="200" alt="Neo-Brutalism template"><br>**Neo-Brutalism** | <img src="docs/templates/grunge.png" width="200" alt="Grunge template"><br>**Grunge** |
 | <img src="docs/templates/y2k.png" width="200" alt="Y2K template"><br>**Y2K** | <img src="docs/templates/glassmorphism.png" width="200" alt="Glassmorphism template"><br>**Glassmorphism** | <img src="docs/templates/memphis.png" width="200" alt="Corporate Memphis template"><br>**Corporate Memphis** | <img src="docs/templates/steampunk.png" width="200" alt="Steampunk template"><br>**Steampunk** |
-| <img src="docs/templates/vaporwave.png" width="200" alt="Vaporwave template"><br>**Vaporwave** | <img src="docs/templates/retrofuturism.png" width="200" alt="Retro-Futurism template"><br>**Retro-Futurism** |  |  |
+| <img src="docs/templates/vaporwave.png" width="200" alt="Vaporwave template"><br>**Vaporwave** | <img src="docs/templates/retrofuturism.png" width="200" alt="Retro-Futurism template"><br>**Retro-Futurism** | <img src="docs/templates/bento.png" width="200" alt="Bento Grid template"><br>**Bento Grid** | <img src="docs/templates/japandi.png" width="200" alt="Japandi template"><br>**Japandi** |
+| <img src="docs/templates/risograph.png" width="200" alt="Risograph template"><br>**Risograph** | <img src="docs/templates/pixel.png" width="200" alt="Pixel Art template"><br>**Pixel Art** | <img src="docs/templates/victorian.png" width="200" alt="Victorian template"><br>**Victorian** | <img src="docs/templates/kawaii.png" width="200" alt="Kawaii template"><br>**Kawaii** |
+| <img src="docs/templates/cybercore.png" width="200" alt="Cybercore template"><br>**Cybercore** | <img src="docs/templates/typecollage.png" width="200" alt="Type Collage template"><br>**Type Collage** |  |  |
+
+### Resume formats
+
+Three templates that change how the resume is organised, not just how it looks.
+
+| | | |
+|:-:|:-:|:-:|
+| <img src="docs/templates/infographic.png" width="200" alt="Infographic template"><br>**Infographic**<br>Stat tiles, a career Gantt chart and skill gauges | <img src="docs/templates/portfolio.png" width="200" alt="Portfolio template"><br>**Portfolio**<br>Projects first, as a grid of tiles | <img src="docs/templates/skillsfirst.png" width="200" alt="Skills-first template"><br>**Skills-first**<br>Functional: a core-competencies grid before the career history |
 
 ## Features
 
 ### Templates & design
-- **31 templates** covering one- and two-column layouts, photo layouts, ATS-safe single-column layouts, an academic CV and 18 design-style templates (Art Nouveau to Retro-Futurism). The gallery can be filtered by *ATS-friendly*, *Two-column*, *Photo*, *Creative* and *One-page*.
+- **42 templates** covering one- and two-column layouts, photo layouts, ATS-safe single-column layouts, an academic CV, 26 design-style templates (Art Nouveau to Type Collage) and three resume formats (Infographic, Portfolio and Skills-first). The gallery can be filtered by *ATS-friendly*, *Two-column*, *Photo*, *Creative* and *One-page*.
 - **Real pagination.** Entries are never split across pages, headings stay with their first entry, and side columns continue onto the next page. Running headers and page numbers appear where the template uses them. Both A4 and US Letter are supported.
 - **Fit to pages.** If the last page is nearly empty, one click tightens spacing, then line height, font size and margins, changing as little as possible. You can undo it.
 - **Design controls.** Choose an accent preset or a custom colour, one of 10 font pairings (Google Fonts loaded on demand), font size, line height, spacing, margins, heading case, date format, photo shape and contact icons.
@@ -96,7 +106,7 @@ flowchart LR
     P[paginate · fit · design]
   end
   subgraph Templates["templates/"]
-    REG[registry<br/>auto-discovers 31 templates]
+    REG[registry<br/>auto-discovers 42 templates]
     PD[PagedDocument<br/>measure → paginate → pages]
   end
   subgraph Features["features/ + app/"]
@@ -123,7 +133,7 @@ flowchart LR
 
 ## Testing
 
-- **279 tests in 22 test files** (`node --test` with native TypeScript stripping, no test framework). They cover normalisation and migration of old or corrupt data, undo history, the store and throttled storage, ATS scoring, keyword extraction and job matching, rewrites, pagination and fit-to-pages, DOCX / Markdown / text / JSON Resume export and import round-trips, share links, and template helpers. They include regression tests for ReDoS-style slow inputs.
+- **308 tests in 22 test files** (`node --test` with native TypeScript stripping, no test framework). They cover normalisation and migration of old or corrupt data, undo history, the store and throttled storage, ATS scoring, keyword extraction and job matching, rewrites, pagination and fit-to-pages, DOCX / Markdown / text / JSON Resume export and import round-trips, share links, and template helpers. They include regression tests for ReDoS-style slow inputs.
 - **Strict TypeScript** (`tsc -b`) and **oxlint** run on every build.
 - **CI** (GitHub Actions on Node 22) runs `npm ci`, lint, tests and build.
 - Each template was also checked by hand in Chromium (through Playwright) at A4 and US Letter, in light and dark mode, and at 390 px phone width.
