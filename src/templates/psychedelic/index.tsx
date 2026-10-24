@@ -1,8 +1,8 @@
 /**
- * Psychedelic — a kaleidoscope header (conic rays and concentric rings in neon violet, magenta,
- * orange and lime) behind a heavy rounded name echoed by offset neon shadows, wavy neon rules under
- * the headings and a melting wave edge at the foot of the header. The body stays on white with dark
- * text so it prints and parses cleanly. Single column with compact rows for short sections.
+ * Psychedelic — a concert-poster layout. The top of page 1 is a tall poster: a centred kaleidoscope of
+ * conic rays and concentric neon rings with the name in the middle in echoing, stacked-shadow
+ * lettering, the title and contact underneath, and a melting drip edge. The body below splits into two
+ * equal columns divided by a wavy neon rule; headings sit on wavy underlines. Main first in the DOM.
  */
 import type { CSSProperties } from 'react'
 import {
@@ -16,6 +16,7 @@ import {
   displayName,
   hasPhoto,
   sectionsToBlocks,
+  type EntryView,
   type SectionView,
   type TemplateMeta,
   type TemplateProps,
@@ -25,11 +26,12 @@ import './psychedelic.css'
 export const meta: TemplateMeta = {
   id: 'psychedelic',
   name: 'Psychedelic',
-  description: 'A kaleidoscopic neon header with echoing, fluid lettering and wavy rules over a clean, readable single column.',
-  tags: ['Creative', 'Photo'],
+  description: 'A concert-poster top half with a centred kaleidoscope and echoing neon lettering, over two equal columns split by a wavy rule.',
+  tags: ['Creative', 'Two-column', 'Photo'],
   order: 290,
   supportsPhoto: true,
-  columns: 1,
+  columns: 2,
+  sideKinds: ['education', 'skills', 'languages', 'certifications', 'awards', 'interests', 'references'],
   defaultFont: 'poppins',
   defaultAccent: '#8b1fd6',
   headingCase: 'normal',
@@ -49,7 +51,7 @@ const heading = (s: SectionView) => (
   </h2>
 )
 
-export default function Psychedelic({ data, design, main }: TemplateProps) {
+export default function Psychedelic({ data, design, main, side }: TemplateProps) {
   const b = data.basics
   const name = displayName(b)
   const vars = { '--ps-pink': '#ff2d95', '--ps-orange': '#ff8a00', '--ps-lime': '#b6e300', '--ps-deep': '#2a0845' } as CSSProperties
@@ -63,29 +65,36 @@ export default function Psychedelic({ data, design, main }: TemplateProps) {
           <h1 className="ps-name">{name}</h1>
           {b.title.trim() && <div className="ps-title">{b.title}</div>}
         </div>
+        <ContactList basics={b} layout="inline" className="ps-contact" iconSize="0.95em" />
       </div>
       <Drip />
     </header>
   )
 
-  const blocks = sectionsToBlocks(main, {
+  const render = {
     heading,
-    summary: (s) => <RichParagraphs className="ps-summary" text={s.content} />,
-    entry: (e) => compactEntry(e) ?? <DefaultEntry entry={e} variant="main" />,
-    whole: (s) => compactWhole(s, 'ps-compact'),
-  })
+    summary: (s: SectionView) => <RichParagraphs className="ps-summary" text={s.content} />,
+    entry: (e: EntryView) => compactEntry(e) ?? <DefaultEntry entry={e} variant="main" />,
+    whole: (s: SectionView) => compactWhole(s, 'ps-compact'),
+  }
+  const mainBlocks = sectionsToBlocks(main, render)
+  const sideBlocks = sectionsToBlocks(side, render)
 
   return (
     <PageLayout
       header={header}
-      main={blocks}
-      page={({ index, header, main }) => (
+      main={mainBlocks}
+      side={sideBlocks}
+      page={({ index, header, main, side }) => (
         <div className="ps-page" style={vars}>
           {header}
           {index > 0 && <div className="ps-cap" aria-hidden="true" />}
-          <div className="ps-body">
-            {index === 0 && <ContactList basics={b} layout="inline" className="ps-contact" iconSize="0.95em" />}
-            {main}
+          <div className="ps-cols">
+            <div className="ps-col">{main}</div>
+            <svg className="ps-wave" viewBox="0 0 10 400" preserveAspectRatio="none" aria-hidden="true">
+              <path d="M5 0C9 25 1 25 5 50S9 75 5 100 1 125 5 150 9 175 5 200 1 225 5 250 9 275 5 300 1 325 5 350 9 375 5 400" />
+            </svg>
+            <div className="ps-col">{side}</div>
           </div>
         </div>
       )}

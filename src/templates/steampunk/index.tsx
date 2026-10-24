@@ -1,10 +1,11 @@
 /**
- * Steampunk — Victorian engineering on sepia paper. Brass clockwork gears mesh in the top-right
- * corner and turn up again at the foot of every page, a riveted double brass frame encloses the
- * sheet, the name is set in a display serif over a brass rule with rivets, and headings carry a small
- * cog. Warm browns throughout; body text is dark umber for contrast. Single column.
+ * Steampunk — the career as a brass steam pipe. Inside a riveted double brass frame on sepia paper,
+ * a vertical pipe with flanges runs down every page; each section heading is a large clockwork gear on
+ * the pipe, each dated entry a small copper gear with its dates engraved in the track to the left, and
+ * the text sits to the right. Page 1 opens with meshing gears beside a display-serif name on a riveted
+ * brass rule. Warm browns throughout; body text stays dark umber. Single column.
  */
-import type { CSSProperties } from 'react'
+import type { CSSProperties, ReactNode } from 'react'
 import {
   ContactList,
   DefaultEntry,
@@ -16,6 +17,7 @@ import {
   displayName,
   hasPhoto,
   sectionsToBlocks,
+  type EntryView,
   type SectionView,
   type TemplateMeta,
   type TemplateProps,
@@ -25,7 +27,7 @@ import './steampunk.css'
 export const meta: TemplateMeta = {
   id: 'steampunk',
   name: 'Steampunk',
-  description: 'Brass clockwork gears, a riveted frame and warm sepia paper with Victorian display type.',
+  description: 'Your career as a brass steam-pipe timeline: gear nodes for every role, engraved dates in the left track and a riveted sepia frame.',
   tags: ['Creative', 'Classic', 'Photo'],
   order: 350,
   supportsPhoto: true,
@@ -71,20 +73,49 @@ const Clockwork = () => (
   </svg>
 )
 
-const Cog = () => (
-  <svg className="sp-cog" viewBox="0 0 24 24" aria-hidden="true">
-    <path d={gearPath(12, 12, 8, 8, 2.6)} />
-    <circle cx="12" cy="12" r="3" className="sp-cog__hole" />
+const Node = ({ big }: { big?: boolean }) => (
+  <svg className={big ? 'sp-node sp-node--big' : 'sp-node'} viewBox="0 0 40 40" aria-hidden="true">
+    <Gear cx={20} cy={20} r={big ? 15 : 13} teeth={big ? 12 : 8} className={big ? undefined : 'sp-gear--copper'} />
   </svg>
 )
 
-const heading = (s: SectionView) => (
-  <h2 className="sp-h">
-    <Cog />
-    <span className="sp-h__text">{s.title}</span>
-    <span className="sp-h__rule" />
-  </h2>
-)
+/** Dates go in the left track for dated entries rendered as full entries (not compact lines). */
+const tracked = (e: EntryView | undefined) => !!e && !!e.date && !compactEntry(e)
+
+/** Timeline row: date track | gear on the pipe | content. A section's first block gets a heading row. */
+function row(node: ReactNode, { section, entry, first }: { section: SectionView; entry?: EntryView; first: boolean }) {
+  const dated = tracked(entry)
+  return (
+    <>
+      {first && (
+        <div className="sp-tl sp-tl--head">
+          <div className="sp-tl__when" />
+          <div className="sp-tl__node">
+            <Node big />
+          </div>
+          <h2 className="sp-h">
+            <span className="sp-h__text">{section.title}</span>
+            <span className="sp-h__rule" />
+          </h2>
+        </div>
+      )}
+      <div className={dated ? 'sp-tl sp-tl--dated' : 'sp-tl'}>
+        <div className="sp-tl__when">
+          {dated && entry && (entry.startText && entry.endText ? (
+            <>
+              <span>{entry.endText}</span>
+              <span className="sp-tl__from">{entry.startText}</span>
+            </>
+          ) : (
+            <span>{entry.date}</span>
+          ))}
+        </div>
+        <div className="sp-tl__node">{dated && <Node />}</div>
+        <div className="sp-tl__body">{node}</div>
+      </div>
+    </>
+  )
+}
 
 export default function Steampunk({ data, design, main }: TemplateProps) {
   const b = data.basics
@@ -106,7 +137,8 @@ export default function Steampunk({ data, design, main }: TemplateProps) {
   )
 
   const blocks = sectionsToBlocks(main, {
-    heading,
+    heading: () => null,
+    wrap: row,
     summary: (s) => <RichParagraphs className="sp-summary" text={s.content} />,
     entry: (e) => compactEntry(e) ?? <DefaultEntry entry={e} variant="main" />,
     whole: (s) => compactWhole(s, 'sp-compact'),
@@ -130,7 +162,7 @@ export default function Steampunk({ data, design, main }: TemplateProps) {
           </svg>
           <div className="sp-body">
             {header}
-            {main}
+            <div className="sp-rail">{main}</div>
           </div>
         </div>
       )}

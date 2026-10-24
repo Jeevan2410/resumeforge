@@ -1,8 +1,9 @@
 /**
- * Y2K / Cyber — millennium tech-optimism. An iridescent header with a liquid-chrome name, a glossy
- * gel-bubble title pill and pixel sparkles; glossy bubble headings; a frosted pearl side column with
- * pixel-block skill meters. All colour and gloss sits behind short labels; body copy stays dark on
- * white. Main column first in the DOM.
+ * Y2K — the résumé is an early-2000s desktop window. Each page is an iridescent aqua-lilac-pink desktop
+ * with a glossy window on it: a chrome title bar with gel traffic-light buttons, a pale explorer pane
+ * on the left (contact, skills, languages as "folders") and a white document area on the right that
+ * opens on page 1 with a liquid-chrome name, a gel pill title and pixel sparkles. Headings are gel
+ * bubbles. The window chrome is aria-hidden; the main column comes first in the DOM.
  */
 import type { CSSProperties, ReactNode } from 'react'
 import {
@@ -28,7 +29,7 @@ import './y2k.css'
 export const meta: TemplateMeta = {
   id: 'y2k',
   name: 'Y2K',
-  description: 'Liquid-chrome lettering, glossy gel bubbles, pixel sparkles and iridescent panels, in a tidy two-column layout.',
+  description: 'Your résumé as an early-2000s desktop window: chrome title bar, gel buttons, an explorer pane and liquid-chrome lettering.',
   tags: ['Creative', 'Two-column', 'Photo'],
   order: 320,
   supportsPhoto: true,
@@ -78,6 +79,7 @@ function sideEntry(e: EntryView): ReactNode {
 
 export default function Y2K({ data, design, main, side }: TemplateProps) {
   const b = data.basics
+  const fileName = displayName(b).toLowerCase().replace(/\s+/g, '_')
   const vars = { '--yk-lilac': '#c9b6ff', '--yk-aqua': '#9ef0ff', '--yk-pink': '#ffc4ec', '--yk-ink': '#141a33' } as CSSProperties
 
   const header = (
@@ -110,12 +112,27 @@ export default function Y2K({ data, design, main, side }: TemplateProps) {
       header={header}
       main={mainBlocks}
       side={sideBlocks}
-      page={({ header, main, side }) => (
+      page={({ index, count, header, main, side }) => (
         <div className="yk-page" style={vars}>
-          {header}
-          <div className="yk-cols">
-            <div className="yk-main">{main}</div>
-            <aside className="yk-side">{side}</aside>
+          <div className="yk-window">
+            <div className="yk-bar" aria-hidden="true">
+              <span className="yk-dots">
+                <i />
+                <i />
+                <i />
+              </span>
+              <span className="yk-bar__title">
+                {fileName}.resume{count > 1 ? ` — ${index + 1}/${count}` : ''}
+              </span>
+              <Pixel className="yk-bar__px" />
+            </div>
+            <div className="yk-cols">
+              <div className="yk-main">
+                {header}
+                {main}
+              </div>
+              <aside className="yk-side">{side}</aside>
+            </div>
           </div>
         </div>
       )}

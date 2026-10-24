@@ -1,26 +1,24 @@
 /**
- * Bauhaus — form follows function. A header composition of primary shapes (a red circle, a blue
- * square, a yellow triangle and a black bar) beside a heavy geometric-sans name; a light stone side
- * column behind a thick black bar holds contact and skills; every main heading carries one of the three
- * primary shapes in turn. The accent drives the red; blue and yellow are fixed partners. Main column
- * first in the DOM.
+ * Bauhaus — form follows function. Page 1 opens with a modular tile grid: the heavy lowercase name in
+ * a wide white tile, a red tile with a white circle (or the photo), a blue tile with the job title and a
+ * yellow tile holding the contact details. Below it one column runs on a strict rhythm: every section
+ * heading is a solid colour block (red, blue, yellow in turn) on a thick black rule. The accent drives
+ * the red; blue and yellow are fixed partners.
  */
 import type { CSSProperties, ReactNode } from 'react'
 import {
   ContactList,
   DefaultEntry,
-  LevelSegments,
   PageLayout,
   Photo,
   RichParagraphs,
+  compactEntry,
+  compactWhole,
   contactEntries,
   displayName,
   hasPhoto,
-  inlineWhole,
   sectionsToBlocks,
-  type Block,
   type EntryView,
-  type SectionView,
   type TemplateMeta,
   type TemplateProps,
 } from '../shared'
@@ -29,104 +27,72 @@ import './bauhaus.css'
 export const meta: TemplateMeta = {
   id: 'bauhaus',
   name: 'Bauhaus',
-  description: 'Functional layout built from primary colours and balanced circles, squares and triangles, with heavy geometric type.',
-  tags: ['Creative', 'Two-column', 'Photo'],
+  description: 'A modular header grid of red, blue and yellow tiles, heavy geometric type and colour-block section headings on thick black rules.',
+  tags: ['Creative', 'Photo'],
   order: 230,
   supportsPhoto: true,
-  columns: 2,
+  columns: 1,
   defaultFont: 'poppins',
   defaultAccent: '#d7301f',
-  sideKinds: ['skills', 'languages', 'certifications', 'awards', 'interests', 'references'],
   headingCase: 'normal',
   gaps: { entry: 9, section: 16 },
 }
 
-const SHAPES = ['circle', 'square', 'triangle'] as const
+const TONES = ['red', 'blue', 'yellow'] as const
 
-function Shape({ kind }: { kind: (typeof SHAPES)[number] }) {
-  return (
-    <svg className={`bh-shape bh-shape--${kind}`} viewBox="0 0 10 10" aria-hidden="true">
-      {kind === 'circle' && <circle cx="5" cy="5" r="5" />}
-      {kind === 'square' && <rect width="10" height="10" />}
-      {kind === 'triangle' && <path d="M0 10L5 0L10 10Z" />}
-    </svg>
-  )
-}
+const entry = (e: EntryView): ReactNode => compactEntry(e) ?? <DefaultEntry entry={e} variant="main" marker="square" />
 
-/** The header composition (decorative). */
-function Composition() {
-  return (
-    <svg className="bh-comp" viewBox="0 0 120 120" aria-hidden="true">
-      <rect className="bh-blue" x="44" y="8" width="64" height="64" />
-      <circle className="bh-red" cx="44" cy="70" r="36" />
-      <path className="bh-yellow" d="M64 112L94 58L120 112Z" />
-      <rect className="bh-black" x="0" y="104" width="120" height="8" />
-      <path className="bh-black" d="M10 10H22V60H10Z" />
-    </svg>
-  )
-}
-
-function SideSkill({ e }: { e: EntryView }) {
-  return (
-    <div className="rf-entry rf-entry--skills rf-entry--side rf-skill bh-skill">
-      {e.title && <div className="rf-skill__name">{e.title}</div>}
-      {e.level > 0 && <LevelSegments level={e.level} label={e.levelLabel} className="bh-skill__bar" height="0.42em" gap="0.18em" />}
-      {e.keywords.length > 0 && <div className="rf-skill__keywords">{e.keywords.join(', ')}</div>}
-    </div>
-  )
-}
-
-const sideHeading = (s: SectionView | string) => <h3 className="bh-sh">{typeof s === 'string' ? s : s.title}</h3>
-
-function sideEntry(e: EntryView): ReactNode {
-  if (e.kind === 'skills') return <SideSkill e={e} />
-  return <DefaultEntry entry={e} variant="side" />
-}
-
-export default function Bauhaus({ data, design, main, side }: TemplateProps) {
+export default function Bauhaus({ data, design, main }: TemplateProps) {
   const b = data.basics
-  const shapeOf = new Map(main.map((s, i) => [s.id, SHAPES[i % 3]]))
+  const toneOf = new Map(main.map((s, i) => [s.id, TONES[i % 3]]))
   const vars = { '--bh-blue': '#1d4f91', '--bh-yellow': '#f2b415' } as CSSProperties
 
   const header = (
-    <header className="bh-header">
-      <div className="bh-header__text">
+    <header className="bh-grid">
+      <div className="bh-tile bh-tile--name">
         <h1 className="bh-name">{displayName(b)}</h1>
+      </div>
+      <div className="bh-tile bh-tile--red">
+        {hasPhoto(b, design) ? (
+          <Photo basics={b} size="30mm" shape="circle" className="bh-photo" />
+        ) : (
+          <svg className="bh-mark" viewBox="0 0 100 100" aria-hidden="true">
+            <circle cx="50" cy="50" r="34" />
+            <path d="M16 96H84" />
+          </svg>
+        )}
+      </div>
+      <div className="bh-tile bh-tile--blue">
+        <svg className="bh-tri" viewBox="0 0 10 10" aria-hidden="true">
+          <path d="M0 10L5 0L10 10Z" />
+        </svg>
         {b.title.trim() && <div className="bh-title">{b.title}</div>}
       </div>
-      {hasPhoto(b, design) ? <Photo basics={b} size="26mm" className="bh-photo" /> : <Composition />}
+      <div className="bh-tile bh-tile--yellow">{contactEntries(b).length > 0 && <ContactList basics={b} layout="grid" className="bh-contact" />}</div>
     </header>
   )
 
-  const mainBlocks = sectionsToBlocks(main, {
+  const blocks = sectionsToBlocks(main, {
     heading: (s) => (
-      <h2 className="bh-h">
-        <Shape kind={shapeOf.get(s.id) ?? 'circle'} />
-        <span>{s.title}</span>
+      <h2 className={`bh-h bh-h--${toneOf.get(s.id) ?? 'red'}`}>
+        <span className="bh-h__block">{s.title}</span>
+        <span className="bh-h__rule" />
       </h2>
     ),
     summary: (s) => <RichParagraphs className="bh-summary" text={s.content} />,
-    entry: (e) => <DefaultEntry entry={e} variant="main" marker="square" />,
+    entry,
+    whole: (s) => compactWhole(s, 'bh-compact'),
   })
-
-  const sideBlocks: Block[] = []
-  if (contactEntries(b).length) {
-    sideBlocks.push({ key: 'contact', gap: 'section', letter: true, node: <>{sideHeading('Contact')}<ContactList basics={b} layout="stack" className="bh-contact" /></> })
-  }
-  sideBlocks.push(...sectionsToBlocks(side, { heading: sideHeading, entry: sideEntry, whole: (s) => (s.kind === 'interests' ? inlineWhole(s, 'bh-inline') : undefined) }))
 
   return (
     <PageLayout
       header={header}
-      main={mainBlocks}
-      side={sideBlocks}
-      page={({ header, main, side }) => (
+      main={blocks}
+      page={({ index, header, main }) => (
         <div className="bh-page" style={vars}>
           {header}
-          <div className="bh-cols">
-            <div className="bh-main">{main}</div>
-            <aside className="bh-side">{side}</aside>
-          </div>
+          {index > 0 && <div className="bh-cap" aria-hidden="true" />}
+          <div className="bh-body">{main}</div>
         </div>
       )}
     />

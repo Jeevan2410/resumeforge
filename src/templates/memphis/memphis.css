@@ -11,9 +11,9 @@
 .rf-t-memphis .me-header {
   display: flex;
   align-items: center;
-  gap: 4mm;
-  margin-bottom: var(--rf-section-gap);
-  padding: 5mm 4mm 5mm 7mm;
+  gap: 5mm;
+  margin-bottom: calc(var(--rf-section-gap) * 1.2);
+  padding: 4mm 7mm 4mm 3mm;
   border-radius: 8mm;
   background: var(--me-sky);
 }
@@ -120,29 +120,47 @@
 
 /* ---------- sections ---------- */
 
-.rf-t-memphis .me-h {
+.rf-t-memphis .me-row {
+  display: grid;
+  grid-template-columns: 40mm minmax(0, 1fr);
+  column-gap: 5mm;
+}
+.rf-t-memphis .me-row__gutter {
   position: relative;
-  display: flex;
+}
+.rf-t-memphis .me-h {
+  display: inline-flex;
   align-items: center;
-  margin-bottom: 0.5em;
+  justify-content: center;
+  min-width: 30mm;
+  max-width: 100%;
+  min-height: 11mm;
+  padding: 2mm 4mm;
   font-family: var(--rf-font-heading);
-  font-size: 1.18em;
+  font-size: 1.02em;
   font-weight: 700;
+  line-height: 1.1;
+  text-align: center;
   letter-spacing: var(--rf-heading-tracking);
   text-transform: var(--rf-heading-transform);
-}
-.rf-t-memphis .me-h__blob {
-  position: absolute;
-  left: -0.45em;
-  top: 50%;
-  width: 1.5em;
-  height: 1.2em;
   border-radius: 58% 42% 55% 45% / 50% 60% 40% 50%;
   background: var(--me-sun);
-  transform: translateY(-50%);
+  color: var(--me-ink);
+  overflow-wrap: anywhere;
 }
-.rf-t-memphis .me-h__text {
-  position: relative;
+.rf-t-memphis .me-h--mint {
+  background: var(--me-mint);
+  border-radius: 42% 58% 45% 55% / 60% 45% 55% 40%;
+}
+.rf-t-memphis .me-h--coral {
+  background: var(--me-coral);
+  color: #fff;
+  border-radius: 50% 50% 38% 62% / 45% 60% 40% 55%;
+}
+.rf-t-memphis .me-h--lilac {
+  background: var(--rf-accent);
+  color: #fff;
+  border-radius: 62% 38% 52% 48% / 55% 45% 55% 45%;
 }
 
 .rf-t-memphis .me-summary,

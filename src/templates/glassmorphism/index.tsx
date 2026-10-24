@@ -1,9 +1,8 @@
 /**
- * Glassmorphism — frosted panels over a soft, blurred colour field. Three large blurred blobs (the
- * accent plus a pink and a mint) sit behind translucent white "glass" cards with a bright hairline
- * edge and a faint top highlight: one for the header, one for the side column, one for the main
- * column. The cards are mostly opaque, so text contrast holds in print even where backdrop blur is not
- * supported. Main column first in the DOM.
+ * Glassmorphism — frosted panes over a blurred colour field. Page 1 opens with a split header of two
+ * glass panes side by side: a wide one with the photo, name and title, and a narrow one with the
+ * contact details. Below, every section floats in its own frosted card with soft highlights (blocks of
+ * a section join into one card), so the page reads as a stack of glass sheets. Single column.
  */
 import type { CSSProperties, ReactNode } from 'react'
 import {
@@ -12,12 +11,12 @@ import {
   PageLayout,
   Photo,
   RichParagraphs,
+  compactEntry,
+  compactWhole,
   contactEntries,
   displayName,
   hasPhoto,
-  inlineWhole,
   sectionsToBlocks,
-  type Block,
   type EntryView,
   type SectionView,
   type TemplateMeta,
@@ -28,67 +27,64 @@ import './glassmorphism.css'
 export const meta: TemplateMeta = {
   id: 'glassmorphism',
   name: 'Glassmorphism',
-  description: 'Translucent frosted-glass cards with soft highlights floating over a blurred colour field.',
-  tags: ['Modern', 'Two-column', 'Photo'],
+  description: 'A split header of two frosted-glass panes, then every section in its own floating glass card over a soft blurred colour field.',
+  tags: ['Modern', 'Photo'],
   order: 330,
   supportsPhoto: true,
-  columns: 2,
+  columns: 1,
   defaultFont: 'inter',
   defaultAccent: '#1769aa',
-  sideKinds: ['skills', 'languages', 'certifications', 'awards', 'interests', 'references'],
   headingCase: 'upper',
-  gaps: { entry: 10, section: 17 },
+  gaps: { entry: 10, section: 12 },
 }
 
-const mainHeading = (s: SectionView) => <h2 className="gl-h">{s.title}</h2>
-const sideHeading = (s: SectionView | string) => <h3 className="gl-sh">{typeof s === 'string' ? s : s.title}</h3>
+const heading = (s: SectionView) => <h2 className="gl-h">{s.title}</h2>
 
-function sideEntry(e: EntryView): ReactNode {
-  if (e.kind === 'skills') return <DefaultEntry entry={e} variant="side" level="bar" />
-  return <DefaultEntry entry={e} variant="side" />
-}
+/** One glass card per section: the blocks of a section touch and the CSS rounds the outer corners. */
+const card = (node: ReactNode, info: { first: boolean; last: boolean }) => (
+  <div className={`gl-card${info.first ? ' gl-card--first' : ''}${info.last ? ' gl-card--last' : ''}`}>{node}</div>
+)
 
-export default function Glassmorphism({ data, design, main, side }: TemplateProps) {
+export default function Glassmorphism({ data, design, main }: TemplateProps) {
   const b = data.basics
   const vars = { '--gl-pink': '#f4a6c8', '--gl-mint': '#93e1d0', '--gl-ink': '#0f1f33' } as CSSProperties
 
   const header = (
-    <header className="gl-header gl-glass">
-      {hasPhoto(b, design) && <Photo basics={b} size="25mm" className="gl-photo" />}
-      <div className="gl-header__text">
-        <h1 className="gl-name">{displayName(b)}</h1>
-        {b.title.trim() && <div className="gl-title">{b.title}</div>}
+    <header className="gl-header">
+      <div className="gl-pane gl-pane--id gl-glass">
+        {hasPhoto(b, design) && <Photo basics={b} size="25mm" className="gl-photo" />}
+        <div className="gl-header__text">
+          <h1 className="gl-name">{displayName(b)}</h1>
+          {b.title.trim() && <div className="gl-title">{b.title}</div>}
+        </div>
       </div>
+      {contactEntries(b).length > 0 && (
+        <div className="gl-pane gl-pane--contact gl-glass">
+          <ContactList basics={b} layout="stack" className="gl-contact" />
+        </div>
+      )}
     </header>
   )
 
-  const mainBlocks = sectionsToBlocks(main, {
-    heading: mainHeading,
+  const blocks = sectionsToBlocks(main, {
+    heading,
     summary: (s) => <RichParagraphs className="gl-summary" text={s.content} />,
-    entry: (e) => <DefaultEntry entry={e} variant="main" />,
-  })
-
-  const sideBlocks: Block[] = []
-  if (contactEntries(b).length) {
-    sideBlocks.push({ key: 'contact', gap: 'section', letter: true, node: <>{sideHeading('Contact')}<ContactList basics={b} layout="stack" className="gl-contact" /></> })
-  }
-  sideBlocks.push(...sectionsToBlocks(side, { heading: sideHeading, entry: sideEntry, whole: (s) => (s.kind === 'interests' ? inlineWhole(s, 'gl-inline') : undefined) }))
+    entry: (e: EntryView) => compactEntry(e) ?? <DefaultEntry entry={e} variant="main" />,
+    whole: (s) => compactWhole(s, 'gl-compact'),
+    wrap: card,
+  }).map((bl) => (bl.gap === 'entry' ? { ...bl, gap: 'none' as const } : bl))
 
   return (
     <PageLayout
       header={header}
-      main={mainBlocks}
-      side={sideBlocks}
-      page={({ header, main, side }) => (
+      main={blocks}
+      page={({ header, main }) => (
         <div className="gl-page" style={vars}>
           <span className="gl-blob gl-blob--a" aria-hidden="true" />
           <span className="gl-blob gl-blob--b" aria-hidden="true" />
           <span className="gl-blob gl-blob--c" aria-hidden="true" />
           {header}
-          <div className="gl-cols">
-            <div className="gl-main gl-glass">{main}</div>
-            <aside className="gl-side gl-glass">{side}</aside>
-          </div>
+          <div className="gl-body">{main}</div>
         </div>
       )}
     />

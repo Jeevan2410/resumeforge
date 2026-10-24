@@ -82,12 +82,14 @@
 .rf-t-flat .fl-main {
   flex: 1 1 0;
   min-width: 0;
-  padding: calc(var(--rf-margin) * 0.8) calc(var(--rf-margin) * 0.8) 0 var(--rf-margin);
+  padding: calc(var(--rf-margin) * 0.8) var(--rf-margin) 0 calc(var(--rf-margin) * 0.8);
 }
+/* the side column sits on the left (it stays second in the DOM, after the main content) */
 .rf-t-flat .fl-side {
+  order: -1;
   flex: 0 0 31%;
   min-width: 0;
-  padding: calc(var(--rf-margin) * 0.8) var(--rf-margin) 0 calc(var(--rf-margin) * 0.7);
+  padding: calc(var(--rf-margin) * 0.8) calc(var(--rf-margin) * 0.7) 0 var(--rf-margin);
   background: #eef2f6;
   font-size: 0.92em;
   --rf-level-on: var(--rf-accent);

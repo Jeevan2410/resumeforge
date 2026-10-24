@@ -1,10 +1,11 @@
 /**
- * Grunge — distressed but still a résumé. Warm recycled-paper tone with a grain overlay, strips of
- * masking tape pinning the header, an ink splatter, a typewriter-style name with a rough brush stroke
- * beneath it, and headings stamped on torn brush marks in muted rust and olive. The texture is all
- * decorative SVG behind the text; the words themselves stay dark, plain and selectable. Single column.
+ * Grunge — a scrapbook. On a grainy recycled-paper page with an ink splatter, the header is a tilted
+ * card pinned with masking tape, and every section is its own torn scrap of paper: off-white, kraft
+ * and ruled grey in turn, pushed left and right of centre so the page zigzags, each with a strip of
+ * tape on top, a ripped bottom edge and a heading stamped on a brush mark. The texture is decorative;
+ * the words stay dark, plain and selectable. Single column.
  */
-import type { CSSProperties } from 'react'
+import type { CSSProperties, ReactNode } from 'react'
 import {
   ContactList,
   DefaultEntry,
@@ -25,7 +26,7 @@ import './grunge.css'
 export const meta: TemplateMeta = {
   id: 'grunge',
   name: 'Grunge',
-  description: 'Distressed paper grain, masking tape and rough brush strokes in muted tones, with raw typewriter-style headings.',
+  description: 'A scrapbook: every section on its own torn paper scrap with masking tape, zigzagging down a grainy page with brush-stamped headings.',
   tags: ['Creative', 'Photo'],
   order: 310,
   supportsPhoto: true,
@@ -96,12 +97,22 @@ export default function Grunge({ data, design, main }: TemplateProps) {
     </header>
   )
 
+  const paper = new Map(main.map((s, i) => [s.id, i % 3]))
+  /** One paper scrap per section: its blocks touch, tape on the first, a torn edge under the last. */
+  const scrap = (node: ReactNode, info: { section: SectionView; first: boolean; last: boolean }) => (
+    <div className={`gr-scrap gr-scrap--${paper.get(info.section.id) ?? 0}${info.first ? ' gr-scrap--first' : ''}${info.last ? ' gr-scrap--last' : ''}`}>
+      {info.first && <span className="gr-scrap__tape" aria-hidden="true" />}
+      {node}
+    </div>
+  )
+
   const blocks = sectionsToBlocks(main, {
     heading,
     summary: (s) => <RichParagraphs className="gr-summary" text={s.content} />,
     entry: (e) => compactEntry(e) ?? <DefaultEntry entry={e} variant="main" marker="dash" />,
     whole: (s) => compactWhole(s, 'gr-compact'),
-  })
+    wrap: scrap,
+  }).map((bl) => (bl.gap === 'entry' ? { ...bl, gap: 'none' as const } : bl))
 
   return (
     <PageLayout

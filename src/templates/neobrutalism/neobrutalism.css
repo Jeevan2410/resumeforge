@@ -9,108 +9,132 @@
   color: var(--nb-ink);
 }
 
-/* ---------- header card ---------- */
+/* ---------- header slab ---------- */
 
 .rf-t-neobrutalism .nb-header {
+  margin-bottom: calc(var(--rf-margin) * 0.6);
+}
+.rf-t-neobrutalism .nb-slab {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 5mm;
-  margin-bottom: calc(var(--rf-margin) * 0.75);
-  padding: 4.5mm 5mm;
-  background: var(--nb-yellow);
-  border: 3px solid var(--nb-ink);
-  box-shadow: 2mm 2mm 0 var(--nb-ink);
+  padding: 5mm 6mm;
+  background: var(--nb-ink);
+  box-shadow: 2mm 2mm 0 var(--rf-accent);
 }
-.rf-t-neobrutalism .nb-header__text {
+.rf-t-neobrutalism .nb-slab__text {
   min-width: 0;
 }
 .rf-t-neobrutalism .nb-name {
   font-family: var(--rf-font-heading);
-  font-size: 2.6em;
+  font-size: 3.1em;
   font-weight: 700;
-  line-height: 0.98;
-  letter-spacing: -0.03em;
+  line-height: 0.95;
+  letter-spacing: -0.035em;
   text-transform: uppercase;
+  color: var(--nb-yellow);
 }
 .rf-t-neobrutalism .nb-title {
   display: inline-block;
-  margin-top: 0.55em;
+  margin-top: 0.6em;
   padding: 0.15em 0.55em;
   font-family: var(--rf-font-mono);
   font-size: 0.95em;
   font-weight: 600;
   background: #fff;
-  border: 2px solid var(--nb-ink);
+  color: var(--nb-ink);
 }
 .rf-t-neobrutalism .nb-photo {
   flex: none;
-  border: 3px solid var(--nb-ink);
+  border: 3px solid #fff;
 }
-
-/* ---------- columns ---------- */
-
-.rf-t-neobrutalism .nb-cols {
-  display: flex;
-  flex: 1;
-  min-height: 0;
-  gap: 5mm;
+.rf-t-neobrutalism .nb-stickers {
+  margin-top: 4mm;
+  gap: 2.4mm;
+  font-family: var(--rf-font-mono);
+  font-size: 0.82em;
 }
-.rf-t-neobrutalism .nb-main {
-  flex: 1 1 0;
-  min-width: 0;
-}
-.rf-t-neobrutalism .nb-side {
-  flex: 0 0 31%;
-  align-self: flex-start;
-  min-width: 0;
-  padding: 4mm 4mm 2mm;
+.rf-t-neobrutalism .nb-sticker {
+  padding: 0.25em 0.6em;
   background: #fff;
-  border: 3px solid var(--nb-ink);
-  box-shadow: 2mm 2mm 0 var(--nb-blue);
-  font-size: 0.9em;
-  --rf-level-on: var(--nb-ink);
-  --rf-level-off: #e3dfd3;
+  border: 2px solid var(--nb-ink);
+  box-shadow: 0.9mm 0.9mm 0 var(--nb-ink);
 }
-/* continuation pages with nothing left for the side column: keep its width, drop the empty card */
-.rf-t-neobrutalism .nb-side:not(:has(.rf-block)) {
-  visibility: hidden;
+.rf-t-neobrutalism .nb-stickers .rf-contact__sep {
+  display: none;
+}
+.rf-t-neobrutalism .nb-cap {
+  height: 4mm;
+  margin-bottom: 6mm;
+  background: var(--nb-ink);
+  box-shadow: 1.5mm 1.5mm 0 var(--rf-accent);
 }
 
-.rf-t-neobrutalism .nb-h {
-  margin-bottom: 0.65em;
-  font-family: var(--rf-font-heading);
-  font-size: 0.95em;
-  font-weight: 700;
-  letter-spacing: var(--rf-heading-tracking);
-  text-transform: var(--rf-heading-transform);
+/* ---------- section rows ---------- */
+
+.rf-t-neobrutalism .nb-row {
+  display: grid;
+  grid-template-columns: 34mm minmax(0, 1fr);
+  margin-right: 2mm;
+  background: #fff;
+  border-left: 3px solid var(--nb-ink);
+  border-right: 3px solid var(--nb-ink);
+  /* every block of a row casts the shadow, so a row split into blocks still reads as one slab */
+  box-shadow: 2mm 2mm 0 var(--nb-ink);
 }
-.rf-t-neobrutalism .nb-h > span {
-  display: inline-block;
-  padding: 0.2em 0.6em;
+.rf-t-neobrutalism .nb-row--first,
+.rf-t-neobrutalism .rf-block:first-child > .nb-row {
+  border-top: 3px solid var(--nb-ink);
+}
+.rf-t-neobrutalism .nb-row--last,
+.rf-t-neobrutalism .rf-block:last-child > .nb-row {
+  border-bottom: 3px solid var(--nb-ink);
+}
+.rf-t-neobrutalism .nb-row__cell {
+  padding: 3mm;
+  border-right: 3px solid var(--nb-ink);
   background: var(--rf-accent);
   color: var(--rf-on-accent);
-  border: 2.5px solid var(--nb-ink);
-  box-shadow: 1.2mm 1.2mm 0 var(--nb-ink);
 }
-.rf-t-neobrutalism .nb-sh {
-  margin-bottom: 0.55em;
-  padding-bottom: 0.2em;
-  border-bottom: 3px solid var(--nb-ink);
-  font-family: var(--rf-font-mono);
-  font-size: 0.88em;
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
+.rf-t-neobrutalism .nb-row--yellow .nb-row__cell {
+  background: var(--nb-yellow);
+  color: var(--nb-ink);
 }
-.rf-t-neobrutalism .nb-contact {
-  row-gap: 0.4em;
-  font-family: var(--rf-font-mono);
-  font-size: 0.92em;
+.rf-t-neobrutalism .nb-row--blue .nb-row__cell {
+  background: var(--nb-blue);
+  color: #fff;
+}
+.rf-t-neobrutalism .nb-row__body {
+  padding: 1.5mm 4mm 1.5mm;
+}
+.rf-t-neobrutalism .nb-row--first .nb-row__body,
+.rf-t-neobrutalism .rf-block:first-child > .nb-row .nb-row__body {
+  padding-top: 3mm;
+}
+.rf-t-neobrutalism .nb-row--last .nb-row__body,
+.rf-t-neobrutalism .rf-block:last-child > .nb-row .nb-row__body {
+  padding-bottom: 3mm;
+}
+.rf-t-neobrutalism .nb-h {
+  font-family: var(--rf-font-heading);
+  font-size: 1em;
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: var(--rf-heading-tracking);
+  text-transform: var(--rf-heading-transform);
+  overflow-wrap: anywhere;
+}
+.rf-t-neobrutalism .nb-compact {
+  color: #1c1c1c;
+}
+.rf-t-neobrutalism .rf-cline__title,
+.rf-t-neobrutalism .rf-srow__name {
+  font-weight: 700;
 }
 .rf-t-neobrutalism .nb-summary,
 .rf-t-neobrutalism .rf-entry__desc,
-.rf-t-neobrutalism .rf-bullets > li,
-.rf-t-neobrutalism .nb-inline {
+.rf-t-neobrutalism .rf-bullets > li {
   color: #1c1c1c;
 }
 .rf-t-neobrutalism .rf-entry__title {
@@ -135,9 +159,6 @@
   background: var(--nb-yellow);
   border: 2px solid var(--nb-ink);
 }
-.rf-t-neobrutalism .nb-side .rf-entry__date {
-  font-family: var(--rf-font-mono);
-}
 .rf-t-neobrutalism .rf-bullets > li::before {
   background: var(--nb-ink);
   border-radius: 0;
@@ -146,16 +167,8 @@
   font-family: var(--rf-font-mono);
   font-size: 0.86em;
 }
-.rf-t-neobrutalism .nb-skill .rf-skill__name {
-  font-weight: 700;
-}
-.rf-t-neobrutalism .nb-skill__bar {
-  margin: 0.3em 0 0.25em;
-}
 .rf-t-neobrutalism .rf-link {
   color: var(--nb-ink);
   text-decoration: underline 1.5px;
 }
-.rf-t-neobrutalism .nb-inline {
-  font-size: 1em;
-}
+

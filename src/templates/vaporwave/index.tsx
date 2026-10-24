@@ -1,8 +1,9 @@
 /**
- * Vaporwave — a 1980s sunset in the header: a gradient sky, a striped setting sun, a neon
- * perspective grid running to the horizon, a palm silhouette and a classical marble bust, with the
- * name in white carrying a cyan/magenta glitch offset. Below, a clean white page with neon-gradient
- * rules under the headings and a thin grid strip on later pages. Single column.
+ * Vaporwave — a neon strip down the left edge of every page (night-to-sunset gradient, a striped sun
+ * and a perspective grid at its foot) carries the name on page 1, set vertically in huge white capitals
+ * with a cyan/magenta glitch offset. The content column on the right opens with a 1980s sunset
+ * postcard: a striped setting sun, a neon grid to the horizon, a palm and a classical marble bust, with
+ * the title chip and contact beneath. Neon-gradient rules under the headings. Single column.
  */
 import type { CSSProperties, ReactNode } from 'react'
 import {
@@ -88,16 +89,23 @@ export default function Vaporwave({ data, design, main }: TemplateProps) {
   const b = data.basics
   const vars = { '--vw-cyan': '#25d8f0', '--vw-violet': '#6c2bd9', '--vw-night': '#1c0f3f', '--vw-ink': '#21173a' } as CSSProperties
 
+  // The name is part of the header (page 1 only) but positioned into the left strip.
+  const name = displayName(b)
+  // the vertical strip fits ~18 capitals at full size; longer names shrink to stay inside it
+  const nameSize = name.length > 18 ? `${Math.max(1.9, (3.4 * 18) / name.length).toFixed(2)}em` : undefined
   const header = (
     <header className="vw-header">
-      <Sunset />
-      <div className="vw-header__inner">
-        {hasPhoto(b, design) && <Photo basics={b} size="25mm" className="vw-photo" />}
-        <div className="vw-header__text">
-          <h1 className="vw-name">{displayName(b)}</h1>
+      <h1 className="vw-name" style={{ fontSize: nameSize }}>
+        {name}
+      </h1>
+      <div className="vw-card">
+        <Sunset />
+        <div className="vw-card__inner">
+          {hasPhoto(b, design) && <Photo basics={b} size="22mm" className="vw-photo" />}
           {b.title.trim() && <div className="vw-title">{b.title}</div>}
         </div>
       </div>
+      <ContactList basics={b} layout="inline" className="vw-contact" iconSize="0.95em" />
     </header>
   )
 
@@ -112,12 +120,14 @@ export default function Vaporwave({ data, design, main }: TemplateProps) {
     <PageLayout
       header={header}
       main={blocks}
-      page={({ index, header, main }) => (
+      page={({ header, main }) => (
         <div className="vw-page" style={vars}>
-          {header}
-          {index > 0 && <div className="vw-cap" aria-hidden="true" />}
+          <div className="vw-strip" aria-hidden="true">
+            <span className="vw-strip__sun" />
+            <span className="vw-strip__grid" />
+          </div>
           <div className="vw-body">
-            {index === 0 && <ContactList basics={b} layout="inline" className="vw-contact" iconSize="0.95em" />}
+            {header}
             {main}
           </div>
         </div>

@@ -1,8 +1,8 @@
 /**
- * Minimalism — nothing but type. One family, black on white, no rules, no icons and no colour beyond
- * an optional accent on links: a large light-weight name, tiny tracked labels and wide margins. The
- * hierarchy comes from size, weight and space alone. Single column; compact rows for skills,
- * languages and certifications keep it to a page.
+ * Minimalism — nothing but type, and the order turned upside down: the page opens straight on the
+ * summary set large like a statement, and the identity sits at the foot of the page as a signature —
+ * a big light-weight name with the title and contact beside it. Later pages repeat the name small with
+ * a page number in the same footer band. One family, black on white, no rules, icons or colour.
  */
 import {
   ContactList,
@@ -14,6 +14,7 @@ import {
   compactWhole,
   displayName,
   hasPhoto,
+  mmToPx,
   sectionsToBlocks,
   type SectionView,
   type TemplateMeta,
@@ -24,8 +25,8 @@ import './minimalism.css'
 export const meta: TemplateMeta = {
   id: 'minimalism',
   name: 'Minimalism',
-  description: 'Extreme simplicity: a single typeface, black on white, no rules or ornament, with hierarchy from size, weight and space.',
-  tags: ['ATS-friendly', 'Modern', 'One-page'],
+  description: 'Extreme simplicity flipped: the summary opens the page as a large statement and your name signs off at the foot, all in one typeface on white.',
+  tags: ['Modern', 'One-page', 'Photo'],
   order: 240,
   supportsPhoto: true,
   columns: 1,
@@ -37,16 +38,21 @@ export const meta: TemplateMeta = {
 
 const heading = (s: SectionView) => <h2 className="mn-h">{s.title}</h2>
 
+const FOOT_MM = 24
+
 export default function Minimalism({ data, design, main }: TemplateProps) {
   const b = data.basics
+  const name = displayName(b)
 
   const header = (
-    <header className="mn-header">
+    <footer className="mn-sign">
       {hasPhoto(b, design) && <Photo basics={b} size="20mm" className="mn-photo" />}
-      <h1 className="mn-name">{displayName(b)}</h1>
-      {b.title.trim() && <div className="mn-role">{b.title}</div>}
-      <ContactList basics={b} layout="inline" showIcons={false} separator="   " className="mn-contact" />
-    </header>
+      <h1 className="mn-name">{name}</h1>
+      <div className="mn-sign__meta">
+        {b.title.trim() && <div className="mn-role">{b.title}</div>}
+        <ContactList basics={b} layout="grid" showIcons={false} className="mn-contact" />
+      </div>
+    </footer>
   )
 
   const blocks = sectionsToBlocks(main, {
@@ -60,10 +66,18 @@ export default function Minimalism({ data, design, main }: TemplateProps) {
     <PageLayout
       header={header}
       main={blocks}
-      page={({ header, main }) => (
+      bottom={mmToPx(design.margin + FOOT_MM)}
+      page={({ index, count, header, main }) => (
         <div className="mn-page">
-          {header}
-          {main}
+          <div className="mn-body">{main}</div>
+          <div className="mn-foot">
+            {header ?? (
+              <div className="mn-foot__small">
+                <span>{name}</span>
+                <span>{index + 1}{count > 1 ? ` / ${count}` : ''}</span>
+              </div>
+            )}
+          </div>
         </div>
       )}
     />

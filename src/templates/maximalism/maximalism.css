@@ -2,7 +2,6 @@
 
 .rf-t-maximalism .mx-page {
   display: flex;
-  flex-direction: column;
   height: 100%;
   color: #1f1530;
 }
@@ -13,9 +12,12 @@
   position: relative;
   display: flex;
   align-items: center;
-  gap: 5mm;
-  min-height: 36mm;
-  padding: calc(var(--rf-margin) * 0.75) var(--rf-margin);
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4mm;
+  min-height: 52mm;
+  margin: -4mm -4mm 5mm;
+  padding: var(--rf-margin) 6mm 7mm;
   overflow: hidden;
   background: var(--mx-plum);
   border-bottom: 2.5mm solid var(--mx-yellow);
@@ -36,13 +38,13 @@
 .rf-t-maximalism .mx-header__text {
   position: relative;
   min-width: 0;
-  max-width: 64%;
+  max-width: 100%;
 }
 .rf-t-maximalism .mx-name {
   font-family: var(--rf-font-heading);
-  font-size: 2.45em;
+  font-size: 2.1em;
   font-weight: 700;
-  line-height: 1.1;
+  line-height: 1.12;
 }
 .rf-t-maximalism .mx-name > span {
   display: inline;
@@ -65,27 +67,15 @@
   transform: rotate(-1.5deg);
 }
 
-.rf-t-maximalism .mx-cap {
-  height: 6mm;
-  background:
-    radial-gradient(circle, var(--mx-yellow) 28%, transparent 31%) 0 0 / 3mm 3mm,
-    var(--mx-plum);
-}
-
 /* ---------- columns ---------- */
 
-.rf-t-maximalism .mx-cols {
-  display: flex;
-  flex: 1;
-  min-height: 0;
-}
 .rf-t-maximalism .mx-main {
   flex: 1 1 0;
   min-width: 0;
-  padding: calc(var(--rf-margin) * 0.75) calc(var(--rf-margin) * 0.75) 0 var(--rf-margin);
+  padding: var(--rf-margin) calc(var(--rf-margin) * 0.75) 0 var(--rf-margin);
 }
 .rf-t-maximalism .mx-side {
-  flex: 0 0 31%;
+  flex: 0 0 36%;
   min-width: 0;
   padding: 4mm 4mm 0;
   background:

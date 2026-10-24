@@ -104,34 +104,110 @@
   background: linear-gradient(90deg, var(--rf-accent) 0 60%, var(--rf2-mustard) 60% 80%, var(--rf2-coral) 80%);
 }
 
-/* ---------- columns ---------- */
+/* ---------- instrument console ---------- */
 
-.rf-t-retrofuturism .rf2-cols {
-  display: flex;
-  flex: 1;
-  min-height: 0;
-  gap: 5mm;
-  padding: calc(var(--rf-margin) * 0.75) var(--rf-margin) 0;
+.rf-t-retrofuturism .rf2-console {
+  margin: 4mm var(--rf-margin) 0;
+  padding: 4mm 5mm 3.5mm;
+  background: #efe3c8;
+  border: 1.5px solid rgb(36 48 47 / 0.18);
+  border-radius: 3mm 14mm 3mm 14mm;
+  box-shadow: inset 0 -1.2mm 0 rgb(36 48 47 / 0.08);
 }
-.rf-t-retrofuturism .rf2-main {
+.rf-t-retrofuturism .rf2-console__label {
+  margin-bottom: 2.5mm;
+  font-family: var(--rf-font-heading);
+  font-size: 0.78em;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--rf2-ink);
+}
+.rf-t-retrofuturism .rf2-dials__row {
+  display: flex;
+  gap: 3mm;
+}
+.rf-t-retrofuturism .rf2-dial {
   flex: 1 1 0;
   min-width: 0;
+  text-align: center;
 }
-.rf-t-retrofuturism .rf2-side {
-  flex: 0 0 31%;
-  align-self: flex-start;
-  min-width: 0;
-  padding: 5mm 4.5mm 3mm;
-  background: #efe3c8;
-  border: 1.5px solid rgb(36 48 47 / 0.15);
-  border-radius: 14mm 3mm 14mm 3mm;
-  font-size: 0.92em;
-  --rf-level-on: var(--rf2-coral);
-  --rf-level-off: rgb(226 103 76 / 0.2);
+.rf-t-retrofuturism .rf2-dial__face {
+  display: block;
+  width: 17mm;
+  height: 17mm;
+  margin: 0 auto 1.5mm;
 }
-/* continuation pages with nothing left for the side column: keep its width, drop the empty panel */
-.rf-t-retrofuturism .rf2-side:not(:has(.rf-block)) {
-  visibility: hidden;
+.rf-t-retrofuturism .rf2-dial__rim {
+  fill: var(--rf2-cream);
+  stroke: var(--rf2-ink);
+  stroke-width: 2.2;
+}
+.rf-t-retrofuturism .rf2-dial__track {
+  fill: none;
+  stroke: rgb(36 48 47 / 0.12);
+  stroke-width: 4;
+  stroke-linecap: round;
+}
+.rf-t-retrofuturism .rf2-dial__fill {
+  fill: none;
+  stroke: var(--rf-accent);
+  stroke-width: 4;
+  stroke-linecap: round;
+}
+.rf-t-retrofuturism .rf2-dial__tick {
+  stroke: var(--rf2-ink);
+  stroke-width: 1.2;
+}
+.rf-t-retrofuturism .rf2-dial__needle {
+  stroke: var(--rf2-coral);
+  stroke-width: 2.2;
+  stroke-linecap: round;
+}
+.rf-t-retrofuturism .rf2-dial__hub {
+  fill: var(--rf2-ink);
+}
+.rf-t-retrofuturism .rf2-dial__name {
+  font-family: var(--rf-font-heading);
+  font-size: 0.86em;
+  font-weight: 800;
+  color: var(--rf2-ink);
+}
+.rf-t-retrofuturism .rf2-dial__level {
+  font-size: 0.72em;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--rf2-coral);
+}
+.rf-t-retrofuturism .rf2-dial__tools {
+  margin-top: 0.3em;
+  font-size: 0.74em;
+  line-height: 1.35;
+  color: #4a5352;
+}
+.rf-t-retrofuturism .rf2-readout {
+  margin-top: 3mm;
+  padding: 1.6mm 3mm;
+  border-radius: 999px;
+  background: var(--rf2-ink);
+  color: var(--rf2-cream);
+  font-family: var(--rf-font-mono);
+  font-size: 0.78em;
+  justify-content: center;
+}
+.rf-t-retrofuturism .rf2-dials + .rf2-readout {
+  margin-top: 3.5mm;
+}
+.rf-t-retrofuturism .rf2-readout .rf-contact__icon {
+  color: var(--rf2-mustard);
+}
+.rf-t-retrofuturism .rf2-readout .rf-link {
+  color: inherit;
+}
+
+.rf-t-retrofuturism .rf2-body {
+  padding: calc(var(--rf-margin) * 0.6) var(--rf-margin) 0;
 }
 
 .rf-t-retrofuturism .rf2-h {
@@ -160,30 +236,6 @@
   height: 0.9em;
   fill: var(--rf2-coral);
 }
-.rf-t-retrofuturism .rf2-sh {
-  margin-bottom: 0.55em;
-  font-family: var(--rf-font-heading);
-  font-size: 0.82em;
-  font-weight: 800;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--rf2-ink);
-}
-.rf-t-retrofuturism .rf2-sh::after {
-  content: '';
-  display: block;
-  width: 2em;
-  height: 3px;
-  margin-top: 0.3em;
-  border-radius: 2px;
-  background: var(--rf2-coral);
-}
-.rf-t-retrofuturism .rf2-contact {
-  row-gap: 0.45em;
-}
-.rf-t-retrofuturism .rf2-contact .rf-contact__icon {
-  color: var(--rf-accent-ink);
-}
 .rf-t-retrofuturism .rf2-summary,
 .rf-t-retrofuturism .rf-entry__desc,
 .rf-t-retrofuturism .rf-bullets > li,
@@ -201,10 +253,6 @@
 }
 .rf-t-retrofuturism .rf-bullets > li::before {
   background: var(--rf2-mustard);
-}
-.rf-t-retrofuturism .rf2-side .rf-skill__name,
-.rf-t-retrofuturism .rf2-side .rf-lang__name {
-  font-weight: 700;
 }
 .rf-t-retrofuturism .rf2-inline {
   font-size: 1em;

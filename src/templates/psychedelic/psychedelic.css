@@ -1,6 +1,8 @@
 /* Psychedelic template — every selector is scoped to .rf-t-psychedelic. */
 
 .rf-t-psychedelic .ps-page {
+  display: flex;
+  flex-direction: column;
   height: 100%;
   color: #1d1029;
 }
@@ -16,26 +18,41 @@
   position: absolute;
   inset: -40%;
   background:
-    repeating-radial-gradient(circle at 78% 50%, transparent 0 7mm, rgb(255 45 149 / 0.55) 7mm 9mm, transparent 9mm 13mm, rgb(255 138 0 / 0.5) 13mm 15mm, transparent 15mm 19mm, rgb(182 227 0 / 0.45) 19mm 20.5mm),
-    repeating-conic-gradient(from 0deg at 78% 50%, var(--rf-accent) 0deg 10deg, var(--ps-deep) 10deg 20deg);
+    repeating-radial-gradient(circle at 50% 50%, transparent 0 7mm, rgb(255 45 149 / 0.55) 7mm 9mm, transparent 9mm 13mm, rgb(255 138 0 / 0.5) 13mm 15mm, transparent 15mm 19mm, rgb(182 227 0 / 0.45) 19mm 20.5mm),
+    repeating-conic-gradient(from 0deg at 50% 50%, var(--rf-accent) 0deg 10deg, var(--ps-deep) 10deg 20deg);
 }
 .rf-t-psychedelic .ps-header__inner {
   position: relative;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 6mm;
-  padding: calc(var(--rf-margin) * 0.6) var(--rf-margin) calc(var(--rf-margin) * 0.4);
+  gap: 4mm;
+  min-height: 72mm;
+  justify-content: center;
+  padding: var(--rf-margin) var(--rf-margin) calc(var(--rf-margin) * 0.5);
+  text-align: center;
 }
 .rf-t-psychedelic .ps-header__text {
   min-width: 0;
-  max-width: 68%;
-  padding: 3mm 7mm 3.5mm;
-  border-radius: 10mm;
-  background: rgb(42 8 69 / 0.86);
+  max-width: 82%;
+  padding: 4mm 9mm 4.5mm;
+  border-radius: 50%;
+  background: rgb(42 8 69 / 0.88);
+}
+.rf-t-psychedelic .ps-contact {
+  justify-content: center;
+  padding: 1.6mm 5mm;
+  border-radius: 999px;
+  background: rgb(42 8 69 / 0.88);
+  color: #fff7d6;
+  font-size: 0.86em;
+}
+.rf-t-psychedelic .ps-contact .rf-contact__icon {
+  color: var(--ps-lime);
 }
 .rf-t-psychedelic .ps-name {
   font-family: var(--rf-font-heading);
-  font-size: 2.6em;
+  font-size: 3em;
   font-weight: 800;
   line-height: 1.02;
   letter-spacing: -0.01em;
@@ -75,16 +92,26 @@
 
 /* ---------- body ---------- */
 
-.rf-t-psychedelic .ps-body {
+.rf-t-psychedelic .ps-cols {
+  display: flex;
+  flex: 1;
+  min-height: 0;
   padding: calc(var(--rf-margin) * 0.45) var(--rf-margin) 0;
+  gap: 4mm;
 }
-.rf-t-psychedelic .ps-contact {
-  margin-bottom: var(--rf-section-gap);
-  font-size: 0.9em;
-  color: #3a2a4a;
+.rf-t-psychedelic .ps-col {
+  flex: 1 1 0;
+  min-width: 0;
 }
-.rf-t-psychedelic .ps-contact .rf-contact__icon {
-  color: var(--rf-accent-ink);
+.rf-t-psychedelic .ps-wave {
+  flex: none;
+  width: 3mm;
+  height: calc(100% - var(--rf-margin));
+  fill: none;
+  stroke: var(--rf-accent);
+  stroke-width: 1.4;
+  vector-effect: non-scaling-stroke;
+  opacity: 0.6;
 }
 
 .rf-t-psychedelic .ps-h {

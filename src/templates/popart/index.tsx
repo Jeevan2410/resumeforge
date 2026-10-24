@@ -1,10 +1,11 @@
 /**
- * Pop Art — comic-book energy, kept legible. The header is a yellow panel with Ben-Day halftone dots
- * and a heavy black outline; the name sits on a white caption card with a hard black offset, the title
- * in a speech balloon, and a starburst carries the initials. Section headings are outlined caption
- * boxes that cycle magenta, cyan and yellow. Body text stays black on white. Single column.
+ * Pop Art — the page is a comic-book page. A wide splash panel (yellow, Ben-Day halftone dots) holds
+ * the name on a tilted caption card, the title in a speech balloon and a starburst; below it the
+ * content runs as a grid of outlined panels in two gutters: every section is one panel with its title
+ * in a caption box on the top edge (magenta, cyan, yellow in turn), and the narrow right gutter holds
+ * contact and skills panels on a cyan halftone. Panels continue across pages like a strip.
  */
-import type { CSSProperties } from 'react'
+import type { CSSProperties, ReactNode } from 'react'
 import {
   ContactList,
   DefaultEntry,
@@ -13,10 +14,13 @@ import {
   RichParagraphs,
   compactEntry,
   compactWhole,
+  contactEntries,
+  inlineWhole,
   displayName,
   hasPhoto,
   initials,
   sectionsToBlocks,
+  type Block,
   type SectionView,
   type TemplateMeta,
   type TemplateProps,
@@ -26,13 +30,14 @@ import './popart.css'
 export const meta: TemplateMeta = {
   id: 'popart',
   name: 'Pop Art',
-  description: 'Heavy black outlines, Ben-Day halftone dots and vibrant comic-book colours, with caption-box headings and a starburst.',
-  tags: ['Creative', 'Photo'],
+  description: 'A comic-book page: a halftone splash panel with a starburst, then every section framed as an outlined comic panel with a caption box.',
+  tags: ['Creative', 'Two-column', 'Photo'],
   order: 270,
   supportsPhoto: true,
-  columns: 1,
+  columns: 2,
   defaultFont: 'montserrat',
   defaultAccent: '#e5007d',
+  sideKinds: ['skills', 'languages', 'certifications', 'awards', 'interests', 'references'],
   headingCase: 'upper',
   gaps: { entry: 9, section: 15 },
 }
@@ -57,10 +62,17 @@ function Burst({ text }: { text: string }) {
   )
 }
 
-export default function PopArt({ data, design, main }: TemplateProps) {
+/** Each section becomes one outlined panel: blocks inside a section touch (no gap) and the CSS draws
+ * the panel's top edge on the first block and its bottom edge on the last. */
+const panel = (node: ReactNode, info: { first: boolean; last: boolean }) => (
+  <div className={`pa-panel${info.first ? ' pa-panel--first' : ''}${info.last ? ' pa-panel--last' : ''}`}>{node}</div>
+)
+const joined = (blocks: Block[]): Block[] => blocks.map((b) => (b.gap === 'entry' ? { ...b, gap: 'none' } : b))
+
+export default function PopArt({ data, design, main, side }: TemplateProps) {
   const b = data.basics
   const name = displayName(b)
-  const tone = new Map(main.map((s, i) => [s.id, TONES[i % 3]]))
+  const tone = new Map([...main, ...side].map((s, i) => [s.id, TONES[i % 3]]))
   const vars = { '--pa-cyan': '#00a0e3', '--pa-yellow': '#ffd400', '--pa-ink': '#111' } as CSSProperties
 
   const header = (
@@ -73,29 +85,53 @@ export default function PopArt({ data, design, main }: TemplateProps) {
     </header>
   )
 
-  const heading = (s: SectionView) => (
-    <h2 className={`pa-h pa-h--${tone.get(s.id) ?? 'magenta'}`}>
-      <span>{s.title}</span>
-    </h2>
+  const heading = (s: SectionView | string) => {
+    const t = typeof s === 'string' ? 'yellow' : (tone.get(s.id) ?? 'magenta')
+    return (
+      <h2 className={`pa-h pa-h--${t}`}>
+        <span>{typeof s === 'string' ? s : s.title}</span>
+      </h2>
+    )
+  }
+
+  const mainBlocks = joined(
+    sectionsToBlocks(main, {
+      heading,
+      summary: (s) => <RichParagraphs className="pa-summary" text={s.content} />,
+      entry: (e) => compactEntry(e) ?? <DefaultEntry entry={e} variant="main" marker="square" />,
+      whole: (s) => compactWhole(s, 'pa-compact'),
+      wrap: panel,
+    }),
   )
 
-  const blocks = sectionsToBlocks(main, {
-    heading,
-    summary: (s) => <RichParagraphs className="pa-summary" text={s.content} />,
-    entry: (e) => compactEntry(e) ?? <DefaultEntry entry={e} variant="main" marker="square" />,
-    whole: (s) => compactWhole(s, 'pa-compact'),
-  })
+  const sideBlocks: Block[] = []
+  if (contactEntries(b).length) {
+    sideBlocks.push({ key: 'contact', gap: 'section', letter: true, node: panel(<>{heading('Contact')}<ContactList basics={b} layout="stack" className="pa-contact" iconSize="0.95em" /></>, { first: true, last: true }) })
+  }
+  sideBlocks.push(
+    ...joined(
+      sectionsToBlocks(side, {
+        heading,
+        entry: (e) => compactEntry(e) ?? <DefaultEntry entry={e} variant="side" level={e.kind === 'skills' ? 'bar' : undefined} />,
+        whole: (s) => (s.kind === 'interests' ? inlineWhole(s, 'pa-compact') : undefined),
+        wrap: panel,
+      }),
+    ),
+  )
 
   return (
     <PageLayout
       header={header}
-      main={blocks}
-      page={({ index, header, main }) => (
+      main={mainBlocks}
+      side={sideBlocks}
+      page={({ index, header, main, side }) => (
         <div className="pa-page" style={vars}>
           {header}
-          {index === 0 && <ContactList basics={b} layout="inline" className="pa-contact" iconSize="0.95em" />}
           {index > 0 && <div className="pa-strip" aria-hidden="true" />}
-          {main}
+          <div className="pa-cols">
+            <div className="pa-main">{main}</div>
+            <aside className="pa-side">{side}</aside>
+          </div>
         </div>
       )}
     />

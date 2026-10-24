@@ -7,129 +7,143 @@
   color: #1a1a1a;
 }
 
-/* ---------- header ---------- */
+/* ---------- tile grid header ---------- */
 
-.rf-t-bauhaus .bh-header {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 8mm;
-  padding: calc(var(--rf-margin) * 0.85) var(--rf-margin) calc(var(--rf-margin) * 0.5);
+.rf-t-bauhaus .bh-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.7fr) minmax(0, 1.3fr) 36mm;
+  grid-template-rows: auto auto;
   border-bottom: 2.5mm solid #1a1a1a;
 }
-.rf-t-bauhaus .bh-header__text {
+.rf-t-bauhaus .bh-tile {
   min-width: 0;
+  padding: 4.5mm 5mm;
+}
+.rf-t-bauhaus .bh-tile--name {
+  grid-column: 1 / 3;
+  display: flex;
+  align-items: flex-end;
+  padding: calc(var(--rf-margin) * 0.8) 6mm 4mm var(--rf-margin);
+  border-right: 2.5mm solid #1a1a1a;
 }
 .rf-t-bauhaus .bh-name {
   font-family: var(--rf-font-heading);
-  font-size: 2.6em;
+  font-size: 3em;
   font-weight: 800;
-  line-height: 0.98;
-  letter-spacing: -0.025em;
+  line-height: 0.92;
+  letter-spacing: -0.03em;
   text-transform: lowercase;
-  color: #1a1a1a;
 }
-.rf-t-bauhaus .bh-title {
-  display: inline-block;
-  margin-top: 0.6em;
-  padding: 0.2em 0.6em;
-  font-family: var(--rf-font-heading);
-  font-size: 0.95em;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  background: var(--rf-accent);
-  color: var(--rf-on-accent);
-}
-.rf-t-bauhaus .bh-comp {
-  flex: none;
-  width: 25mm;
-  height: auto;
-}
-.rf-t-bauhaus .bh-red {
-  fill: var(--rf-accent);
-}
-.rf-t-bauhaus .bh-blue {
-  fill: var(--bh-blue);
-}
-.rf-t-bauhaus .bh-yellow {
-  fill: var(--bh-yellow);
-}
-.rf-t-bauhaus .bh-black {
-  fill: #1a1a1a;
-}
-.rf-t-bauhaus .bh-photo {
-  flex: none;
-  box-shadow: 4mm 4mm 0 var(--bh-yellow);
-}
-
-/* ---------- columns ---------- */
-
-.rf-t-bauhaus .bh-cols {
-  display: flex;
-  flex: 1;
-  min-height: 0;
-}
-.rf-t-bauhaus .bh-main {
-  flex: 1 1 0;
-  min-width: 0;
-  padding: calc(var(--rf-margin) * 0.75) calc(var(--rf-margin) * 0.8) 0 var(--rf-margin);
-}
-.rf-t-bauhaus .bh-side {
-  flex: 0 0 30%;
-  min-width: 0;
-  padding: calc(var(--rf-margin) * 0.75) var(--rf-margin) 0 calc(var(--rf-margin) * 0.7);
-  background: #f1eee6;
-  border-left: 1.6mm solid var(--bh-blue);
-  font-size: 0.92em;
-  --rf-level-on: #1a1a1a;
-  --rf-level-off: rgb(26 26 26 / 0.14);
-}
-
-.rf-t-bauhaus .bh-h {
+.rf-t-bauhaus .bh-tile--red {
+  grid-row: 1 / 3;
+  grid-column: 3;
   display: flex;
   align-items: center;
-  gap: 0.55em;
-  margin-bottom: 0.55em;
+  justify-content: center;
+  background: var(--rf-accent);
+}
+.rf-t-bauhaus .bh-mark {
+  width: 24mm;
+  height: auto;
+}
+.rf-t-bauhaus .bh-mark circle {
+  fill: #fff;
+}
+.rf-t-bauhaus .bh-mark path {
+  stroke: #1a1a1a;
+  stroke-width: 7;
+}
+.rf-t-bauhaus .bh-photo {
+  box-shadow: 0 0 0 1.5mm #fff;
+}
+.rf-t-bauhaus .bh-tile--blue {
+  display: flex;
+  align-items: center;
+  gap: 3mm;
+  padding-left: var(--rf-margin);
+  background: var(--bh-blue);
+  color: #fff;
+  border-top: 2.5mm solid #1a1a1a;
+}
+.rf-t-bauhaus .bh-tri {
+  flex: none;
+  width: 6mm;
+  height: 6mm;
+  fill: var(--bh-yellow);
+}
+.rf-t-bauhaus .bh-title {
   font-family: var(--rf-font-heading);
-  font-size: 1.18em;
+  font-size: 1em;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  line-height: 1.25;
+}
+.rf-t-bauhaus .bh-tile--yellow {
+  display: flex;
+  align-items: center;
+  background: var(--bh-yellow);
+  border-top: 2.5mm solid #1a1a1a;
+  border-left: 2.5mm solid #1a1a1a;
+  border-right: 2.5mm solid #1a1a1a;
+}
+.rf-t-bauhaus .bh-contact {
+  font-size: 0.82em;
+  font-weight: 500;
+  row-gap: 0.35em;
+  column-gap: 1em;
+  color: #1a1a1a;
+}
+.rf-t-bauhaus .bh-contact .rf-contact__icon {
+  color: #1a1a1a;
+}
+
+.rf-t-bauhaus .bh-cap {
+  height: 4mm;
+  background: linear-gradient(90deg, var(--rf-accent) 0 33.3%, var(--bh-blue) 33.3% 66.6%, var(--bh-yellow) 66.6%);
+}
+
+/* ---------- body ---------- */
+
+.rf-t-bauhaus .bh-body {
+  padding: calc(var(--rf-margin) * 0.6) var(--rf-margin) 0;
+}
+.rf-t-bauhaus .bh-h {
+  display: flex;
+  align-items: stretch;
+  margin-bottom: 0.6em;
+  font-family: var(--rf-font-heading);
+  font-size: 1.05em;
   font-weight: 800;
   letter-spacing: var(--rf-heading-tracking);
   text-transform: var(--rf-heading-transform);
 }
-.rf-t-bauhaus .bh-shape {
-  width: 0.78em;
-  height: 0.78em;
-  flex: none;
+.rf-t-bauhaus .bh-h__block {
+  padding: 0.18em 0.7em;
+  background: var(--rf-accent);
+  color: #fff;
 }
-.rf-t-bauhaus .bh-shape--circle {
-  fill: var(--rf-accent);
+.rf-t-bauhaus .bh-h--blue .bh-h__block {
+  background: var(--bh-blue);
 }
-.rf-t-bauhaus .bh-shape--square {
-  fill: var(--bh-blue);
+.rf-t-bauhaus .bh-h--yellow .bh-h__block {
+  background: var(--bh-yellow);
+  color: #1a1a1a;
 }
-.rf-t-bauhaus .bh-shape--triangle {
-  fill: var(--bh-yellow);
-}
-.rf-t-bauhaus .bh-sh {
-  margin-bottom: 0.6em;
-  padding-bottom: 0.25em;
-  border-bottom: 2px solid #1a1a1a;
-  font-family: var(--rf-font-heading);
-  font-size: 0.86em;
-  font-weight: 800;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-}
-.rf-t-bauhaus .bh-contact {
-  row-gap: 0.45em;
+.rf-t-bauhaus .bh-h__rule {
+  flex: 1;
+  align-self: flex-end;
+  height: 1.6mm;
+  background: #1a1a1a;
 }
 .rf-t-bauhaus .bh-summary,
 .rf-t-bauhaus .rf-entry__desc,
 .rf-t-bauhaus .rf-bullets > li {
   color: #2a2a2a;
 }
-.rf-t-bauhaus .rf-entry__title {
+.rf-t-bauhaus .rf-entry__title,
+.rf-t-bauhaus .rf-cline__title,
+.rf-t-bauhaus .rf-srow__name {
   font-family: var(--rf-font-heading);
   font-weight: 700;
   color: #1a1a1a;
@@ -145,21 +159,6 @@
 .rf-t-bauhaus .rf-bullets > li::before {
   background: var(--rf-accent);
 }
-.rf-t-bauhaus .bh-skill .rf-skill__name {
-  font-weight: 700;
-}
-.rf-t-bauhaus .bh-skill__bar {
-  margin: 0.3em 0 0.25em;
-}
-.rf-t-bauhaus .bh-side .rf-skill__keywords,
-.rf-t-bauhaus .bh-side .rf-entry__sub {
-  color: #444;
-}
-.rf-t-bauhaus .bh-side .rf-entry__title,
-.rf-t-bauhaus .bh-side .rf-lang__name {
-  font-weight: 700;
-}
-.rf-t-bauhaus .bh-inline {
-  font-size: 1em;
+.rf-t-bauhaus .bh-compact {
   color: #2a2a2a;
 }
