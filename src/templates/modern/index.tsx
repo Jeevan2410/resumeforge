@@ -29,6 +29,7 @@ export const meta: TemplateMeta = {
   description: 'Bold accent sidebar for contact details and skills, with a clean, spacious main column.',
   tags: ['Modern', 'Two-column', 'Photo'],
   order: 10,
+  collection: 'classic',
   supportsPhoto: true,
   columns: 2,
   defaultFont: 'inter',

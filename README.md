@@ -10,6 +10,10 @@ Write one resume, then tailor a copy for every application. ResumeForge has 45 t
 
 ## Template gallery
 
+In the app, open **Templates** in the top bar (or go to `#/templates`) to browse every template. You can search by name or style, filter by collection (Classic, Design styles, Formats, App UI) and by must-have features (ATS-friendly, two-column, photo, one-page), and open any template full size with sample content or your own resume. Use **←** and **→** to flip through them, then start a new resume or apply the template to the one you are editing.
+
+![Template gallery](docs/template-gallery.png)
+
 Every template below shows page 1 of the built-in developer sample on A4.
 
 | | | | |

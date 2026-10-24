@@ -33,6 +33,7 @@ export const meta: TemplateMeta = {
   description: 'Bright and illustrated: a hero with a flat laptop-and-phone illustration, a skills radar chart, a colourful toolbox and icon badges for every section.',
   tags: ['Modern', 'Creative', 'Photo'],
   order: 550,
+  collection: 'ui',
   supportsPhoto: true,
   columns: 1,
   defaultFont: 'poppins',

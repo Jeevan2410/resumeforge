@@ -31,6 +31,7 @@ export const meta: TemplateMeta = {
   description: 'Muted, warm neutrals and airy type laid out like an annotated book, with dates as quiet margin notes and a small clay seal.',
   tags: ['Classic', 'Modern', 'Photo'],
   order: 390,
+  collection: 'style',
   supportsPhoto: true,
   columns: 1,
   defaultFont: 'raleway',

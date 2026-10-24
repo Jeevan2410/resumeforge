@@ -34,6 +34,7 @@ export const meta: TemplateMeta = {
   description: 'International Typographic Style: a strict numbered grid, flush-left grotesk type, one signal colour and plenty of white space.',
   tags: ['Modern', 'ATS-friendly', 'One-page'],
   order: 220,
+  collection: 'style',
   supportsPhoto: true,
   columns: 1,
   defaultFont: 'inter',

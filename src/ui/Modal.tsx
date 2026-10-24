@@ -11,13 +11,13 @@ export interface ModalProps {
   children?: ReactNode
   /** Footer (buttons). */
   footer?: ReactNode
-  size?: 'sm' | 'md' | 'lg' | 'xl'
+  size?: 'sm' | 'md' | 'lg' | 'xl' | '2xl'
   /** Close on backdrop click / Escape (default true). */
   dismissable?: boolean
   className?: string
 }
 
-const SIZES = { sm: 'max-w-sm', md: 'max-w-lg', lg: 'max-w-2xl', xl: 'max-w-4xl' }
+const SIZES = { sm: 'max-w-sm', md: 'max-w-lg', lg: 'max-w-2xl', xl: 'max-w-4xl', '2xl': 'max-w-6xl' }
 
 /** Accessible dialog: portal, focus moved in and restored, Escape/backdrop to close, body scroll locked. */
 export function Modal({ open, onClose, title, description, children, footer, size = 'md', dismissable = true, className }: ModalProps) {

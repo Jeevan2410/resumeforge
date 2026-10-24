@@ -28,6 +28,7 @@ export const meta: TemplateMeta = {
   description: 'Symmetrical friezes of triangles and circles, a fine dot grid and centred diamond headings over a clean single column.',
   tags: ['Creative', 'Modern', 'Photo'],
   order: 260,
+  collection: 'style',
   supportsPhoto: true,
   columns: 1,
   defaultFont: 'montserrat',

@@ -35,6 +35,7 @@ export const meta: TemplateMeta = {
   description: 'Your résumé as an app: a dark sidebar with donut skill meters, a gradient hero card, KPI tiles and every section in its own card with an icon.',
   tags: ['Modern', 'Creative', 'Two-column', 'Photo'],
   order: 530,
+  collection: 'ui',
   supportsPhoto: true,
   columns: 2,
   defaultFont: 'poppins',

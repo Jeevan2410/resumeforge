@@ -31,6 +31,7 @@ export const meta: TemplateMeta = {
   description: 'An 8-bit game screen: a HUD with a pixel sprite and skill meters, an inventory panel and every section in a notched dialogue box.',
   tags: ['Creative', 'Two-column', 'Photo'],
   order: 410,
+  collection: 'style',
   supportsPhoto: true,
   columns: 2,
   defaultFont: 'plex',

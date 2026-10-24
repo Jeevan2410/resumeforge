@@ -32,6 +32,7 @@ export const meta: TemplateMeta = {
   description: 'Your résumé as an early-2000s desktop window: chrome title bar, gel buttons, an explorer pane and liquid-chrome lettering.',
   tags: ['Creative', 'Two-column', 'Photo'],
   order: 320,
+  collection: 'style',
   supportsPhoto: true,
   columns: 2,
   defaultFont: 'montserrat',

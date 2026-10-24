@@ -29,6 +29,7 @@ export const meta: TemplateMeta = {
   description: 'A concert-poster top half with a centred kaleidoscope and echoing neon lettering, over two equal columns split by a wavy rule.',
   tags: ['Creative', 'Two-column', 'Photo'],
   order: 290,
+  collection: 'style',
   supportsPhoto: true,
   columns: 2,
   sideKinds: ['education', 'skills', 'languages', 'certifications', 'awards', 'interests', 'references'],

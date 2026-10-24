@@ -32,6 +32,7 @@ export const meta: TemplateMeta = {
   description: 'A raw table: a black name slab, contact stickers and every section as a thick-bordered row with a colour heading cell and a hard shadow.',
   tags: ['Creative', 'Photo'],
   order: 300,
+  collection: 'style',
   supportsPhoto: true,
   columns: 1,
   defaultFont: 'plex',

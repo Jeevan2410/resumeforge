@@ -34,6 +34,7 @@ export const meta: TemplateMeta = {
   description: 'A two-colour zine cover: an overprinted, misregistered name beside a big pull-quote summary, with paper grain and spot-colour halftones.',
   tags: ['Creative', 'Two-column', 'Photo'],
   order: 400,
+  collection: 'style',
   supportsPhoto: true,
   columns: 2,
   defaultFont: 'montserrat',

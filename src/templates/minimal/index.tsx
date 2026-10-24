@@ -35,6 +35,7 @@ export const meta: TemplateMeta = {
   description: 'Airy single column with light type, generous whitespace and tiny section labels hung in a left gutter.',
   tags: ['Modern', 'ATS-friendly', 'Photo'],
   order: 30,
+  collection: 'classic',
   supportsPhoto: true,
   columns: 1,
   defaultFont: 'raleway',

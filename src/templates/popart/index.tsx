@@ -33,6 +33,7 @@ export const meta: TemplateMeta = {
   description: 'A comic-book page: a halftone splash panel with a starburst, then every section framed as an outlined comic panel with a caption box.',
   tags: ['Creative', 'Two-column', 'Photo'],
   order: 270,
+  collection: 'style',
   supportsPhoto: true,
   columns: 2,
   defaultFont: 'montserrat',

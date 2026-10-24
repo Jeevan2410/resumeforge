@@ -35,6 +35,7 @@ export const meta: TemplateMeta = {
   description: 'Refined serif typography with a centred monogram, small-caps headings and hairline rules over a quiet two-column body.',
   tags: ['Classic', 'Two-column', 'Photo'],
   order: 70,
+  collection: 'classic',
   supportsPhoto: true,
   columns: 2,
   defaultFont: 'garamond',

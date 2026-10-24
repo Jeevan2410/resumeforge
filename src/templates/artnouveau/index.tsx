@@ -31,6 +31,7 @@ export const meta: TemplateMeta = {
   description: 'An arched-window sidebar holding your name and skills, a climbing vine as the column divider and soft serif type on warm paper.',
   tags: ['Creative', 'Two-column', 'Photo'],
   order: 200,
+  collection: 'style',
   supportsPhoto: true,
   columns: 2,
   defaultFont: 'garamond',

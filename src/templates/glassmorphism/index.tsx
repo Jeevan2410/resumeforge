@@ -30,6 +30,7 @@ export const meta: TemplateMeta = {
   description: 'A split header of two frosted-glass panes, then every section in its own floating glass card over a soft blurred colour field.',
   tags: ['Modern', 'Photo'],
   order: 330,
+  collection: 'style',
   supportsPhoto: true,
   columns: 1,
   defaultFont: 'inter',

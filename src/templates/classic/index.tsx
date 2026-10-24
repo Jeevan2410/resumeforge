@@ -34,6 +34,7 @@ export const meta: TemplateMeta = {
   description: 'Timeless serif typography with a centred header, fine rules and the traditional two-line entry layout recruiters know by heart.',
   tags: ['Classic', 'ATS-friendly'],
   order: 20,
+  collection: 'classic',
   supportsPhoto: false,
   columns: 1,
   defaultFont: 'garamond',

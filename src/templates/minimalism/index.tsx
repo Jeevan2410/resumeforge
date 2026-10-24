@@ -28,6 +28,7 @@ export const meta: TemplateMeta = {
   description: 'Extreme simplicity flipped: the summary opens the page as a large statement and your name signs off at the foot, all in one typeface on white.',
   tags: ['Modern', 'One-page', 'Photo'],
   order: 240,
+  collection: 'style',
   supportsPhoto: true,
   columns: 1,
   defaultFont: 'inter',

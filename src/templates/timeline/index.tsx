@@ -38,6 +38,7 @@ export const meta: TemplateMeta = {
   description: 'Your career as a vertical timeline: dates to the left of a continuous line, accent nodes for every role and clean, airy entries.',
   tags: ['Modern', 'Creative', 'Photo'],
   order: 110,
+  collection: 'classic',
   supportsPhoto: true,
   columns: 1,
   defaultFont: 'montserrat',

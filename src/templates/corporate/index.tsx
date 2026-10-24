@@ -34,6 +34,7 @@ export const meta: TemplateMeta = {
   description: 'Conservative navy styling with a right-aligned date gutter, crisp sans-serif type and a labelled skills table — at home in finance, consulting and enterprise roles.',
   tags: ['Classic', 'ATS-friendly', 'Photo'],
   order: 60,
+  collection: 'classic',
   supportsPhoto: true,
   columns: 1,
   defaultFont: 'plex',

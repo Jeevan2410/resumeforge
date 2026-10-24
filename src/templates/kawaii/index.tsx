@@ -31,6 +31,7 @@ export const meta: TemplateMeta = {
   description: 'A cute spiral-bound planner: binder rings, pastel index tabs on the page edge, a smiling mascot and candy-chip skills.',
   tags: ['Creative', 'Photo'],
   order: 430,
+  collection: 'style',
   supportsPhoto: true,
   columns: 1,
   defaultFont: 'poppins',
