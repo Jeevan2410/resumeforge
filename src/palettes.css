@@ -1,0 +1,114 @@
+/*
+ * App colour palettes. The UI is written with Tailwind's slate (neutrals) and indigo (accent)
+ * utilities; each palette re-points those two scales via <html data-palette="…"> (see
+ * src/app/palette.ts and the inline script in index.html), so every component — light and dark —
+ * follows without per-component changes. "classic" has no block: it is Tailwind's own slate/indigo.
+ * Resume pages (.rf-doc) never use these scales, so documents and exports are unaffected.
+ *
+ * Lightness ladders match Tailwind's steps (so contrast stays as tested); only hue and chroma
+ * change, with hue drifting slightly from the light end to the dark end of each scale.
+ */
+
+/* Paper — cream stock and iron-gall ink blue. */
+:root[data-palette='paper'] {
+  --color-slate-50: oklch(0.985 0.009 85);
+  --color-slate-100: oklch(0.969 0.012 82.5);
+  --color-slate-200: oklch(0.93 0.017 80);
+  --color-slate-300: oklch(0.872 0.02 77.5);
+  --color-slate-400: oklch(0.708 0.022 75);
+  --color-slate-500: oklch(0.556 0.021 72.5);
+  --color-slate-600: oklch(0.448 0.019 70);
+  --color-slate-700: oklch(0.372 0.017 67.5);
+  --color-slate-800: oklch(0.282 0.014 65);
+  --color-slate-900: oklch(0.212 0.012 62.5);
+  --color-slate-950: oklch(0.138 0.01 60);
+  --color-indigo-50: oklch(0.965 0.022 250);
+  --color-indigo-100: oklch(0.932 0.04 250.6);
+  --color-indigo-200: oklch(0.872 0.07 251.2);
+  --color-indigo-300: oklch(0.79 0.105 251.8);
+  --color-indigo-400: oklch(0.68 0.13 252.4);
+  --color-indigo-500: oklch(0.592 0.135 253);
+  --color-indigo-600: oklch(0.518 0.13 253.6);
+  --color-indigo-700: oklch(0.462 0.12 254.2);
+  --color-indigo-800: oklch(0.4 0.105 254.8);
+  --color-indigo-900: oklch(0.355 0.09 255.4);
+  --color-indigo-950: oklch(0.258 0.065 256);
+}
+
+/* Ledger — sage bookkeeping paper and banker's green. */
+:root[data-palette='ledger'] {
+  --color-slate-50: oklch(0.985 0.006 150);
+  --color-slate-100: oklch(0.969 0.008 151.5);
+  --color-slate-200: oklch(0.93 0.011 153);
+  --color-slate-300: oklch(0.872 0.014 154.5);
+  --color-slate-400: oklch(0.708 0.017 156);
+  --color-slate-500: oklch(0.556 0.017 157.5);
+  --color-slate-600: oklch(0.448 0.016 159);
+  --color-slate-700: oklch(0.372 0.015 160.5);
+  --color-slate-800: oklch(0.282 0.013 162);
+  --color-slate-900: oklch(0.212 0.012 163.5);
+  --color-slate-950: oklch(0.138 0.01 165);
+  --color-indigo-50: oklch(0.965 0.028 150);
+  --color-indigo-100: oklch(0.932 0.05 151);
+  --color-indigo-200: oklch(0.872 0.085 152);
+  --color-indigo-300: oklch(0.79 0.12 153);
+  --color-indigo-400: oklch(0.68 0.145 154);
+  --color-indigo-500: oklch(0.592 0.148 155);
+  --color-indigo-600: oklch(0.518 0.135 156);
+  --color-indigo-700: oklch(0.462 0.118 157);
+  --color-indigo-800: oklch(0.4 0.098 158);
+  --color-indigo-900: oklch(0.355 0.08 159);
+  --color-indigo-950: oklch(0.258 0.056 160);
+}
+
+/* Graphite — true greys and Swiss vermilion. */
+:root[data-palette='graphite'] {
+  --color-slate-50: oklch(0.985 0 0);
+  --color-slate-100: oklch(0.969 0 0);
+  --color-slate-200: oklch(0.93 0 0);
+  --color-slate-300: oklch(0.872 0 0);
+  --color-slate-400: oklch(0.708 0 0);
+  --color-slate-500: oklch(0.556 0 0);
+  --color-slate-600: oklch(0.448 0 0);
+  --color-slate-700: oklch(0.372 0 0);
+  --color-slate-800: oklch(0.282 0 0);
+  --color-slate-900: oklch(0.212 0 0);
+  --color-slate-950: oklch(0.138 0 0);
+  --color-indigo-50: oklch(0.965 0.016 45);
+  --color-indigo-100: oklch(0.932 0.035 43.7);
+  --color-indigo-200: oklch(0.872 0.07 42.4);
+  --color-indigo-300: oklch(0.79 0.11 41.1);
+  --color-indigo-400: oklch(0.68 0.16 39.8);
+  --color-indigo-500: oklch(0.592 0.185 38.5);
+  --color-indigo-600: oklch(0.518 0.18 37.2);
+  --color-indigo-700: oklch(0.462 0.165 35.9);
+  --color-indigo-800: oklch(0.4 0.14 34.6);
+  --color-indigo-900: oklch(0.355 0.115 33.3);
+  --color-indigo-950: oklch(0.258 0.08 32);
+}
+
+/* Dusk — plum shadows and marigold. */
+:root[data-palette='dusk'] {
+  --color-slate-50: oklch(0.985 0.008 320);
+  --color-slate-100: oklch(0.969 0.011 318.5);
+  --color-slate-200: oklch(0.93 0.016 317);
+  --color-slate-300: oklch(0.872 0.022 315.5);
+  --color-slate-400: oklch(0.708 0.03 314);
+  --color-slate-500: oklch(0.556 0.034 312.5);
+  --color-slate-600: oklch(0.448 0.036 311);
+  --color-slate-700: oklch(0.372 0.038 309.5);
+  --color-slate-800: oklch(0.282 0.036 308);
+  --color-slate-900: oklch(0.212 0.032 306.5);
+  --color-slate-950: oklch(0.138 0.028 305);
+  --color-indigo-50: oklch(0.965 0.035 88);
+  --color-indigo-100: oklch(0.932 0.06 85.4);
+  --color-indigo-200: oklch(0.872 0.1 82.8);
+  --color-indigo-300: oklch(0.79 0.135 80.2);
+  --color-indigo-400: oklch(0.68 0.16 77.6);
+  --color-indigo-500: oklch(0.592 0.158 75);
+  --color-indigo-600: oklch(0.518 0.145 72.4);
+  --color-indigo-700: oklch(0.462 0.13 69.8);
+  --color-indigo-800: oklch(0.4 0.11 67.2);
+  --color-indigo-900: oklch(0.355 0.09 64.6);
+  --color-indigo-950: oklch(0.258 0.065 62);
+}

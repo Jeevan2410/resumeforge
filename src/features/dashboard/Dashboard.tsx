@@ -2,8 +2,8 @@
  * Dashboard (#/): landing hero, "start new" starters, the "My resumes" grid (live thumbnails,
  * search, sort, rename, duplicate, delete) and a template showcase. OWNER: shell agent.
  */
-import { ArrowRight, Code2, FilePlus2, FileUp, FlaskConical, Gauge, Lock, Mail, Search, Sparkles, Target, type LucideIcon } from 'lucide-react'
-import { useEffect, useMemo, useState } from 'react'
+import { Anvil, ArrowRight, Code2, FilePlus2, FileUp, FlaskConical, Gauge, Lock, Mail, Search, Target, type LucideIcon } from 'lucide-react'
+import { useEffect, useMemo, useState, type CSSProperties } from 'react'
 import type { StarterKind } from '../../lib/samples.ts'
 import { developerSample } from '../../lib/samples.ts'
 import { defaultDesign } from '../../lib/design.ts'
@@ -11,6 +11,7 @@ import { sortResumes, type ResumeSort } from '../../lib/shell.ts'
 import { navigate, uiActions, useResumes } from '../../store'
 import { TEMPLATES, TemplateThumbnail } from '../../templates'
 import { Button, cn, inputClass, LazyMount, Segmented } from '../../ui'
+import { HeroGraphic } from './HeroGraphic.tsx'
 import { ResumeCard } from './ResumeCard.tsx'
 
 const STARTERS: { id: StarterKind; title: string; description: string; icon: LucideIcon; tone: string }[] = [
@@ -51,11 +52,11 @@ export function Dashboard() {
   return (
     <div className="mx-auto max-w-7xl px-4 pb-16 sm:px-6">
       {/* Hero */}
-      <section className={cn('relative overflow-hidden rounded-b-3xl px-1 pt-8 sm:pt-12', fresh ? 'pb-10' : 'pb-6')}>
-        <div className="pointer-events-none absolute -top-24 left-1/2 -z-0 h-64 w-[48rem] max-w-[140vw] -translate-x-1/2 rounded-full bg-indigo-400/15 blur-3xl dark:bg-indigo-500/10" aria-hidden />
-        <div className="relative">
+      <section className={cn('relative px-1 pt-8 sm:pt-12', fresh ? 'pb-10 lg:grid lg:grid-cols-[1fr_auto] lg:items-center lg:gap-10' : 'pb-6')}>
+        <div className="rf-graph pointer-events-none absolute -inset-x-4 -top-14 bottom-0 sm:-inset-x-6" aria-hidden />
+        <div className="rf-rise relative">
           <p className="inline-flex items-center gap-1.5 rounded-full bg-white px-3 py-1 text-xs font-semibold text-indigo-700 ring-1 ring-indigo-100 dark:bg-slate-900 dark:text-indigo-300 dark:ring-indigo-500/30">
-            <Sparkles className="size-3.5" aria-hidden />
+            <Anvil className="size-3.5" aria-hidden />
             {TEMPLATES.length} templates · ATS checker · PDF & Word export
           </p>
           <h1 className="mt-4 max-w-3xl text-3xl font-extrabold tracking-tight text-balance text-slate-900 sm:text-5xl dark:text-white">{fresh ? 'Build a resume that gets you the interview' : 'Your resumes'}</h1>
@@ -78,14 +79,19 @@ export function Dashboard() {
             </div>
           )}
         </div>
+        {fresh && (
+          <div className="relative hidden pr-6 lg:block">
+            <HeroGraphic />
+          </div>
+        )}
       </section>
 
       {/* Start new */}
-      <section aria-labelledby="start-h" className="mt-2">
+      <section aria-labelledby="start-h" className="rf-rise mt-2" style={{ '--d': '120ms' } as CSSProperties}>
         <h2 id="start-h" className="mb-3 text-sm font-bold text-slate-900 dark:text-white">
           Start a new resume
         </h2>
-        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="rf-stagger grid gap-3 sm:grid-cols-2 lg:grid-cols-4" style={{ '--rf-step': '70ms' } as CSSProperties}>
           {STARTERS.map((s) => (
             <button
               key={s.id}
@@ -141,7 +147,7 @@ export function Dashboard() {
         </div>
         {empty ? (
           <div className="rounded-2xl border-2 border-dashed border-slate-300 bg-white/50 px-6 py-12 text-center dark:border-slate-700 dark:bg-slate-900/40">
-            <Sparkles className="mx-auto size-8 text-indigo-500" aria-hidden />
+            <Anvil className="mx-auto size-8 text-indigo-500" aria-hidden />
             <p className="mt-3 font-bold text-slate-800 dark:text-slate-100">No resumes yet</p>
             <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">Start from a sample to see how a strong resume reads, or begin blank.</p>
             <Button className="mt-4" variant="primary" icon={FilePlus2} onClick={() => newResume()}>
@@ -151,7 +157,7 @@ export function Dashboard() {
         ) : list.length === 0 ? (
           <p className="rounded-2xl bg-white px-6 py-10 text-center text-sm text-slate-500 ring-1 ring-slate-200 dark:bg-slate-900 dark:text-slate-400 dark:ring-slate-800">No resumes match “{query}”.</p>
         ) : (
-          <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-5 lg:grid-cols-4 xl:grid-cols-5">
+          <div className="rf-stagger grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-5 lg:grid-cols-4 xl:grid-cols-5">
             {list.map((r) => (
               <ResumeCard key={r.id} doc={r} now={now} />
             ))}
@@ -160,7 +166,7 @@ export function Dashboard() {
       </section>
 
       {/* Features */}
-      <section aria-label="Highlights" className="mt-12 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+      <section aria-label="Highlights" className="rf-stagger mt-12 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
         {FEATURES.map((f) => (
           <div key={f.title} className="flex items-start gap-3 rounded-2xl bg-white/70 p-4 ring-1 ring-slate-200/70 dark:bg-slate-900/50 dark:ring-slate-800">
             <f.icon className="mt-0.5 size-5 shrink-0 text-indigo-500 dark:text-indigo-400" aria-hidden />
