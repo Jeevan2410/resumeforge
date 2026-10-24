@@ -1,0 +1,349 @@
+/* Chat template — every selector is scoped to .rf-t-chat. */
+
+.rf-t-chat .ch-page {
+  position: relative;
+  height: 100%;
+  box-sizing: border-box;
+  padding: 0 calc(var(--rf-margin) * 0.75);
+  color: var(--ch-ink);
+  background-color: var(--ch-wall);
+  /* faint doodle-dot wallpaper */
+  background-image: radial-gradient(rgb(var(--rf-accent-rgb) / 0.09) 0.5mm, transparent 0.6mm), radial-gradient(rgb(0 0 0 / 0.04) 0.4mm, transparent 0.5mm);
+  background-size: 7mm 7mm, 11mm 11mm;
+  background-position: 0 0, 3mm 4mm;
+}
+
+/* ---------- app bar ---------- */
+
+.rf-t-chat .ch-head {
+  margin: 0 calc(var(--rf-margin) * -0.75) 4mm;
+}
+.rf-t-chat .ch-bar {
+  display: flex;
+  align-items: center;
+  gap: 3.2mm;
+  padding: 4mm calc(var(--rf-margin) * 0.75);
+  background: var(--ch-bar);
+  color: #fff;
+}
+.rf-t-chat .ch-bar__back,
+.rf-t-chat .ch-bar__icon {
+  flex: none;
+  width: 5.5mm;
+  height: 5.5mm;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.rf-t-chat .ch-bar__icon {
+  margin-left: 2mm;
+  opacity: 0.9;
+}
+.rf-t-chat .ch-avatar {
+  flex: none;
+  border: 0.6mm solid rgb(255 255 255 / 0.85);
+}
+.rf-t-chat .ch-avatar--txt {
+  display: grid;
+  place-items: center;
+  width: 13mm;
+  height: 13mm;
+  box-sizing: border-box;
+  border-radius: 50%;
+  background: rgb(255 255 255 / 0.2);
+  font-weight: 700;
+  font-size: 1.15em;
+}
+.rf-t-chat .ch-bar__who {
+  flex: 1;
+  min-width: 0;
+}
+.rf-t-chat .ch-name {
+  margin: 0;
+  font-family: var(--rf-font-heading);
+  font-size: 1.75em;
+  font-weight: 700;
+  line-height: 1.1;
+}
+.rf-t-chat .ch-status {
+  display: flex;
+  align-items: center;
+  gap: 1.4mm;
+  margin-top: 0.6mm;
+  font-size: 0.9em;
+  opacity: 0.92;
+}
+.rf-t-chat .ch-dot {
+  width: 2mm;
+  height: 2mm;
+  border-radius: 50%;
+  background: #6cf0a8;
+}
+
+.rf-t-chat .ch-day {
+  margin: 3.5mm 0 2.5mm;
+  text-align: center;
+}
+.rf-t-chat .ch-day span,
+.rf-t-chat .ch-run span:first-child {
+  display: inline-block;
+  padding: 0.8mm 3mm;
+  border-radius: 999px;
+  background: rgb(255 255 255 / 0.85);
+  box-shadow: 0 0.3mm 0.6mm rgb(0 0 0 / 0.08);
+  font-size: 0.74em;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #5f6b66;
+}
+.rf-t-chat .ch-pinned {
+  margin: 0 calc(var(--rf-margin) * 0.75);
+  padding: 2.4mm 3.5mm;
+  border-left: 1mm solid var(--rf-accent);
+  border-radius: 2mm;
+  background: rgb(255 255 255 / 0.92);
+}
+.rf-t-chat .ch-pinned__label {
+  display: block;
+  margin-bottom: 1mm;
+  font-size: 0.7em;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--rf-accent);
+}
+.rf-t-chat .ch-contact {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1mm 4.5mm;
+  font-size: 0.86em;
+}
+.rf-t-chat .ch-contact__item svg {
+  color: var(--rf-accent);
+}
+
+/* running head on later pages */
+.rf-t-chat .ch-run {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: calc(var(--rf-margin) * 0.6) 0 3mm;
+}
+.rf-t-chat .ch-run span:last-child {
+  font-size: 0.74em;
+  color: #6f7a75;
+}
+
+/* ---------- messages ---------- */
+
+.rf-t-chat .ch-bubble {
+  position: relative;
+  padding: 2.2mm 3.4mm 1.4mm;
+  border-radius: 3.2mm;
+  box-shadow: 0 0.3mm 0.8mm rgb(0 0 0 / 0.1);
+  line-height: 1.42;
+}
+.rf-t-chat .ch-meta {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 0.8mm;
+  margin-top: 0.6mm;
+  font-size: 0.66em;
+  opacity: 0.6;
+}
+.rf-t-chat .ch-ticks {
+  width: 3.4mm;
+  height: 2mm;
+  fill: none;
+  stroke: #34b7f1;
+  stroke-width: 1.6;
+}
+.rf-t-chat .ch-bubble--out .ch-meta {
+  opacity: 0.75;
+}
+
+/* incoming: the recruiter's question */
+.rf-t-chat .ch-in {
+  display: flex;
+  align-items: flex-end;
+  gap: 2mm;
+  max-width: 78%;
+  margin-bottom: calc(var(--rf-entry-gap) * 1.1);
+}
+.rf-t-chat .ch-in__avatar {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 7.5mm;
+  height: 7.5mm;
+  border-radius: 50%;
+  background: var(--ch-ink);
+  color: #fff;
+  font-size: 0.62em;
+  font-weight: 700;
+}
+.rf-t-chat .ch-bubble--in {
+  background: var(--ch-in);
+  border-bottom-left-radius: 0.6mm;
+}
+.rf-t-chat .ch-in__q {
+  display: block;
+}
+.rf-t-chat .ch-h {
+  display: inline-block;
+  margin: 1.2mm 0 0;
+  padding: 0.4mm 2.4mm;
+  border-radius: 999px;
+  background: rgb(var(--rf-accent-rgb) / 0.12);
+  color: var(--rf-accent);
+  font-family: var(--rf-font-heading);
+  font-size: 0.78em;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+.rf-t-chat .ch-h::before {
+  content: '# ';
+  opacity: 0.6;
+}
+
+/* outgoing: the candidate's answers */
+.rf-t-chat .ch-out {
+  display: flex;
+  justify-content: flex-end;
+  padding-left: 12%;
+}
+.rf-t-chat .ch-bubble--out {
+  background: var(--rf-accent);
+  color: #fff;
+  border-bottom-right-radius: 0.6mm;
+}
+.rf-t-chat .ch-bubble--out a {
+  color: inherit;
+}
+.rf-t-chat .ch-text p {
+  margin: 0;
+}
+.rf-t-chat .ch-text p + p {
+  margin-top: 1.4mm;
+}
+
+.rf-t-chat .ch-card__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 4mm;
+}
+.rf-t-chat .ch-card__title {
+  margin: 0;
+  font-family: var(--rf-font-heading);
+  font-size: 1.08em;
+  font-weight: 700;
+}
+.rf-t-chat .ch-card__date {
+  flex: none;
+  font-size: 0.8em;
+  font-weight: 600;
+  opacity: 0.85;
+}
+.rf-t-chat .ch-card__where {
+  font-size: 0.86em;
+  font-weight: 500;
+  opacity: 0.88;
+}
+.rf-t-chat .ch-card__link {
+  display: inline-block;
+  font-size: 0.82em;
+  text-decoration: underline;
+  text-underline-offset: 0.4mm;
+}
+.rf-t-chat .ch-card__desc {
+  margin: 1.2mm 0 0;
+}
+.rf-t-chat .ch-card__list {
+  margin: 1.2mm 0 0;
+  padding: 0;
+  list-style: none;
+}
+.rf-t-chat .ch-card__list li {
+  position: relative;
+  padding-left: 3.6mm;
+}
+.rf-t-chat .ch-card__list li + li {
+  margin-top: 0.5mm;
+}
+.rf-t-chat .ch-card__list li::before {
+  content: '';
+  position: absolute;
+  left: 0.6mm;
+  top: 0.62em;
+  width: 1.3mm;
+  height: 1.3mm;
+  border-radius: 50%;
+  background: rgb(255 255 255 / 0.8);
+}
+.rf-t-chat .ch-card__meta {
+  margin-top: 1mm;
+  font-size: 0.84em;
+  opacity: 0.88;
+}
+.rf-t-chat .ch-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.2mm;
+  margin-top: 1.4mm;
+}
+.rf-t-chat .ch-chip {
+  padding: 0.3mm 2.2mm;
+  border-radius: 999px;
+  background: rgb(255 255 255 / 0.2);
+  border: 0.25mm solid rgb(255 255 255 / 0.45);
+  font-size: 0.82em;
+}
+.rf-t-chat .ch-compact {
+  margin: 0;
+}
+.rf-t-chat .ch-compact * {
+  color: inherit !important;
+  opacity: 1 !important;
+}
+
+/* ---------- composer ---------- */
+
+.rf-t-chat .ch-composer {
+  position: absolute;
+  left: calc(var(--rf-margin) * 0.75);
+  right: calc(var(--rf-margin) * 0.75);
+  bottom: calc(var(--rf-margin) * 0.6);
+  display: flex;
+  align-items: center;
+  gap: 2.5mm;
+  height: 11mm;
+}
+.rf-t-chat .ch-composer__field {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding: 0 4.5mm;
+  border-radius: 999px;
+  background: #fff;
+  box-shadow: 0 0.3mm 0.8mm rgb(0 0 0 / 0.1);
+  color: #98a29e;
+}
+.rf-t-chat .ch-composer__send {
+  display: grid;
+  place-items: center;
+  width: 11mm;
+  height: 11mm;
+  border-radius: 50%;
+  background: var(--rf-accent);
+}
+.rf-t-chat .ch-composer__send svg {
+  width: 5mm;
+  height: 5mm;
+  fill: #fff;
+}
