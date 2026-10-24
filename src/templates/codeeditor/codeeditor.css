@@ -1,0 +1,312 @@
+/* Code Editor template — every selector is scoped to .rf-t-codeeditor. */
+
+.rf-t-codeeditor .ce-page {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  box-sizing: border-box;
+  background: #fff;
+  color: #1f2328;
+  font-family: var(--rf-font-mono);
+  font-size: 0.92em;
+}
+
+/* ---------- window chrome ---------- */
+
+.rf-t-codeeditor .ce-titlebar {
+  flex: none;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 8mm;
+  background: #e8ecf0;
+  border-bottom: 1px solid var(--ce-line);
+  font-family: var(--rf-font-body);
+  font-size: 0.8em;
+  color: #57606a;
+}
+.rf-t-codeeditor .ce-dots {
+  position: absolute;
+  left: 4mm;
+  display: flex;
+  gap: 1.6mm;
+}
+.rf-t-codeeditor .ce-dots i {
+  width: 2.8mm;
+  height: 2.8mm;
+  border-radius: 50%;
+  background: #ff5f57;
+}
+.rf-t-codeeditor .ce-dots i:nth-child(2) {
+  background: #febc2e;
+}
+.rf-t-codeeditor .ce-dots i:nth-child(3) {
+  background: #28c840;
+}
+
+.rf-t-codeeditor .ce-body {
+  flex: 1;
+  display: flex;
+  min-height: 0;
+}
+.rf-t-codeeditor .ce-activity {
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4mm;
+  width: 9mm;
+  padding-top: 4mm;
+  background: #eaeef2;
+  border-right: 1px solid var(--ce-line);
+}
+.rf-t-codeeditor .ce-act {
+  width: 4.4mm;
+  height: 4.4mm;
+  border: 0.45mm solid #8c959f;
+  border-radius: 1mm;
+}
+.rf-t-codeeditor .ce-act--on {
+  border-color: var(--rf-accent);
+  box-shadow: -2.6mm 0 0 -1.6mm var(--rf-accent);
+}
+
+/* explorer */
+.rf-t-codeeditor .ce-explorer {
+  flex: none;
+  width: 44mm;
+  box-sizing: border-box;
+  padding: 3mm 3mm 3mm 3.5mm;
+  background: var(--ce-chrome);
+  border-right: 1px solid var(--ce-line);
+  font-size: 0.86em;
+  overflow: hidden;
+}
+.rf-t-codeeditor .ce-explorer__title {
+  margin-bottom: 1.6mm;
+  font-family: var(--rf-font-body);
+  font-size: 0.82em;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #57606a;
+}
+.rf-t-codeeditor .ce-explorer__title--gap {
+  margin-top: 5mm;
+}
+.rf-t-codeeditor .ce-folder {
+  font-weight: 600;
+}
+.rf-t-codeeditor .ce-files {
+  margin: 0.6mm 0 0;
+  padding: 0;
+  list-style: none;
+}
+.rf-t-codeeditor .ce-file {
+  position: relative;
+  padding: 0.35mm 0 0.35mm 6mm;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: #424a53;
+}
+.rf-t-codeeditor .ce-file::before {
+  content: '';
+  position: absolute;
+  left: 2.4mm;
+  top: 50%;
+  width: 2.2mm;
+  height: 2.6mm;
+  margin-top: -1.3mm;
+  border-radius: 0.4mm;
+  background: #8c959f;
+}
+.rf-t-codeeditor .ce-file--on {
+  margin: 0 -3mm 0 -3.5mm;
+  padding-left: 9.5mm;
+  background: rgb(var(--rf-accent-rgb) / 0.12);
+  color: #1f2328;
+  font-weight: 600;
+}
+.rf-t-codeeditor .ce-file--on::before {
+  left: 5.9mm;
+  background: var(--rf-accent);
+}
+.rf-t-codeeditor .ce-contact {
+  display: flex;
+  flex-direction: column;
+  gap: 1.4mm;
+}
+.rf-t-codeeditor .ce-contact__item {
+  overflow-wrap: anywhere;
+  line-height: 1.3;
+}
+.rf-t-codeeditor .ce-contact__item svg {
+  color: var(--rf-accent);
+}
+.rf-t-codeeditor .ce-photo {
+  display: block;
+}
+
+/* editor */
+.rf-t-codeeditor .ce-editor {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+.rf-t-codeeditor .ce-tabs {
+  flex: none;
+  display: flex;
+  background: var(--ce-chrome);
+  border-bottom: 1px solid var(--ce-line);
+  font-size: 0.86em;
+}
+.rf-t-codeeditor .ce-tab {
+  padding: 1.8mm 4.5mm;
+  border-right: 1px solid var(--ce-line);
+  color: #6e7781;
+}
+.rf-t-codeeditor .ce-tab--on {
+  margin-bottom: -1px;
+  background: #fff;
+  color: #1f2328;
+  box-shadow: inset 0 0.5mm 0 var(--rf-accent);
+}
+.rf-t-codeeditor .ce-crumbs {
+  flex: none;
+  padding: 1.4mm 4mm;
+  font-size: 0.8em;
+  color: #6e7781;
+}
+.rf-t-codeeditor .ce-code {
+  padding: 0 14mm 0 0;
+}
+.rf-t-codeeditor .ce-minimap {
+  position: absolute;
+  top: 16mm;
+  right: 2.5mm;
+  width: 9mm;
+  height: 70mm;
+  opacity: 0.55;
+  background:
+    linear-gradient(90deg, #c9d1d9 55%, transparent 0) 0 0 / 100% 2.2mm,
+    linear-gradient(90deg, transparent 15%, #b6c3d4 15% 70%, transparent 0) 0 1.1mm / 100% 2.2mm;
+  background-repeat: repeat-y;
+  -webkit-mask-image: linear-gradient(#000 60%, transparent);
+  mask-image: linear-gradient(#000 60%, transparent);
+}
+.rf-t-codeeditor .ce-minimap::after {
+  content: '';
+  position: absolute;
+  inset: 0 -1mm auto;
+  height: 18mm;
+  background: rgb(var(--rf-accent-rgb) / 0.15);
+}
+
+.rf-t-codeeditor .ce-status {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 4mm;
+  height: 6mm;
+  padding: 0 4mm;
+  background: var(--rf-accent);
+  color: #fff;
+  font-family: var(--rf-font-body);
+  font-size: 0.74em;
+}
+.rf-t-codeeditor .ce-status__fill {
+  flex: 1;
+}
+
+/* ---------- code lines ---------- */
+
+.rf-t-codeeditor .ce-l {
+  display: grid;
+  grid-template-columns: 11mm 1fr;
+  line-height: 1.5;
+}
+.rf-t-codeeditor .ce-n {
+  padding-right: 4mm;
+  text-align: right;
+  color: #8c959f;
+  font-size: 0.9em;
+  user-select: none;
+}
+.rf-t-codeeditor .ce-c {
+  min-width: 0;
+  padding-left: calc(var(--ce-i) * 4.2mm);
+  white-space: pre-wrap;
+}
+.rf-t-codeeditor .ce-l--wrap .ce-c {
+  white-space: normal;
+  padding-left: calc(var(--ce-i) * 4.2mm + 3mm);
+  text-indent: -3mm;
+}
+.rf-t-codeeditor .ce-l--name {
+  line-height: 1.25;
+  padding: 0.6mm 0;
+}
+.rf-t-codeeditor .ce-name {
+  display: inline;
+  margin: 0;
+  font-family: var(--rf-font-heading);
+  font-size: 2.1em;
+  font-weight: 700;
+  color: #1f2328;
+  letter-spacing: -0.01em;
+}
+.rf-t-codeeditor .ce-com {
+  color: var(--ce-com);
+  font-style: italic;
+}
+.rf-t-codeeditor .ce-l--name .ce-com {
+  font-style: normal;
+}
+.rf-t-codeeditor .ce-h {
+  display: inline;
+  margin: 0;
+  font-size: 1em;
+  font-weight: 600;
+  color: #116329;
+}
+.rf-t-codeeditor .ce-kw {
+  color: var(--ce-kw);
+}
+.rf-t-codeeditor .ce-var {
+  color: var(--ce-fn);
+  font-weight: 600;
+}
+.rf-t-codeeditor .ce-p {
+  color: #57606a;
+}
+.rf-t-codeeditor .ce-key {
+  color: var(--ce-prop);
+}
+.rf-t-codeeditor .ce-str {
+  color: var(--ce-str);
+}
+.rf-t-codeeditor .ce-str a {
+  color: inherit;
+}
+.rf-t-codeeditor .ce-title {
+  display: inline;
+  margin: 0;
+  font-size: 1em;
+  font-weight: 700;
+}
+.rf-t-codeeditor .ce-title .ce-str {
+  color: var(--rf-accent);
+}
+.rf-t-codeeditor .ce-date .ce-str {
+  color: #953800;
+}
+.rf-t-codeeditor .ce-strong {
+  font-weight: 600;
+}
+.rf-t-codeeditor .ce-date {
+  white-space: nowrap;
+}

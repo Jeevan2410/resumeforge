@@ -1,0 +1,364 @@
+/* Magazine template — every selector is scoped to .rf-t-magazine. */
+
+.rf-t-magazine .mg-page {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  box-sizing: border-box;
+  background: #fff;
+  color: var(--mg-ink);
+}
+.rf-t-magazine .mg-body {
+  flex: 1;
+  padding: 0 var(--rf-margin);
+}
+
+/* ---------- cover ---------- */
+
+.rf-t-magazine .mg-cover-wrap {
+  margin-bottom: calc(var(--rf-section-gap) * 1.1);
+}
+.rf-t-magazine .mg-cover {
+  position: relative;
+  height: 142mm;
+  overflow: hidden;
+  color: #fff;
+  background:
+    radial-gradient(circle at 78% 30%, rgb(255 255 255 / 0.28), transparent 38%),
+    linear-gradient(150deg, var(--rf-accent), #2b0a3d 88%);
+}
+.rf-t-magazine .mg-cover::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgb(0 0 0 / 0.35), transparent 30% 55%, rgb(0 0 0 / 0.65)), linear-gradient(270deg, rgb(0 0 0 / 0.3), transparent 45%);
+  pointer-events: none;
+}
+.rf-t-magazine .mg-cover__img {
+  position: absolute;
+  inset: 0;
+}
+.rf-t-magazine .mg-cover__art {
+  position: absolute;
+  right: -6mm;
+  bottom: -26mm;
+  font-family: 'Playfair Display', var(--rf-font-heading), serif;
+  font-size: 118mm;
+  font-weight: 900;
+  font-style: italic;
+  line-height: 1;
+  color: rgb(255 255 255 / 0.13);
+  letter-spacing: -0.04em;
+}
+.rf-t-magazine .mg-mast {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 5mm var(--rf-margin) 0;
+}
+.rf-t-magazine .mg-mast__title {
+  font-family: 'Playfair Display', var(--rf-font-heading), serif;
+  font-size: 30mm;
+  font-weight: 900;
+  line-height: 0.82;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+}
+.rf-t-magazine .mg-mast__issue {
+  margin-top: 2mm;
+  font-size: 0.76em;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  line-height: 1.5;
+  text-align: right;
+  text-transform: uppercase;
+}
+.rf-t-magazine .mg-lines {
+  position: absolute;
+  z-index: 1;
+  top: 44mm;
+  right: var(--rf-margin);
+  width: 62mm;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-align: right;
+}
+.rf-t-magazine .mg-lines li {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin-bottom: 4.5mm;
+  font-size: 1.05em;
+  font-weight: 700;
+  line-height: 1.22;
+  text-shadow: 0 0.3mm 1.2mm rgb(0 0 0 / 0.4);
+}
+.rf-t-magazine .mg-lines small {
+  display: inline-block;
+  margin-bottom: 1mm;
+  padding: 0.3mm 1.6mm;
+  background: var(--mg-ink);
+  text-shadow: none;
+  font-size: 0.66em;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #ffe14d;
+}
+.rf-t-magazine .mg-star {
+  position: absolute;
+  z-index: 1;
+  left: var(--rf-margin);
+  right: var(--rf-margin);
+  bottom: 7mm;
+}
+.rf-t-magazine .mg-name {
+  margin: 0;
+  font-family: 'Playfair Display', var(--rf-font-heading), serif;
+  font-size: 4.4em;
+  font-weight: 900;
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+}
+.rf-t-magazine .mg-name span {
+  display: block;
+}
+.rf-t-magazine .mg-name span + span {
+  font-style: italic;
+  font-weight: 700;
+}
+.rf-t-magazine .mg-tagline {
+  display: inline-block;
+  margin-top: 3mm;
+  padding: 1.2mm 3mm;
+  background: #ffe14d;
+  color: var(--mg-ink);
+  font-size: 0.95em;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.rf-t-magazine .mg-strip {
+  display: flex;
+  gap: 8mm;
+  justify-content: space-between;
+  padding: 4mm var(--rf-margin);
+  border-bottom: 0.5mm solid var(--mg-ink);
+  font-size: 0.86em;
+}
+.rf-t-magazine .mg-contents {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  gap: 1.2mm 4.5mm;
+  flex: 1;
+}
+.rf-t-magazine .mg-contents b {
+  flex-basis: 100%;
+  font-family: 'Playfair Display', var(--rf-font-heading), serif;
+  font-size: 1.3em;
+  font-style: italic;
+}
+.rf-t-magazine .mg-contents i {
+  font-style: normal;
+  font-weight: 800;
+  color: var(--rf-accent);
+}
+.rf-t-magazine .mg-contact {
+  display: grid;
+  flex: none;
+  grid-template-columns: repeat(2, max-content);
+  align-content: start;
+  gap: 1.2mm 5mm;
+  font-size: 0.92em;
+}
+.rf-t-magazine .mg-contact svg {
+  color: var(--rf-accent);
+}
+
+.rf-t-magazine .mg-run {
+  display: flex;
+  align-items: baseline;
+  gap: 3mm;
+  margin: 0 var(--rf-margin) 6mm;
+  padding: calc(var(--rf-margin) * 0.7) 0 2mm;
+  border-bottom: 0.5mm solid var(--mg-ink);
+  font-size: 0.82em;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.rf-t-magazine .mg-run b {
+  font-family: 'Playfair Display', var(--rf-font-heading), serif;
+  font-size: 1.9em;
+  font-weight: 900;
+  letter-spacing: -0.01em;
+}
+.rf-t-magazine .mg-folio {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 var(--rf-margin);
+  padding: 2mm 0 calc(var(--rf-margin) * 0.55);
+  border-top: 0.3mm solid #c9c9c9;
+  font-size: 0.7em;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #777;
+}
+
+/* ---------- the feature ---------- */
+
+.rf-t-magazine .mg-quote-h {
+  margin: 0 0 1.5mm 17mm;
+  font-size: 0.72em;
+  font-weight: 800;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--rf-accent);
+}
+.rf-t-magazine .mg-quote {
+  position: relative;
+  margin: 0;
+  padding: 0 0 0 17mm;
+  font-family: 'Playfair Display', var(--rf-font-heading), serif;
+  font-size: 1.32em;
+  font-style: italic;
+  line-height: 1.38;
+}
+.rf-t-magazine .mg-quote::before {
+  content: '“';
+  position: absolute;
+  left: -1mm;
+  top: -4.5mm;
+  font-size: 4.4em;
+  font-weight: 900;
+  font-style: normal;
+  line-height: 1;
+  color: var(--rf-accent);
+}
+.rf-t-magazine .mg-quote p {
+  margin: 0;
+}
+
+.rf-t-magazine .mg-opener {
+  display: flex;
+  align-items: flex-end;
+  gap: 4mm;
+  margin-bottom: 3.5mm;
+  padding-bottom: 2mm;
+  border-bottom: 0.9mm solid var(--mg-ink);
+}
+.rf-t-magazine .mg-opener__num {
+  font-family: 'Playfair Display', var(--rf-font-heading), serif;
+  font-size: 3.6em;
+  font-weight: 900;
+  line-height: 0.8;
+  color: var(--rf-accent);
+}
+.rf-t-magazine .mg-opener__kicker {
+  display: block;
+  font-size: 0.68em;
+  font-weight: 800;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #6b6b6b;
+}
+.rf-t-magazine .mg-h {
+  margin: 0;
+  font-family: 'Playfair Display', var(--rf-font-heading), serif;
+  font-size: 1.85em;
+  font-weight: 800;
+  font-style: italic;
+  line-height: 1.05;
+  text-transform: var(--rf-heading-transform);
+}
+
+.rf-t-magazine .mg-story__title {
+  margin: 0;
+  font-family: 'Playfair Display', var(--rf-font-heading), serif;
+  font-size: 1.36em;
+  font-weight: 800;
+  line-height: 1.15;
+}
+.rf-t-magazine .mg-story__meta {
+  margin-top: 0.6mm;
+  font-size: 0.74em;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--rf-accent);
+}
+.rf-t-magazine .mg-story__link {
+  display: inline-block;
+  margin-top: 0.4mm;
+  font-size: 0.82em;
+  color: #555;
+}
+.rf-t-magazine .mg-story__desc {
+  margin: 1.2mm 0 0;
+}
+.rf-t-magazine .mg-story__list {
+  margin: 1.4mm 0 0;
+  padding: 0;
+  list-style: none;
+}
+.rf-t-magazine .mg-story__list li {
+  position: relative;
+  padding-left: 5mm;
+  line-height: 1.45;
+}
+.rf-t-magazine .mg-story__list li + li {
+  margin-top: 0.6mm;
+}
+.rf-t-magazine .mg-story__list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 2.6mm;
+  height: 0.6mm;
+  background: var(--rf-accent);
+}
+.rf-t-magazine .mg-story__kw {
+  margin-top: 1.2mm;
+  font-size: 0.84em;
+  font-style: italic;
+  color: #555;
+}
+
+.rf-t-magazine .mg-kit {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3mm;
+}
+.rf-t-magazine .mg-kit__card {
+  padding: 2.6mm 3.2mm;
+  background: #f4f1ec;
+  border-top: 0.9mm solid var(--rf-accent);
+}
+.rf-t-magazine .mg-kit__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 2mm;
+}
+.rf-t-magazine .mg-kit__head b {
+  font-family: 'Playfair Display', var(--rf-font-heading), serif;
+  font-size: 1.15em;
+  font-weight: 800;
+}
+.rf-t-magazine .mg-kit__head span {
+  font-size: 0.7em;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--rf-accent);
+}
+.rf-t-magazine .mg-kit__kw {
+  margin-top: 0.8mm;
+  font-size: 0.9em;
+  line-height: 1.4;
+}
