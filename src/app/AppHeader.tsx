@@ -6,11 +6,12 @@ import { Check, ChevronLeft, CloudOff, Keyboard, Loader2, MoreHorizontal, Redo2,
 import { Suspense, useEffect, useRef, useState } from 'react'
 import { navigate, resumeActions, uiActions, useActiveDoc, useHistoryState, useTheme, useUiStore } from '../store'
 import { Button, cn, IconButton, Menu } from '../ui'
-import { useMediaQuery } from './hooks.ts'
+import { switchTheme, useMediaQuery } from './hooks.ts'
 import { ExportMenu } from './lazy.ts'
 import { Logo } from './Logo.tsx'
 import { shortcut, MOD, SHIFT } from './platform.ts'
 import { SnapshotsMenu } from './SnapshotsMenu.tsx'
+import { usePaletteItems } from './paletteItems.tsx'
 import { ThemeToggle } from './ThemeToggle.tsx'
 
 export function AppHeader() {
@@ -18,6 +19,7 @@ export function AppHeader() {
   const { canUndo, canRedo } = useHistoryState()
   const wide = useMediaQuery('(min-width: 640px)')
   const theme = useTheme()
+  const paletteItems = usePaletteItems()
   return (
     <header className="relative z-30 flex h-14 shrink-0 items-center gap-1.5 border-b border-slate-200 bg-white px-2 sm:gap-2 sm:px-4 dark:border-slate-800 dark:bg-slate-900">
       <a href="#editor-panel" className="rf-skip rounded-lg bg-indigo-600 px-3 py-1.5 text-sm font-semibold text-white">
@@ -58,7 +60,10 @@ export function AppHeader() {
               { key: 'keys', icon: Keyboard, label: 'Keyboard shortcuts', onSelect: () => uiActions.openModal('shortcuts') },
               'separator',
               { heading: 'Theme' },
-              ...(['light', 'dark', 'system'] as const).map((t) => ({ key: t, label: t[0].toUpperCase() + t.slice(1), checked: theme === t, onSelect: () => resumeActions.setTheme(t) })),
+              ...(['light', 'dark', 'system'] as const).map((t) => ({ key: t, label: t[0].toUpperCase() + t.slice(1), checked: theme === t, onSelect: () => switchTheme(t) })),
+              'separator',
+              { heading: 'Palette' },
+              ...paletteItems,
             ]}
           />
         )}

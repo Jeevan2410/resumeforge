@@ -1,25 +1,39 @@
 /** Shell-level hooks: theme class, keyboard shortcuts, print source, document title. OWNER: shell agent. */
 import { useEffect, useRef, useSyncExternalStore } from 'react'
-import { resumeActions, toast, uiActions, useTheme, useUiStore, type EditorPanel, type PrintJob } from '../store'
+import { resumeActions, toast, uiActions, useResumeStore, useTheme, useUiStore, type EditorPanel, type PrintJob } from '../store'
+import type { ThemePref } from '../lib/types.ts'
 import { isTypingTarget } from '../ui'
+import { syncThemeColor, withThemeTransition } from './palette.ts'
 
 const darkQuery = () => matchMedia('(prefers-color-scheme: dark)')
 
-/** Toggle the `dark` class on <html> from the theme preference (system follows prefers-color-scheme). */
+/** Set the `dark` class on <html> for a theme preference (system follows prefers-color-scheme). */
+function applyTheme(theme: ThemePref): void {
+  const dark = theme === 'dark' || (theme === 'system' && darkQuery().matches)
+  document.documentElement.classList.toggle('dark', dark)
+  document.documentElement.style.colorScheme = dark ? 'dark' : 'light'
+  syncThemeColor()
+}
+
+/** Keep the `dark` class on <html> in step with the theme preference and the OS setting. */
 export function useApplyTheme(): void {
   const theme = useTheme()
   useEffect(() => {
     const mq = darkQuery()
-    const apply = () => {
-      const dark = theme === 'dark' || (theme === 'system' && mq.matches)
-      document.documentElement.classList.toggle('dark', dark)
-      document.documentElement.style.colorScheme = dark ? 'dark' : 'light'
-      document.querySelector('meta[name="theme-color"]')?.setAttribute('content', dark ? '#0f172a' : '#4f46e5')
-    }
+    const apply = () => applyTheme(theme)
     apply()
     mq.addEventListener('change', apply)
     return () => mq.removeEventListener('change', apply)
   }, [theme])
+}
+
+/** Change the theme preference with the circular reveal (the class flips inside the transition). */
+export function switchTheme(theme: ThemePref): void {
+  if (useResumeStore.getState().theme === theme) return
+  withThemeTransition(() => {
+    resumeActions.setTheme(theme)
+    applyTheme(theme)
+  })
 }
 
 /** The theme actually shown ('light' | 'dark'), following the OS when the preference is 'system'. */

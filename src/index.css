@@ -1,4 +1,5 @@
 @import 'tailwindcss';
+@import './palettes.css';
 
 /* Dark mode is class-based: <html class="dark"> (set by useApplyTheme / the inline script in index.html).
    Only app UI uses dark: variants — resume pages (.rf-doc) always render light. */
@@ -44,7 +45,7 @@ body {
 }
 
 ::selection {
-  background: rgb(99 102 241 / 0.25);
+  background: color-mix(in oklab, var(--color-indigo-500) 25%, transparent);
 }
 
 /* Thin, theme-aware scrollbars for the app chrome. */
@@ -83,17 +84,17 @@ body {
 .rf-range::-webkit-slider-runnable-track {
   height: 0.375rem;
   border-radius: 999px;
-  background: linear-gradient(to right, #6366f1 var(--rf-range-pct, 50%), #e2e8f0 var(--rf-range-pct, 50%));
+  background: linear-gradient(to right, var(--color-indigo-500) var(--rf-range-pct, 50%), var(--color-slate-200) var(--rf-range-pct, 50%));
 }
 .rf-range::-moz-range-track {
   height: 0.375rem;
   border-radius: 999px;
-  background: #e2e8f0;
+  background: var(--color-slate-200);
 }
 .rf-range::-moz-range-progress {
   height: 0.375rem;
   border-radius: 999px;
-  background: #6366f1;
+  background: var(--color-indigo-500);
 }
 .rf-range::-webkit-slider-thumb {
   -webkit-appearance: none;
@@ -102,7 +103,7 @@ body {
   height: 1.25rem;
   border-radius: 999px;
   background: #fff;
-  border: 2px solid #6366f1;
+  border: 2px solid var(--color-indigo-500);
   box-shadow: 0 1px 3px rgb(15 23 42 / 0.25);
 }
 .rf-range::-moz-range-thumb {
@@ -110,34 +111,34 @@ body {
   height: 1rem;
   border-radius: 999px;
   background: #fff;
-  border: 2px solid #6366f1;
+  border: 2px solid var(--color-indigo-500);
   box-shadow: 0 1px 3px rgb(15 23 42 / 0.25);
 }
 .rf-range:focus-visible {
   outline: none;
 }
 .rf-range:focus-visible::-webkit-slider-thumb {
-  box-shadow: 0 0 0 4px rgb(99 102 241 / 0.35);
+  box-shadow: 0 0 0 4px color-mix(in oklab, var(--color-indigo-500) 35%, transparent);
 }
 .rf-range:focus-visible::-moz-range-thumb {
-  box-shadow: 0 0 0 4px rgb(99 102 241 / 0.35);
+  box-shadow: 0 0 0 4px color-mix(in oklab, var(--color-indigo-500) 35%, transparent);
 }
 .dark .rf-range::-webkit-slider-runnable-track {
-  background: linear-gradient(to right, #818cf8 var(--rf-range-pct, 50%), #334155 var(--rf-range-pct, 50%));
+  background: linear-gradient(to right, var(--color-indigo-400) var(--rf-range-pct, 50%), var(--color-slate-700) var(--rf-range-pct, 50%));
 }
 .dark .rf-range::-moz-range-track {
-  background: #334155;
+  background: var(--color-slate-700);
 }
 .dark .rf-range::-moz-range-progress {
-  background: #818cf8;
+  background: var(--color-indigo-400);
 }
 .dark .rf-range::-webkit-slider-thumb {
-  background: #0f172a;
-  border-color: #818cf8;
+  background: var(--color-slate-900);
+  border-color: var(--color-indigo-400);
 }
 .dark .rf-range::-moz-range-thumb {
-  background: #0f172a;
-  border-color: #818cf8;
+  background: var(--color-slate-900);
+  border-color: var(--color-indigo-400);
 }
 
 /* Photo crop viewport (features/editor/PhotoCropDialog). */
@@ -158,17 +159,186 @@ body {
 @keyframes rf-focus-flash {
   0%,
   40% {
-    box-shadow: 0 0 0 3px rgb(99 102 241 / 0.6);
+    box-shadow: 0 0 0 3px color-mix(in oklab, var(--color-indigo-500) 60%, transparent);
   }
   100% {
-    box-shadow: 0 0 0 3px rgb(99 102 241 / 0);
+    box-shadow: 0 0 0 3px color-mix(in oklab, var(--color-indigo-500) 0%, transparent);
   }
+}
+
+/* ---------------- Motion ----------------
+   Entrances run once, use transform/opacity only and start from `--d` (a per-element delay).
+   The reduced-motion block below collapses them all to their end state. */
+
+/* Section / card entrance: rise into place. */
+.rf-rise {
+  animation: rf-rise 640ms cubic-bezier(0.2, 0.8, 0.2, 1) var(--d, 0ms) both;
+}
+@keyframes rf-rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+}
+
+/* Grid children enter one after another (first 12; later ones arrive with the 12th). */
+.rf-stagger > * {
+  animation: rf-rise 560ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  animation-delay: calc(var(--rf-step, 55ms) * 12);
+}
+.rf-stagger > :nth-child(1) { animation-delay: 0ms; }
+.rf-stagger > :nth-child(2) { animation-delay: calc(var(--rf-step, 55ms) * 1); }
+.rf-stagger > :nth-child(3) { animation-delay: calc(var(--rf-step, 55ms) * 2); }
+.rf-stagger > :nth-child(4) { animation-delay: calc(var(--rf-step, 55ms) * 3); }
+.rf-stagger > :nth-child(5) { animation-delay: calc(var(--rf-step, 55ms) * 4); }
+.rf-stagger > :nth-child(6) { animation-delay: calc(var(--rf-step, 55ms) * 5); }
+.rf-stagger > :nth-child(7) { animation-delay: calc(var(--rf-step, 55ms) * 6); }
+.rf-stagger > :nth-child(8) { animation-delay: calc(var(--rf-step, 55ms) * 7); }
+.rf-stagger > :nth-child(9) { animation-delay: calc(var(--rf-step, 55ms) * 8); }
+.rf-stagger > :nth-child(10) { animation-delay: calc(var(--rf-step, 55ms) * 9); }
+.rf-stagger > :nth-child(11) { animation-delay: calc(var(--rf-step, 55ms) * 10); }
+
+/* Hero sheet (features/dashboard/HeroGraphic): lines are written left to right. */
+.rf-ink {
+  transform-box: fill-box;
+  transform-origin: left center;
+  animation: rf-write 520ms cubic-bezier(0.3, 0.7, 0.2, 1) var(--d, 0ms) both;
+}
+@keyframes rf-write {
+  from {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+  30% {
+    opacity: 1;
+  }
+}
+
+/* The ATS scanner passes over the sheet every few seconds. */
+.rf-scan {
+  opacity: 0;
+  animation: rf-scan 7s cubic-bezier(0.45, 0, 0.55, 1) 2.4s infinite;
+}
+@keyframes rf-scan {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  4% {
+    opacity: 1;
+  }
+  30% {
+    opacity: 1;
+  }
+  34%,
+  100% {
+    opacity: 0;
+    transform: translateY(352px);
+  }
+}
+
+/* Badges pop in with a little overshoot. */
+.rf-pop-in {
+  animation: rf-pop-in 520ms cubic-bezier(0.2, 0.9, 0.3, 1.35) var(--d, 0ms) both;
+}
+@keyframes rf-pop-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.86);
+  }
+}
+
+/* Score ring fills to 92 while the number counts up (an animatable integer drives the counter). */
+@property --rf-n {
+  syntax: '<integer>';
+  inherits: false;
+  initial-value: 0;
+}
+.rf-ring {
+  stroke-dasharray: 100;
+  animation: rf-ring 1.4s cubic-bezier(0.3, 0.7, 0.2, 1) var(--d, 0ms) both;
+}
+@keyframes rf-ring {
+  from {
+    stroke-dashoffset: 100;
+  }
+  to {
+    stroke-dashoffset: 8;
+  }
+}
+.rf-score {
+  counter-reset: rf-n var(--rf-n);
+  animation: rf-count 1.4s cubic-bezier(0.3, 0.7, 0.2, 1) var(--d, 0ms) both;
+}
+.rf-score::after {
+  content: counter(rf-n);
+}
+@keyframes rf-count {
+  from {
+    --rf-n: 0;
+  }
+  to {
+    --rf-n: 92;
+  }
+}
+
+/* Idle drift once the hero has assembled. */
+.rf-float {
+  animation: rf-float 7s ease-in-out 3.6s infinite;
+}
+@keyframes rf-float {
+  50% {
+    transform: translateY(-7px) rotate(-0.6deg);
+  }
+}
+
+/* Graph-paper backdrop behind the hero, fading out towards the edges. */
+.rf-graph {
+  background-image:
+    linear-gradient(to right, color-mix(in oklab, var(--color-slate-400) 22%, transparent) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in oklab, var(--color-slate-400) 22%, transparent) 1px, transparent 1px);
+  background-size: 28px 28px;
+  mask-image: radial-gradient(ellipse 70% 60% at 70% 30%, #000 20%, transparent 75%);
+  animation: rf-graph-in 1.2s ease-out both;
+}
+@keyframes rf-graph-in {
+  from {
+    opacity: 0;
+    background-position: 0 -28px;
+  }
+}
+
+/* Logo: hovering the link re-writes the sheet's lines. */
+.rf-logo rect:nth-of-type(n + 3) {
+  transform-box: fill-box;
+  transform-origin: left center;
+}
+.group:hover .rf-logo rect:nth-of-type(n + 3) {
+  animation: rf-write 420ms cubic-bezier(0.3, 0.7, 0.2, 1) both;
+}
+.group:hover .rf-logo rect:nth-of-type(4) { animation-delay: 70ms; }
+.group:hover .rf-logo rect:nth-of-type(5) { animation-delay: 140ms; }
+.group:hover .rf-logo rect:nth-of-type(6) { animation-delay: 210ms; }
+
+/* Theme / palette switch: the new colours are revealed by a circle (src/app/palette.ts). */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
 }
 
 @media (prefers-reduced-motion: reduce) {
   [data-focus-flash] {
     animation-duration: 0.01s;
-    box-shadow: 0 0 0 3px rgb(99 102 241 / 0.55);
+    box-shadow: 0 0 0 3px color-mix(in oklab, var(--color-indigo-500) 55%, transparent);
+  }
+  .rf-rise,
+  .rf-stagger > *,
+  .rf-ink,
+  .rf-pop-in,
+  .rf-ring,
+  .rf-score {
+    animation-delay: 0ms !important;
   }
   *,
   *::before,
