@@ -33,7 +33,7 @@
     "typescript": "~6.0.2",
     "vite": "^8.3.0"
   },
-  "description": "ResumeForge — ATS-friendly resume builder with 45 templates, JD matcher, ATS checker, cover letters and DOCX/PDF export",
+  "description": "ResumeForge — ATS-friendly resume builder with 48 templates, JD matcher, ATS checker, cover letters and DOCX/PDF export",
   "author": "Jeevan (https://github.com/Jeevan2410)",
   "engines": {
     "node": ">=22"

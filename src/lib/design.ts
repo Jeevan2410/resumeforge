@@ -77,6 +77,8 @@ const TEMPLATE_IDS: TemplateId[] = [
   'infographic', 'portfolio', 'skillsfirst',
   // graphic UI templates
   'dashboard', 'studio', 'showcase',
+  // colourful art styles
+  'cutout', 'warhol', 'groovy',
 ]
 
 export function isTemplateId(v: unknown): v is TemplateId {

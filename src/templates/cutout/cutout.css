@@ -1,0 +1,186 @@
+/* Cut-out template — every selector is scoped to .rf-t-cutout. */
+
+.rf-t-cutout .co-page {
+  position: relative;
+  height: 100%;
+  box-sizing: border-box;
+  padding: 11mm 10mm;
+  background: var(--rf-accent);
+  color: var(--co-ink);
+}
+.rf-t-cutout .co-shapes {
+  position: absolute;
+  pointer-events: none;
+  filter: drop-shadow(0.4mm 0.6mm 0 rgb(0 0 0 / 0.18));
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.rf-t-cutout .co-pink {
+  fill: var(--co-pink);
+}
+.rf-t-cutout .co-yellow {
+  fill: var(--co-yellow);
+}
+.rf-t-cutout path.co-yellow:last-child {
+  fill: none;
+  stroke: var(--co-yellow);
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+.rf-t-cutout .co-green {
+  fill: var(--co-green);
+}
+.rf-t-cutout .co-orange {
+  fill: var(--co-orange);
+}
+.rf-t-cutout .co-navy {
+  fill: var(--co-navy);
+}
+
+.rf-t-cutout .co-sheet {
+  position: relative;
+  height: 100%;
+  box-sizing: border-box;
+  padding: calc(var(--rf-margin) * 0.6) calc(var(--rf-margin) * 0.75) 0;
+  border-radius: 2mm;
+  background: #fffdf8;
+  box-shadow:
+    1.2mm 1.6mm 0 rgb(0 0 0 / 0.18),
+    0 0 0 0.4mm rgb(0 0 0 / 0.05);
+}
+
+/* ---------- header ---------- */
+
+.rf-t-cutout .co-header {
+  display: flex;
+  align-items: center;
+  gap: 5mm;
+  margin-bottom: calc(var(--rf-section-gap) * 1.1);
+}
+.rf-t-cutout .co-header__text {
+  flex: 1;
+  min-width: 0;
+}
+.rf-t-cutout .co-name {
+  font-family: var(--rf-font-heading);
+  font-size: 3em;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+.rf-t-cutout .co-l {
+  display: inline-block;
+}
+.rf-t-cutout .co-l--pink {
+  color: var(--co-pink);
+  transform: rotate(-3deg);
+}
+.rf-t-cutout .co-l--yellow {
+  color: #e8a600;
+  transform: translateY(-0.04em) rotate(2deg);
+}
+.rf-t-cutout .co-l--green {
+  color: var(--co-green);
+  transform: rotate(-1deg);
+}
+.rf-t-cutout .co-l--orange {
+  color: var(--co-orange);
+  transform: translateY(0.03em) rotate(3deg);
+}
+.rf-t-cutout .co-title {
+  display: inline-block;
+  margin-top: 0.5em;
+  padding: 0.25em 0.9em;
+  background: var(--co-ink);
+  color: #fff;
+  font-weight: 600;
+  clip-path: polygon(0 8%, 98% 0, 100% 90%, 2% 100%);
+}
+.rf-t-cutout .co-contact {
+  margin-top: 0.8em;
+  font-size: 0.86em;
+  color: #3e4058;
+}
+.rf-t-cutout .co-contact .rf-contact__icon {
+  color: var(--rf-accent-ink);
+}
+.rf-t-cutout .co-photo {
+  flex: none;
+  box-shadow:
+    0 0 0 1.4mm var(--co-yellow),
+    0 0 0 2.8mm var(--co-pink);
+}
+
+/* ---------- sections ---------- */
+
+.rf-t-cutout .co-h {
+  margin-bottom: 0.6em;
+  font-family: var(--rf-font-heading);
+  font-size: 1.12em;
+  font-weight: 800;
+  letter-spacing: var(--rf-heading-tracking);
+  text-transform: var(--rf-heading-transform);
+}
+.rf-t-cutout .co-h > span {
+  display: inline-block;
+  padding: 0.25em 1em 0.25em 0.8em;
+  clip-path: polygon(0 12%, 4% 0, 30% 6%, 62% 0, 100% 8%, 97% 50%, 100% 92%, 70% 100%, 35% 94%, 2% 100%, 3% 55%);
+}
+.rf-t-cutout .co-h--pink > span {
+  background: var(--co-pink);
+  color: #fff;
+}
+.rf-t-cutout .co-h--yellow > span {
+  background: var(--co-yellow);
+  color: var(--co-ink);
+}
+.rf-t-cutout .co-h--green > span {
+  background: var(--co-green);
+  color: #fff;
+}
+.rf-t-cutout .co-h--orange > span {
+  background: var(--co-orange);
+  color: #fff;
+}
+.rf-t-cutout .co-h--navy > span {
+  background: var(--co-navy);
+  color: #fff;
+}
+
+.rf-t-cutout .co-summary,
+.rf-t-cutout .rf-entry__desc,
+.rf-t-cutout .rf-bullets > li,
+.rf-t-cutout .co-compact {
+  color: #33354d;
+}
+.rf-t-cutout .rf-entry__title,
+.rf-t-cutout .rf-srow__name,
+.rf-t-cutout .rf-cline__title {
+  font-family: var(--rf-font-heading);
+  font-weight: 700;
+  color: var(--co-ink);
+}
+.rf-t-cutout .rf-entry__sub {
+  font-weight: 600;
+  color: var(--rf-accent-ink);
+}
+.rf-t-cutout .rf-entry--main .rf-entry__date {
+  font-weight: 600;
+  color: #55577a;
+}
+.rf-t-cutout .rf-bullets > li::before {
+  width: 0.5em;
+  height: 0.5em;
+  border-radius: 40% 60% 55% 45%;
+  background: var(--co-orange);
+}
+.rf-t-cutout .rf-bullets > li:nth-child(2n)::before {
+  background: var(--co-pink);
+}
+.rf-t-cutout .rf-bullets > li:nth-child(3n)::before {
+  background: var(--co-green);
+}
+.rf-t-cutout .co-compact {
+  font-size: 1em;
+}
